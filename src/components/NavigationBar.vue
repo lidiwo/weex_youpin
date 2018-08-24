@@ -1,0 +1,105 @@
+<template>
+    <div class="wrapper">
+        <div class="bar-item" @click="tabTo('home')">
+            <image class="bar-ic"  :src="homeUrl"></image>
+            <text  class="bar-txt" :class="[this.isActive('home')]">首页</text>
+        </div>
+        <div class="bar-item" @click="tabTo('classify')">
+            <image class="bar-ic"  :src="classifyUrl"></image>
+            <text  class="bar-txt" :class="[this.isActive('classify')]">分类</text>
+        </div>
+        <div class="bar-item" @click="tabTo('taste')">
+            <image class="bar-ic"  :src="tasteUrl"></image>
+            <text  class="bar-txt" :class="[this.isActive('taste')]">品味</text>
+        </div>
+        <div class="bar-item" @click="tabTo('shoppingCart')">
+            <image class="bar-ic"  :src="shoppingCartUrl"></image>
+            <text  class="bar-txt" :class="[this.isActive('shoppingCart')]">购物车</text>
+        </div>
+        <div class="bar-item" @click="tabTo('person')">
+            <image class="bar-ic" :src="personUrl"></image>
+            <text  class="bar-txt" :class="[this.isActive('person')]">个人</text>
+        </div>
+    </div>
+</template>
+<script>
+    var modal = weex.requireModule('modal')
+    export default {
+        name: "navigationBar",
+        data:function() {
+            return {
+                selectPosition: "home",
+                homeUrl: "src/assets/images/tab_01_0.png",
+                classifyUrl: "src/assets/images/tab_02_0.png",
+                tasteUrl: "src/assets/images/tab_03_0.png",
+                shoppingCartUrl: "src/assets/images/tab_04_0.png",
+                personUrl: "src/assets/images/tab_05_0.png",
+            }
+        },
+        methods: {
+            isActive:function(flag){
+                return this.selectPosition === flag ?'bar-active':'bar-noactive'
+            },
+            tabTo: function (key) {
+                if(this.selectPosition===key){
+                    return
+                }
+
+                modal.toast({
+                    message: key,
+                    duration: 0.3
+                })
+                this.selectPosition = key
+                this.homeUrl = ("home" === this.selectPosition) ? "http://www.lidiwo.com/tab_01_1.png" : "http://www.lidiwo.com/tab_01_0.png";
+                this.classifyUrl = ("classify" === this.selectPosition) ? "http://www.lidiwo.com/tab_02_1.png" : "http://www.lidiwo.com/tab_02_0.png";
+                this.tasteUrl = ("taste" === this.selectPosition) ? "http://www.lidiwo.com/tab_03_1.png" : "http://www.lidiwo.com/tab_03_0.png";
+                this.shoppingCartUrl = ("shoppingCart" === this.selectPosition) ? "http://www.lidiwo.com/tab_04_1.png" : "http://www.lidiwo.com/tab_04_0.png";
+                this.personUrl = ("person" === this.selectPosition) ? "http://www.lidiwo.com/tab_05_1.png" : "http://www.lidiwo.com/tab_05_0.png";
+                this.$router.push('/' + key);
+            }
+        },
+        created: function () {
+            this.homeUrl = ("home" === this.selectPosition) ? "http://www.lidiwo.com/tab_01_1.png" : "http://www.lidiwo.com/tab_01_0.png";
+            this.classifyUrl = ("classify" === this.selectPosition) ? "http://www.lidiwo.com/tab_02_1.png" : "http://www.lidiwo.com/tab_02_0.png";
+            this.tasteUrl = ("taste" === this.selectPosition) ? "http://www.lidiwo.com/tab_03_1.png" : "http://www.lidiwo.com/tab_03_0.png";
+            this.shoppingCartUrl = ("shoppingCart" === this.selectPosition) ? "http://www.lidiwo.com/tab_04_1.png" : "http://www.lidiwo.com/tab_04_0.png";
+            this.personUrl = ("person" === this.selectPosition) ? "http://www.lidiwo.com/tab_05_1.png" : "http://www.lidiwo.com/tab_05_0.png";
+        }
+    }
+</script>
+<style scoped>
+    .wrapper {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-around;
+        border-top-width: 1px;
+        border-top-color: #d9d9d9;
+        background-color: #fafafa;
+    }
+    .bar-item {
+        flex: 1;
+    }
+    .bar-active{
+        color:#845F3F;
+    }
+    .bar-noactive{
+        color:#9B7E58;
+    }
+    .bar-ic {
+        align-self: center;
+        margin-top: 10px;
+        width: 48px;
+        height: 48px;
+    }
+    .bar-txt{
+        margin-top: 5px;
+        text-align: center;
+        font-size: 24px;
+    }
+
+</style>
