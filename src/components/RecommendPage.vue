@@ -13,31 +13,24 @@
             <div v-else-if="item.module_key==='recommend'">
                 <recommend_module3  :recommendData="item.data"></recommend_module3>
             </div>
-
             <div v-else-if="item.module_key==='crowd_funding'">
                 <recommend_module4  :crowdFundingData="item.data"></recommend_module4>
             </div>
-
             <div v-else-if="item.module_key==='product_hot'">
                 <recommend_module5  :productHotData="item.data"></recommend_module5>
             </div>
-
             <div v-else-if="item.module_key==='star_product'">
                 <recommend_module6  :starProductData="item.data"></recommend_module6>
             </div>
-
             <div v-else-if="item.module_key==='flashsale'">
                 <recommend_module7  :flashsaleData="item.data"></recommend_module7>
             </div>
-
             <div v-else-if="item.module_key==='taste_live'">
                 <recommend_module8  :tasteLiveData="item.data"></recommend_module8>
             </div>
-
             <div v-else-if="item.module_key==='product_category'">
                 <recommend_module9  :productCategoryData="item.data"></recommend_module9>
             </div>
-
             <div v-else>
                 <text>{{item.module_key}}--{{index}}</text>
             </div>
