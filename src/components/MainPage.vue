@@ -12,6 +12,7 @@
         <navigation_bar @selectIndex="getSelectIndex"></navigation_bar>
     </div>
 </template>
+
 <script>
     import NavigationBar from '@/components/NavigationBar';
     import HomePage from '@/components/HomePage';
