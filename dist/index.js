@@ -4201,6 +4201,11 @@ module.exports = {
     "width": "750",
     "height": "313"
   },
+  "indicator": {
+    "position": "absolute",
+    "left": "0",
+    "bottom": "0"
+  },
   "banner_indicator": {
     "width": "200",
     "height": "20",
@@ -4223,7 +4228,13 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//
+
+var _CustomIndicator = __webpack_require__(93);
+
+var _CustomIndicator2 = _interopRequireDefault(_CustomIndicator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //
 //
 //
@@ -4241,7 +4252,17 @@ exports.default = {
     name: "RecommendModule1",
     props: ["swipebanner"],
     data: function data() {
-        return {};
+        return {
+            selectIndex: 0
+        };
+    },
+    components: {
+        "custom_indicator": _CustomIndicator2.default
+    },
+    methods: {
+        changeHandler: function changeHandler(event) {
+            this.selectIndex = event.index;
+        }
     }
 };
 
@@ -4258,9 +4279,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "interval": "3000",
       "scrollable": "true",
       "infinite": "true",
-      "showIndicators": "true"
+      "showIndicators": "false"
+    },
+    on: {
+      "change": function($event) {
+        _vm.changeHandler($event)
+      }
     }
-  }, [_vm._l((_vm.swipebanner['items']), function(item) {
+  }, _vm._l((_vm.swipebanner['items']), function(item) {
     return _c('div', [_c('image', {
       staticClass: ["image_swipebanner"],
       attrs: {
@@ -4268,9 +4294,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": item.pic_url
       }
     })])
-  }), _c('indicator', {
-    staticClass: ["banner_indicator"]
-  })], 2)])
+  })), _c('custom_indicator', {
+    staticClass: ["indicator"],
+    attrs: {
+      "indicatorCount": _vm.swipebanner['items'].length,
+      "index": _vm.selectIndex
+    }
+  })], 1)
 },"@render":function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["content"],
@@ -4285,7 +4315,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "interval": "3000",
       "scrollable": "true",
       "infinite": "true",
-      "showIndicators": "true"
+      "showIndicators": "false"
+    },
+    on: {
+      "change": function($event) {
+        this.changeHandler($event)
+      }
     }
   }, [_c('div', {
     attrs: {
@@ -4302,9 +4337,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "@binding": "item.pic_url"
       }
     }
-  })]), _c('indicator', {
-    staticClass: ["banner_indicator"]
-  })])])
+  })])]), _c('custom_indicator', {
+    staticClass: ["indicator"],
+    attrs: {
+      "indicatorCount": {
+        "@binding": "swipebanner['items'].length"
+      },
+      "index": {
+        "@binding": "selectIndex"
+      },
+      "@inRecycleList": true
+    }
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -7858,8 +7902,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
 
 var modal = weex.requireModule('modal');
 exports.default = {
@@ -8038,6 +8080,131 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["bottom_line"]
   }, [_vm._v("————   底线在此，不能更低了   ————")])])
 }]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(94)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(95)
+
+/* template */
+var __vue_template__ = __webpack_require__(96)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\CustomIndicator.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-6abdcebe"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "indicator": {
+    "width": "750",
+    "height": "50"
+  },
+  "indicator_container": {
+    "flexDirection": "row",
+    "position": "absolute",
+    "right": "25",
+    "bottom": "30",
+    "alignItems": "flex-end"
+  },
+  "selectStyle": {
+    "width": "14",
+    "height": "14",
+    "marginLeft": "5",
+    "marginRight": "5",
+    "backgroundColor": "#FFFFFF"
+  },
+  "unselectStyle": {
+    "width": "14",
+    "height": "6",
+    "marginLeft": "5",
+    "marginRight": "5",
+    "backgroundColor": "rgba(255,255,255,0.5)"
+  }
+}
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    name: "CustomIndicator",
+    props: ['indicatorCount', 'index'],
+    data: function data() {
+        return {};
+    },
+    methods: {
+        setIndex: function setIndex(pos) {
+            return pos === this.index ? 'selectStyle' : 'unselectStyle';
+        }
+    }
+};
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["indicator"]
+  }, [_c('div', {
+    staticClass: ["indicator_container"]
+  }, _vm._l((_vm.indicatorCount), function(position) {
+    return _c('div', {
+      class: [_vm.setIndex(position - 1)]
+    })
+  }))])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ })
