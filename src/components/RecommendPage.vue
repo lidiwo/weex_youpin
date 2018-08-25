@@ -31,6 +31,9 @@
             <div v-else-if="item.module_key==='product_category'">
                 <recommend_module9  :productCategoryData="item.data"></recommend_module9>
             </div>
+            <div v-else-if="item.module_key===''||item.module_key===null||item.module_key===undefined">
+                <recommend_module10  :recommendData="item.data"></recommend_module10>
+            </div>
             <div v-else>
                 <text>{{item.module_key}}--{{index}}</text>
             </div>
@@ -49,13 +52,13 @@
     import RecommendModule7 from "@/components/RecommendModule7";
     import RecommendModule8 from "@/components/RecommendModule8";
     import RecommendModule9 from "@/components/RecommendModule9";
+    import RecommendModule10 from "@/components/RecommendModule10";
 
     export default {
         name: "RecommendPage",
         data: function () {
             return {
                 homepageDatas: [],
-                recommendDatas: [],
                 isFristLoad:false,
             }
         },
@@ -69,6 +72,7 @@
             "recommend_module7":RecommendModule7,
             "recommend_module8":RecommendModule8,
             "recommend_module9":RecommendModule9,
+            "recommend_module10":RecommendModule10,
         },
         created: function () {
             if(this.isFristLoad){
@@ -81,7 +85,7 @@
                         let result1 = response.data.data.homepage;
                         let result2 = response.data.data.recommend;
                         this.homepageDatas.push(...result1['floors']);
-                        this.recommendDatas.push(...result2['floors']);
+                        this.homepageDatas.push(...result2['floors']);
                     } else {
                         modal.toast({
                             message: "网络请求失败",
@@ -104,7 +108,6 @@
         width: 750px;
         height: 200px;
         align-items: center;
-        background-color: #F4F4F4;
     }
 
     .single_picture{

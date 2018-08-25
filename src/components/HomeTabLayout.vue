@@ -200,6 +200,7 @@
     }
 
     .web_root {
+        background-color: #F4F4F4;
         position: absolute;
         top: 0px;
         right: 0px;

@@ -110,6 +110,8 @@
     }
 
     .goods_main_image_container {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
         justify-content: center;
         align-items: center;
         width: 188px;

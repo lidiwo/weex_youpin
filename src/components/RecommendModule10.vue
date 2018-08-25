@@ -1,40 +1,43 @@
 <template recyclable>
     <div class="content">
         <div class="taste_live_title">
-            <text class="title">{{productCategoryData.title}}</text>
+            <text class="title">专属推荐</text>
             <div class="title_more">
                 <text class="more_text"> 更多</text>
                 <image class="more_img" src="http://www.lidiwo.com/arrow_rounded.png"></image>
             </div>
         </div>
-        <div class="main_image_container">
-            <image class="main_image" :src="productCategoryData.pic_url"></image>
-        </div>
 
-        <div class="goods_content" v-for="index1 in  productCategoryData['items'].length/3">
-            <div class="single_goods" v-for="index2 in 3">
+        <div class="goods_content" v-for="index1 in  recommendData.length/2">
+            <div class="single_goods" v-for="index2 in 2">
                 <div class="goods_image_container">
-                    <image class="goods_image" :src="productCategoryData['items'][(index1-1)*3+(index2-1)].pic_url"></image>
+                    <image class="goods_image" :src="recommendData[(index1-1)*2+(index2-1)].pic_url"></image>
                 </div>
-                <text class="goods_title">{{productCategoryData['items'][(index1-1)*3+(index2-1)].name}}</text>
-
+                <div class="goods_summary_container">
+                    <text class="goods_summary">{{recommendData[(index1-1)*2+(index2-1)].summary}}</text>
+                </div>
+                <text class="goods_title">{{recommendData[(index1-1)*2+(index2-1)].name}}</text>
                 <div class="goods_price">
                     <text class="rmb_symbol">¥</text>
-                    <text class="price_text">{{goodsPrice((index1-1)*3+(index2-1))}}</text>
+                    <text class="price_text">{{goodsPrice((index1-1)*2+(index2-1))}}</text>
                     <text class="rmb_symbol" :style="exceed_text">起</text>
                 </div>
             </div>
         </div>
 
+        <div class="bottom_content">
+            <text class="bottom_line">————   底线在此，不能更低了   ————</text>
+        </div>
 
     </div>
 </template>
 <script>
     const modal = weex.requireModule('modal');
     import util from "@/utils/util.js";
+
     export default {
-        name: "RecommendModule9",
-        props: ["productCategoryData"],
+        name: "RecommendModule10",
+        props: ["recommendData"],
         data: function () {
             return {
                 exceed_text: {
@@ -42,18 +45,21 @@
                 },
             }
         },
-        methods:{
-            goodsPrice:function (index) {
-                return  util.formatMoney(this.productCategoryData['items'][index].price_min) ;
+        methods: {
+            goodsPrice: function (index) {
+                return util.formatMoney(this.recommendData[index].price);
             }
+        },
+        created: function () {
+
         }
     }
 </script>
 <style scoped>
     .content {
+        margin-top: 20px;
         flex-direction: column;
         width: 750px;
-        height: 1115px;
         margin-top: 20px;
         background-color: white;
     }
@@ -92,23 +98,10 @@
         height: 30px;
     }
 
-    .main_image_container {
-        width: 750px;
-        height: 170px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .main_image {
-        width: 700px;
-        height: 170px;
-    }
-
     .goods_content {
-        margin-top: 15px;
         width: 750px;
+        height: 510px;
         flex-direction: row;
-        height: 400px;
         padding-right: 25px;
         padding-left: 25px;
         justify-content: space-between;
@@ -116,35 +109,55 @@
 
     .single_goods {
         flex-direction: column;
-        width: 225px;
-        height: 400px;
+        width: 345px;
+        height: 510px;
     }
 
     .goods_image_container {
-        background-color: #F8F8F8;
-        width: 225px;
-        height: 225px;
+        background-color: #FAFAFA;
+        width: 345px;
+        height: 316px;
         align-items: center;
         justify-content: center;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
     }
 
     .goods_image {
-        width: 180px;
-        height: 180px;
+        width: 250px;
+        height: 250px;
+    }
+
+    .goods_summary_container {
+        width: 345px;
+        height: 63px;
+        padding-left: 5px;
+        padding-right: 5px;
+        background-color: #F6F2F1;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        justify-content: center;
+    }
+
+    .goods_summary {
+        color: #9F8052;
+        lines: 1;
+        text-overflow: ellipsis;
+        font-size: 25px;
     }
 
     .goods_title {
+        color: #333333;
         margin-top: 10px;
-        lines: 2;
-        font-size: 28px;
+        padding-right: 5px;
+        padding-left: 5px;
+        lines: 1;
         text-overflow: ellipsis;
+        font-size: 28px;
     }
 
     .goods_price {
+        padding-left: 5px;
         flex-direction: row;
         margin-top: 15px;
         align-items: flex-end;
@@ -159,6 +172,19 @@
     .price_text {
         font-size: 30px;
         color: #A92112;
+    }
+
+    .bottom_content {
+        width: 750px;
+        height: 333px;
+        align-items: center;
+        justify-content: center;
+        background-color: #F4F4F4;
+    }
+
+    .bottom_line{
+        font-size: 22px;
+        color: #999999;
     }
 
 </style>
