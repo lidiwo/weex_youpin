@@ -24,11 +24,9 @@
                 </div>
             </div>
         </div>
-
         <div class="bottom_content">
             <text class="bottom_line">————   底线在此，不能更低了   ————</text>
         </div>
-
     </div>
 </template>
 <script>
