@@ -1,6 +1,6 @@
 <template>
     <div class="app-wrapper">
-        <router-view class="r-box1"></router-view>
+        <router-view class="r-box"></router-view>
         <navigation_bar></navigation_bar>
     </div>
 </template>
