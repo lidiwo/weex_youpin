@@ -1,6 +1,6 @@
 <template>
     <div class="app-wrapper">
-        <slider class="r-box_container" :index="this.selectIndex">
+        <slider class="r-box_container" scrollable="false" :index="this.selectIndex">
             <div class="r-box" v-for="flag in 5">
                 <home_page v-if="flag===1"></home_page>
                 <classify_page v-if="flag===2"></classify_page>

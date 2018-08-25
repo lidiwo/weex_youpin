@@ -16,7 +16,7 @@
             <image class="bar-ic"  :src="shoppingCartUrl"></image>
             <text  class="bar-txt" :class="[this.isActive(3)]">购物车</text>
         </div>
-        <div class="bar-item" @click="tabTo(4)">
+        <div class="bar-item" @click="tabTo(4)" >
             <image class="bar-ic" :src="personUrl"></image>
             <text  class="bar-txt" :class="[this.isActive(4)]">个人</text>
         </div>
@@ -60,7 +60,7 @@
             this.tasteUrl = (2 === this.selectPosition) ? "http://www.lidiwo.com/tab_03_1.png" : "http://www.lidiwo.com/tab_03_0.png";
             this.shoppingCartUrl = (3 === this.selectPosition) ? "http://www.lidiwo.com/tab_04_1.png" : "http://www.lidiwo.com/tab_04_0.png";
             this.personUrl = (4 === this.selectPosition) ? "http://www.lidiwo.com/tab_05_1.png" : "http://www.lidiwo.com/tab_05_0.png";
-        }
+        },
     }
 </script>
 <style scoped>

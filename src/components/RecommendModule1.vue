@@ -47,16 +47,4 @@
         left: 0px;
         bottom: 0px;
     }
-
-    .banner_indicator {
-        width: 200px;
-        height: 20px;
-        item-color: green;
-        item-selected-color: red;
-        item-size: 13px;
-        position: absolute;
-        top: 270px;
-        right: 0px;
-    }
-
 </style>
