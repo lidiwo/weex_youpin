@@ -15,7 +15,6 @@ export default {
                 }
             }, callback);
         },
-
         recommendPost:function(url,callback){
             return stream.fetch({
                 method: "POST",
@@ -26,8 +25,6 @@ export default {
                 }
             }, callback);
         },
-
-
         phonePost: function (url, params, callback) {
             return stream.fetch({
                 method: "POST",

@@ -1,24 +1,24 @@
 <template>
     <div class="wrapper">
-        <div class="bar-item" @click="tabTo('home')">
+        <div class="bar-item" @click="tabTo(0)">
             <image class="bar-ic"  :src="homeUrl"></image>
-            <text  class="bar-txt" :class="[this.isActive('home')]">首页</text>
+            <text  class="bar-txt" :class="[this.isActive(0)]">首页</text>
         </div>
-        <div class="bar-item" @click="tabTo('classify')">
+        <div class="bar-item" @click="tabTo(1)">
             <image class="bar-ic"  :src="classifyUrl"></image>
-            <text  class="bar-txt" :class="[this.isActive('classify')]">分类</text>
+            <text  class="bar-txt" :class="[this.isActive(1)]">分类</text>
         </div>
-        <div class="bar-item" @click="tabTo('taste')">
+        <div class="bar-item" @click="tabTo(2)">
             <image class="bar-ic"  :src="tasteUrl"></image>
-            <text  class="bar-txt" :class="[this.isActive('taste')]">品味</text>
+            <text  class="bar-txt" :class="[this.isActive(2)]">品味</text>
         </div>
-        <div class="bar-item" @click="tabTo('shoppingCart')">
+        <div class="bar-item" @click="tabTo(3)">
             <image class="bar-ic"  :src="shoppingCartUrl"></image>
-            <text  class="bar-txt" :class="[this.isActive('shoppingCart')]">购物车</text>
+            <text  class="bar-txt" :class="[this.isActive(3)]">购物车</text>
         </div>
-        <div class="bar-item" @click="tabTo('person')">
+        <div class="bar-item" @click="tabTo(4)">
             <image class="bar-ic" :src="personUrl"></image>
-            <text  class="bar-txt" :class="[this.isActive('person')]">个人</text>
+            <text  class="bar-txt" :class="[this.isActive(4)]">个人</text>
         </div>
     </div>
 </template>
@@ -28,7 +28,7 @@
         name: "navigationBar",
         data:function() {
             return {
-                selectPosition: "home",
+                selectPosition: 0,
                 homeUrl: "src/assets/images/tab_01_0.png",
                 classifyUrl: "src/assets/images/tab_02_0.png",
                 tasteUrl: "src/assets/images/tab_03_0.png",
@@ -44,26 +44,22 @@
                 if(this.selectPosition===key){
                     return
                 }
-
-                modal.toast({
-                    message: key,
-                    duration: 0.3
-                })
                 this.selectPosition = key
-                this.homeUrl = ("home" === this.selectPosition) ? "http://www.lidiwo.com/tab_01_1.png" : "http://www.lidiwo.com/tab_01_0.png";
-                this.classifyUrl = ("classify" === this.selectPosition) ? "http://www.lidiwo.com/tab_02_1.png" : "http://www.lidiwo.com/tab_02_0.png";
-                this.tasteUrl = ("taste" === this.selectPosition) ? "http://www.lidiwo.com/tab_03_1.png" : "http://www.lidiwo.com/tab_03_0.png";
-                this.shoppingCartUrl = ("shoppingCart" === this.selectPosition) ? "http://www.lidiwo.com/tab_04_1.png" : "http://www.lidiwo.com/tab_04_0.png";
-                this.personUrl = ("person" === this.selectPosition) ? "http://www.lidiwo.com/tab_05_1.png" : "http://www.lidiwo.com/tab_05_0.png";
-                this.$router.push('/' + key);
+                this.homeUrl = (0=== this.selectPosition) ? "http://www.lidiwo.com/tab_01_1.png" : "http://www.lidiwo.com/tab_01_0.png";
+                this.classifyUrl = (1 === this.selectPosition) ? "http://www.lidiwo.com/tab_02_1.png" : "http://www.lidiwo.com/tab_02_0.png";
+                this.tasteUrl = (2 === this.selectPosition) ? "http://www.lidiwo.com/tab_03_1.png" : "http://www.lidiwo.com/tab_03_0.png";
+                this.shoppingCartUrl = (3 === this.selectPosition) ? "http://www.lidiwo.com/tab_04_1.png" : "http://www.lidiwo.com/tab_04_0.png";
+                this.personUrl = (4=== this.selectPosition) ? "http://www.lidiwo.com/tab_05_1.png" : "http://www.lidiwo.com/tab_05_0.png";
+                this.$emit('selectIndex',this.selectPosition);
+               // this.$router.push('/' + key);
             }
         },
         created: function () {
-            this.homeUrl = ("home" === this.selectPosition) ? "http://www.lidiwo.com/tab_01_1.png" : "http://www.lidiwo.com/tab_01_0.png";
-            this.classifyUrl = ("classify" === this.selectPosition) ? "http://www.lidiwo.com/tab_02_1.png" : "http://www.lidiwo.com/tab_02_0.png";
-            this.tasteUrl = ("taste" === this.selectPosition) ? "http://www.lidiwo.com/tab_03_1.png" : "http://www.lidiwo.com/tab_03_0.png";
-            this.shoppingCartUrl = ("shoppingCart" === this.selectPosition) ? "http://www.lidiwo.com/tab_04_1.png" : "http://www.lidiwo.com/tab_04_0.png";
-            this.personUrl = ("person" === this.selectPosition) ? "http://www.lidiwo.com/tab_05_1.png" : "http://www.lidiwo.com/tab_05_0.png";
+            this.homeUrl = (0 === this.selectPosition) ? "http://www.lidiwo.com/tab_01_1.png" : "http://www.lidiwo.com/tab_01_0.png";
+            this.classifyUrl = (1 === this.selectPosition) ? "http://www.lidiwo.com/tab_02_1.png" : "http://www.lidiwo.com/tab_02_0.png";
+            this.tasteUrl = (2 === this.selectPosition) ? "http://www.lidiwo.com/tab_03_1.png" : "http://www.lidiwo.com/tab_03_0.png";
+            this.shoppingCartUrl = (3 === this.selectPosition) ? "http://www.lidiwo.com/tab_04_1.png" : "http://www.lidiwo.com/tab_04_0.png";
+            this.personUrl = (4 === this.selectPosition) ? "http://www.lidiwo.com/tab_05_1.png" : "http://www.lidiwo.com/tab_05_0.png";
         }
     }
 </script>
@@ -101,5 +97,4 @@
         text-align: center;
         font-size: 24px;
     }
-
 </style>

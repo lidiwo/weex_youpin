@@ -1,6 +1,15 @@
 <template>
-    <div class="wrapper">
-        <router-view></router-view>
+    <div class="app-wrapper">
+        <slider class="r-box_container" :index="this.selectIndex">
+            <div class="r-box" v-for="flag in 5">
+                <home_page v-if="flag===1"></home_page>
+                <classify_page v-if="flag===2"></classify_page>
+                <taste_page v-if="flag===3"></taste_page>
+                <shopping_cart_page v-if="flag===4"></shopping_cart_page>
+                <person_page v-if="flag===5"></person_page>
+            </div>
+        </slider>
+        <navigation_bar @selectIndex="getSelectIndex"></navigation_bar>
     </div>
 </template>
 <script>
@@ -13,7 +22,7 @@
 
     const modal = weex.requireModule('modal');
     export default {
-        name: 'App',
+        name: 'MainPage',
         data: function () {
             return {
                 selectIndex: 0,
@@ -35,11 +44,27 @@
     }
 </script>
 <style scoped>
-    .wrapper {
+    .app-wrapper {
         position: absolute;
         top: 0px;
         bottom: 0px;
         right: 0px;
         left: 0px;
+        flex-direction: column-reverse;
+    }
+    .r-box_container{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 100px;
+    }
+
+    .r-box {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
     }
 </style>

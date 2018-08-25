@@ -204,7 +204,7 @@
         top: 0px;
         right: 0px;
         left: 0px;
-        bottom: 100px;
+        bottom: 0px;
     }
 
     .web_content {
