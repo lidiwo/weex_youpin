@@ -7669,7 +7669,10 @@ module.exports.render._withStripped = true
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('list', {
-    staticClass: ["list_content"]
+    staticClass: ["list_content"],
+    attrs: {
+      "showScrollbar": "false"
+    }
   }, _vm._l((_vm.homepageDatas), function(item, index) {
     return _c('cell', {
       staticClass: ["cell_content"],
@@ -8015,6 +8018,7 @@ module.exports = {
     "height": "45"
   },
   "title_search_text": {
+    "fontSize": "30",
     "marginLeft": "20",
     "color": "#CCCCCC"
   },
@@ -8026,13 +8030,93 @@ module.exports = {
     "right": "0",
     "flexDirection": "row"
   },
-  "classify_title": {
-    "flex": 1,
-    "backgroundColor": "#FFFF00"
+  "classify_title_container": {
+    "position": "absolute",
+    "left": "0",
+    "top": "0",
+    "bottom": "0",
+    "width": "187"
   },
-  "classify_goods": {
-    "flex": 3,
-    "backgroundColor": "#0088fb"
+  "classify_goods_container": {
+    "width": "563",
+    "position": "absolute",
+    "right": "0",
+    "top": "0",
+    "bottom": "0"
+  },
+  "item_classify_title": {
+    "height": "92",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "item_classify_title_select": {
+    "backgroundColor": "#FFFFFF"
+  },
+  "item_classify_title_unselect": {
+    "backgroundColor": "#F6F6F6"
+  },
+  "classify_title": {
+    "fontSize": "30"
+  },
+  "classify_title_select": {
+    "color": "#9F866F"
+  },
+  "classify_title_unselect": {
+    "color": "#666666"
+  },
+  "classify_title_flag": {
+    "position": "absolute",
+    "top": "16",
+    "left": "0",
+    "width": "7",
+    "height": "60",
+    "backgroundColor": "#9F866F"
+  },
+  "classify_title_flag_select": {
+    "visibility": "visible"
+  },
+  "classify_title_flag_unselect": {
+    "visibility": "hidden"
+  },
+  "goods_scroller": {
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "left": "0",
+    "right": "0"
+  },
+  "main_image_cell": {
+    "width": "563",
+    "height": "268",
+    "alignItems": "center",
+    "marginTop": "15"
+  },
+  "main_image": {
+    "width": "533",
+    "height": "268"
+  },
+  "last_classify_tab_row": {
+    "width": "563",
+    "height": "263",
+    "flexDirection": "row",
+    "paddingRight": "15",
+    "paddingLeft": "15",
+    "justifyContent": "space-between"
+  },
+  "last_classify_tab_column": {
+    "backgroundColor": "#FF00FF",
+    "width": "125",
+    "height": "263"
+  },
+  "brand_image_container": {
+    "backgroundColor": "#FFFF00",
+    "width": "125",
+    "height": "150"
+  },
+  "brand_image": {
+    "width": "125",
+    "height": "125"
   }
 }
 
@@ -8046,6 +8130,39 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8067,10 +8184,95 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
 exports.default = {
     name: "ClassifyPage",
     data: function data() {
-        return {};
+        return {
+            isFristLoad: false,
+            classifyTitles: [],
+            goodsContent: {},
+            selectIndex: 0
+        };
+    },
+    methods: {
+        updataItem: function updataItem(index) {
+            return this.selectIndex === index ? 'item_classify_title_select' : 'item_classify_title_unselect';
+        },
+        updataItemText: function updataItemText(index) {
+            return this.selectIndex === index ? 'classify_title_select' : 'classify_title_unselect';
+        },
+        updataItemFlag: function updataItemFlag(index) {
+            return this.selectIndex === index ? 'classify_title_flag_select' : 'classify_title_flag_unselect';
+        },
+        onClick: function onClick(index) {
+            this.selectIndex = index;
+        },
+        getRowCount: function getRowCount(constant, selectPosition) {
+            return Math.ceil((this.goodsContent['HomepageGetUclassList' + this.classifyTitles[selectPosition].ucid]['data'].length - 1) / constant);
+        },
+        getColumnCount: function getColumnCount(constant, lines, selectPosition) {
+            return lines == this.getRowCount(constant, selectPosition) ? 1 : constant;
+        },
+
+        getClassifyDetails: function getClassifyDetails() {
+            var _this = this;
+
+            var mainobj = new Object();
+            for (var i = 0; i < this.classifyTitles.length; i++) {
+                var parametersobj = new Object();
+                parametersobj['id'] = this.classifyTitles[i].ucid;
+                var obj = new Object();
+                obj['action'] = "GetUclassList";
+                obj['model'] = "Homepage";
+                obj['parameters'] = parametersobj;
+                mainobj['HomepageGetUclassList' + this.classifyTitles[i].ucid] = obj;
+            }
+            this.post("app/shopv3/pipe", "data=" + JSON.stringify(mainobj), function (response) {
+                if (response.ok) {
+                    if (response.data.message === "ok" || response.data.message === "OK") {
+                        var result = response.data.result;
+                        _this.goodsContent = result;
+                    } else {
+                        modal.toast({
+                            message: "网络请求失败",
+                            duration: 0.3
+                        });
+                    }
+                } else {
+                    modal.toast({
+                        message: "服务器异常",
+                        duration: 0.3
+                    });
+                }
+            });
+        }
+    },
+    created: function created() {
+        var _this2 = this;
+
+        this.post("app/shopv3/pipe", "data={\"HomepageBuildClass\":{\"model\":\"Homepage\",\"action\":\"BuildClass\",\"parameters\":{}}}", function (response) {
+            if (response.ok) {
+                if (response.data.message === "ok" || response.data.message === "OK") {
+                    var _classifyTitles;
+
+                    _this2.isFristLoad = true;
+                    var result = response.data.result.HomepageBuildClass;
+                    (_classifyTitles = _this2.classifyTitles).push.apply(_classifyTitles, _toConsumableArray(result['data']));
+                    _this2.getClassifyDetails();
+                } else {
+                    modal.toast({
+                        message: "网络请求失败",
+                        duration: 0.3
+                    });
+                }
+            } else {
+                modal.toast({
+                    message: "服务器异常",
+                    duration: 0.3
+                });
+            }
+        });
     }
 };
 
@@ -8079,11 +8281,75 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["app_content"]
+  }, [_vm._m(0), _c('div', {
+    staticClass: ["classify_content"]
   }, [_c('div', {
+    staticClass: ["classify_title_container"]
+  }, [_c('list', {
+    staticClass: ["classify_title_container"],
+    attrs: {
+      "showScrollbar": "false"
+    }
+  }, _vm._l((_vm.classifyTitles), function(item, index) {
+    return _c('cell', {
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      },
+      on: {
+        "click": function($event) {
+          _vm.onClick(index)
+        }
+      }
+    }, [_c('div', {
+      class: ['item_classify_title', _vm.updataItem(index)]
+    }, [_c('text', {
+      class: ['classify_title', _vm.updataItemText(index)]
+    }, [_vm._v(_vm._s(item.name))]), _c('div', {
+      class: ['classify_title_flag', _vm.updataItemFlag(index)]
+    })])])
+  }))]), _c('div', {
+    staticClass: ["classify_goods_container"]
+  }, [_c('list', {
+    staticClass: ["goods_scroller"],
+    attrs: {
+      "showScrollbar": "false"
+    }
+  }, [_c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [(_vm.goodsContent['HomepageGetUclassList' + this.classifyTitles[_vm.selectIndex].ucid]['data'][0].visiable === 1) ? _c('div', {
+    staticClass: ["main_image_cell"]
+  }, [_c('image', {
+    staticClass: ["main_image"],
+    attrs: {
+      "src": _vm.goodsContent['HomepageGetUclassList' + this.classifyTitles[_vm.selectIndex].ucid]['data'][0].pic_url
+    }
+  })]) : _vm._e()]), (this.selectIndex === this.classifyTitles.length - 1) ? _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, _vm._l((_vm.getRowCount(4, this.selectIndex)), function(index1) {
+    return _c('div', {
+      staticClass: ["last_classify_tab_row"]
+    }, _vm._l((4), function(index2) {
+      return _c('div', {
+        staticClass: ["last_classify_tab_column"]
+      })
+    }))
+  })) : _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('text', [_vm._v("其他")])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: ["title_content"]
   }, [_c('div', {
     staticClass: ["title_container"]
@@ -8094,13 +8360,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('text', {
     staticClass: ["title_search_text"]
-  }, [_vm._v("纯米超级品牌日")])])]), _c('div', {
-    staticClass: ["classify_content"]
-  }, [_c('div', {
-    staticClass: ["classify_title"]
-  }), _c('div', {
-    staticClass: ["classify_goods"]
-  })])])
+  }, [_vm._v("纯米超级品牌日")])])])
 }]}
 module.exports.render._withStripped = true
 

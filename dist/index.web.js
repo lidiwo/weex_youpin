@@ -27398,7 +27398,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('slider', {
     staticClass: "r-box_container",
     attrs: {
-      "scollable": "false",
+      "scrollable": "false",
       "index": this.selectIndex
     }
   }, _vm._l((5), function(flag) {

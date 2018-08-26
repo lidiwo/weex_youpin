@@ -1,5 +1,5 @@
 <template>
-    <list class="list_content">
+    <list class="list_content" show-scrollbar="false">
         <cell class="cell_content" v-for="(item, index) in homepageDatas ">
             <div  v-if="item.module_key==='banner'">
                 <recommend_module1 :swipebanner="item.data"></recommend_module1>
