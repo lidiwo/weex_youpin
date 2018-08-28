@@ -10,6 +10,7 @@
                     <div class="select_line">
                     </div>
                 </div>
+
             </scroller>
             <div class="tb_dropdown">
                 <image class="tb_dropdown_ico" src="http://www.lidiwo.com/main_cat_dropdown.png"></image>

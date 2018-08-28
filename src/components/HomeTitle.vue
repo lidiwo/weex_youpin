@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" :class="contentStyle">
         <div>
             <image class="title_logo" src="http://www.lidiwo.com/logo.png"></image>
         </div>
@@ -18,12 +18,14 @@
 
 <script>
     export default {
-        name: "HomeTitle"
+        name: "HomeTitle",
+
     }
 </script>
 
 <style scoped>
     .wrapper {
+
         position: absolute;
         top: 0;
         left: 0;

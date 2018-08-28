@@ -4,34 +4,12 @@
     </div>
 </template>
 <script>
-    import NavigationBar from '@/components/NavigationBar';
-    import HomePage from '@/components/HomePage';
-    import ClassifyPage from '@/components/ClassifyPage';
-    import TastePage from '@/components/TastePage';
-    import ShoppingCartPage from '@/components/ShoppingCartPage';
-    import PersonPage from '@/components/PersonPage';
-
-    const modal = weex.requireModule('modal');
     export default {
         name: 'App',
         data: function () {
             return {
-                selectIndex: 0,
             }
         },
-        methods: {
-            getSelectIndex: function (index) {
-                this.selectIndex = index;
-            }
-        },
-        components: {
-            "navigation_bar": NavigationBar,
-            "home_page": HomePage,
-            "classify_page": ClassifyPage,
-            "taste_page": TastePage,
-            "shopping_cart_page": ShoppingCartPage,
-            "person_page": PersonPage,
-        }
     }
 </script>
 <style scoped>
