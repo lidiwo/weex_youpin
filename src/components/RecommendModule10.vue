@@ -25,7 +25,11 @@
             </div>
         </div>
         <div class="bottom_content">
-            <text class="bottom_line">————   底线在此，不能更低了   ————</text>
+            <div class="line_content">
+                <div class="bottom_line"></div>
+                <text class="bottom_line_text">底线在此，不能更低了</text>
+                <div class="bottom_line"></div>
+            </div>
         </div>
     </div>
 </template>
@@ -177,10 +181,26 @@
         height: 333px;
         align-items: center;
         justify-content: center;
-        background-color: #F4F4F4;
     }
 
-    .bottom_line{
+    .line_content{
+
+        width: 750px;
+        height: 50px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bottom_line {
+        width: 150px;
+        height: 1px;
+        background-color: #999999;
+    }
+
+    .bottom_line_text {
+        margin-right: 30px;
+        margin-left: 30px;
         font-size: 22px;
         color: #999999;
     }
