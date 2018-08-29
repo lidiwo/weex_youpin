@@ -7268,7 +7268,8 @@ module.exports = {
     "width": "750",
     "height": "333",
     "alignItems": "center",
-    "justifyContent": "center"
+    "justifyContent": "center",
+    "backgroundColor": "#FAFAFA"
   },
   "line_content": {
     "width": "750",
@@ -8013,25 +8014,59 @@ module.exports = {
   },
   "last_classify_tab_row": {
     "width": "563",
-    "height": "263",
+    "height": "243",
     "flexDirection": "row",
-    "paddingRight": "15",
-    "paddingLeft": "15",
-    "justifyContent": "space-between"
+    "justifyContent": "flex-start"
   },
   "last_classify_tab_column": {
-    "backgroundColor": "#FF00FF",
-    "width": "125",
-    "height": "263"
+    "marginLeft": "15",
+    "marginTop": "40",
+    "width": "122",
+    "height": "223",
+    "alignItems": "center"
   },
   "brand_image_container": {
-    "backgroundColor": "#FFFF00",
-    "width": "125",
+    "width": "122",
     "height": "150"
   },
   "brand_image": {
-    "width": "125",
-    "height": "125"
+    "width": "122",
+    "height": "133"
+  },
+  "brand_title": {
+    "lines": 1,
+    "color": "#666666",
+    "fontSize": "20",
+    "textOverflow": "ellipsis"
+  },
+  "last_classify_tab_other_row": {
+    "width": "583",
+    "height": "240",
+    "flexDirection": "row",
+    "paddingRight": "15",
+    "paddingLeft": "15",
+    "justifyContent": "flex-start"
+  },
+  "last_classify_tab_other_column": {
+    "width": "184",
+    "height": "240",
+    "alignItems": "center",
+    "marginTop": "20"
+  },
+  "goods_image_container": {
+    "width": "184",
+    "height": "184",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "goods_image": {
+    "width": "164",
+    "height": "164"
+  },
+  "goods_title": {
+    "lines": 1,
+    "color": "#666666",
+    "fontSize": "25"
   }
 }
 
@@ -8048,6 +8083,12 @@ Object.defineProperty(exports, "__esModule", {
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8127,7 +8168,8 @@ exports.default = {
             return Math.ceil((this.goodsContent['HomepageGetUclassList' + this.classifyTitles[selectPosition].ucid]['data'].length - 1) / constant);
         },
         getColumnCount: function getColumnCount(constant, lines, selectPosition) {
-            return lines == this.getRowCount(constant, selectPosition) ? 1 : constant;
+            var remainder = (this.goodsContent['HomepageGetUclassList' + this.classifyTitles[selectPosition].ucid]['data'].length - 1) % constant;
+            return lines == this.getRowCount(constant, selectPosition) ? remainder == 0 ? constant : remainder : constant;
         },
 
         getClassifyDetails: function getClassifyDetails() {
@@ -8160,6 +8202,14 @@ exports.default = {
                         duration: 0.3
                     });
                 }
+            });
+        },
+        ddd: function ddd(a, b, c) {
+            var ss = this.goodsContent['HomepageGetUclassList' + this.classifyTitles[a].ucid]['data'][(b - 1) * 4 + c].pic_url;
+
+            modal.toast({
+                message: "@@@" + a + "@@" + b + "@@@" + c + "@@" + ss,
+                duration: 0.3
             });
         }
     },
@@ -8249,20 +8299,46 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "append": "tree"
     }
-  }, _vm._l((_vm.getRowCount(4, this.selectIndex)), function(index1) {
+  }, _vm._l((_vm.getRowCount(4, _vm.selectIndex)), function(index1) {
     return _c('div', {
       staticClass: ["last_classify_tab_row"]
-    }, _vm._l((4), function(index2) {
+    }, _vm._l((_vm.getColumnCount(4, index1, _vm.selectIndex)), function(index2) {
       return _c('div', {
         staticClass: ["last_classify_tab_column"]
-      })
+      }, [_c('div', {
+        staticClass: ["brand_image_container"]
+      }, [_c('image', {
+        staticClass: ["brand_image"],
+        attrs: {
+          "src": _vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 4 + index2].pic_url
+        }
+      })]), _c('text', {
+        staticClass: ["brand_title"]
+      }, [_vm._v(_vm._s(_vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 4 + index2].name))])])
     }))
   })) : _c('cell', {
     appendAsTree: true,
     attrs: {
       "append": "tree"
     }
-  }, [_c('text', [_vm._v("其他")])])])])])])
+  }, _vm._l((_vm.getRowCount(3, _vm.selectIndex)), function(index1) {
+    return _c('div', {
+      staticClass: ["last_classify_tab_other_row"]
+    }, _vm._l((_vm.getColumnCount(3, index1, _vm.selectIndex)), function(index2) {
+      return _c('div', {
+        staticClass: ["last_classify_tab_other_column"]
+      }, [_c('div', {
+        staticClass: ["goods_image_container"]
+      }, [_c('image', {
+        staticClass: ["goods_image"],
+        attrs: {
+          "src": _vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 3 + index2].pic_url
+        }
+      })]), _c('text', {
+        staticClass: ["goods_title"]
+      }, [_vm._v(_vm._s(_vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 3 + index2].name))])])
+    }))
+  }))])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["title_content"]

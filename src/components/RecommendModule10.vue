@@ -181,10 +181,10 @@
         height: 333px;
         align-items: center;
         justify-content: center;
+        background-color: #FAFAFA;
     }
 
     .line_content{
-
         width: 750px;
         height: 50px;
         flex-direction: row;

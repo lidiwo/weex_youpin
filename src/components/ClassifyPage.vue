@@ -27,21 +27,27 @@
                         </div>
                     </cell>
                     <cell v-if="this.selectIndex===this.classifyTitles.length-1">
-                        <div class="last_classify_tab_row" v-for="index1 in  getRowCount(4,this.selectIndex)">
-                            <div class="last_classify_tab_column" v-for="index2 in 4">
-                                <!--<div class="brand_image_container">-->
-                                    <!--<image class="brand_image" src="https://shop.io.mi-img.com/app/shop/img?id=shop_11ae9b2e64bb2b938ebb3b3abc7ec462.jpeg&w=360&h=360"></image>-->
-                                <!--</div>-->
-
-                                <!--goodsContent['HomepageGetUclassList' + this.classifyTitles[selectIndex].ucid]['data'][(index1-1)*4+index2].pic_url-->
-
-
-<!--<text>{{goodsContent['HomepageGetUclassList'+ classifyTitles[selectIndex].ucid]['data'][(index1-1)*4+index2].pic_url}}</text>-->
+                        <div class="last_classify_tab_row" v-for="index1 in  getRowCount(4,selectIndex)">
+                            <div class="last_classify_tab_column"
+                                 v-for="index2 in getColumnCount(4,index1,selectIndex)">
+                                <div class="brand_image_container">
+                                    <image class="brand_image"
+                                           :src="goodsContent['HomepageGetUclassList' + classifyTitles[selectIndex].ucid]['data'][(index1-1)*4+index2].pic_url"></image>
+                                </div>
+                                <text class="brand_title">{{goodsContent['HomepageGetUclassList' + classifyTitles[selectIndex].ucid]['data'][(index1-1)*4+index2].name}}</text>
                             </div>
                         </div>
                     </cell>
                     <cell v-else>
-                        <text>其他</text>
+                        <div class="last_classify_tab_other_row" v-for="index1 in  getRowCount(3,selectIndex)">
+                            <div class="last_classify_tab_other_column"
+                                 v-for="index2 in getColumnCount(3,index1,selectIndex)">
+                                <div class="goods_image_container">
+                                    <image class="goods_image" :src="goodsContent['HomepageGetUclassList' + classifyTitles[selectIndex].ucid]['data'][(index1-1)*3+index2].pic_url"></image>
+                                </div>
+                                <text class="goods_title">{{goodsContent['HomepageGetUclassList' + classifyTitles[selectIndex].ucid]['data'][(index1-1)*3+index2].name}}</text>
+                            </div>
+                        </div>
                     </cell>
                 </list>
             </div>
@@ -77,7 +83,8 @@
                 return Math.ceil((this.goodsContent['HomepageGetUclassList' + this.classifyTitles[selectPosition].ucid]['data'].length - 1) / constant);
             },
             getColumnCount: function (constant, lines, selectPosition) {
-                return lines == this.getRowCount(constant, selectPosition) ? 1 : constant;
+                const remainder = (this.goodsContent['HomepageGetUclassList' + this.classifyTitles[selectPosition].ucid]['data'].length - 1) % constant;
+                return lines == this.getRowCount(constant, selectPosition) ? (remainder == 0 ? constant : remainder) : constant;
             },
 
             getClassifyDetails: function () {
@@ -108,6 +115,14 @@
                             duration: 0.3
                         })
                     }
+                });
+            },
+            ddd: function (a, b, c) {
+                var ss = this.goodsContent['HomepageGetUclassList' + this.classifyTitles[a].ucid]['data'][(b - 1) * 4 + c].pic_url
+
+                modal.toast({
+                    message: "@@@" + a + "@@" + b + "@@@" + c + "@@" + ss,
+                    duration: 0.3
                 });
             }
         },
@@ -272,30 +287,70 @@
 
     .last_classify_tab_row {
         width: 563px;
-        height: 263px;
+        height: 243px;
         flex-direction: row;
-        padding-right: 15px;
-        padding-left: 15px;
-        justify-content: space-between;
+
+        justify-content: flex-start;
     }
 
     .last_classify_tab_column {
-        background-color: fuchsia;
-        width: 125px;
-        height: 263px;
+        margin-left: 15px;
+        margin-top: 40px;
+        width: 122px;
+        height: 223px;
+        align-items: center;
     }
 
-    .brand_image_container{
-        background-color: yellow;
-        width: 125px;
+    .brand_image_container {
+        width: 122px;
         height: 150px;
     }
 
-    .brand_image{
-        width: 125px;
-        height: 125px;
+    .brand_image {
+        width: 122px;
+        height: 133px;
     }
 
+    .brand_title {
+        lines: 1;
+        color: #666666;
+        font-size: 20px;
+        text-overflow: ellipsis;
+    }
+
+    .last_classify_tab_other_row {
+        width: 583px;
+        height: 240px;
+        flex-direction: row;
+        padding-right: 15px;
+        padding-left: 15px;
+        justify-content: flex-start;
+    }
+
+    .last_classify_tab_other_column {
+        width: 184px;
+        height: 240px;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .goods_image_container {
+        width: 184px;
+        height: 184px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .goods_image {
+        width: 164px;
+        height: 164px;
+    }
+
+    .goods_title {
+        lines: 1;
+        color: #666666;
+        font-size: 25px;
+    }
 
 </style>
 
