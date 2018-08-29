@@ -93,7 +93,7 @@
 
     .taste_title {
         color: #333333;
-        font-size: 35px;
+        font-size: 32px;
     }
 
     .taste_content_container {
