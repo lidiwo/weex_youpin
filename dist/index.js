@@ -9173,12 +9173,51 @@ module.exports = __vue_exports__
 
 module.exports = {
   "app_content": {
-    "flexDirection": "column",
     "position": "absolute",
     "top": "0",
     "bottom": "0",
     "width": "750",
-    "backgroundColor": "#FFFFFF"
+    "backgroundColor": "#FAFAFC",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "logging_success": {
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "width": "750",
+    "backgroundColor": "#FF0000"
+  },
+  "no_logging": {
+    "flexDirection": "column",
+    "width": "750",
+    "alignItems": "center"
+  },
+  "hite_info": {
+    "marginTop": "40",
+    "color": "#999999",
+    "fontSize": "28"
+  },
+  "go_logging": {
+    "marginTop": "30",
+    "color": "#777777",
+    "fontSize": "32",
+    "borderBottomColor": "#AAAAAA",
+    "borderTopColor": "#AAAAAA",
+    "borderLeftColor": "#AAAAAA",
+    "borderRightColor": "#AAAAAA",
+    "borderTopWidth": "1",
+    "borderBottomWidth": "1",
+    "borderRightWidth": "1",
+    "borderLeftWidth": "1",
+    "borderBottomRightRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderBottomLeftRadius": "5",
+    "borderTopRightRadius": "5",
+    "paddingTop": "15",
+    "paddingBottom": "15",
+    "paddingRight": "40",
+    "paddingLeft": "40"
   }
 }
 
@@ -9198,11 +9237,20 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     name: "ShoppingCartPage",
     data: function data() {
-        return {};
+        return {
+            isLoggingSuccess: false
+        };
     }
 };
 
@@ -9211,13 +9259,30 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["app_content"]
-  }, [_c('text', {
-    staticClass: ["message"]
-  }, [_vm._v("444444444")])])
+  }, [_vm._m(0), _c('div', {
+    staticClass: ["logging_success"],
+    style: {
+      visibility: _vm.isLoggingSuccess ? 'visible' : 'hidden'
+    }
+  }, [_c('text', [_vm._v("登录成功")])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["no_logging"]
+  }, [_c('image', {
+    staticStyle: {
+      width: "213px",
+      height: "183px"
+    },
+    attrs: {
+      "src": "http://www.lidiwo.com/cart_empty.png"
+    }
+  }), _c('text', {
+    staticClass: ["hite_info"]
+  }, [_vm._v("登录后才能看到商品哦~")]), _c('text', {
+    staticClass: ["go_logging"]
+  }, [_vm._v("立即登录")])])
 }]}
 module.exports.render._withStripped = true
 
@@ -9276,7 +9341,62 @@ module.exports = {
     "top": "0",
     "bottom": "0",
     "width": "750",
-    "backgroundColor": "#FF0000"
+    "backgroundColor": "#F4F4F4"
+  },
+  "user_center_header": {
+    "flexDirection": "column",
+    "width": "750",
+    "height": "323"
+  },
+  "bg_image": {
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "left": "0",
+    "right": "0"
+  },
+  "user_center_header_one": {
+    "flexDirection": "row",
+    "width": "750",
+    "height": "100",
+    "justifyContent": "flex-end",
+    "alignItems": "flex-end"
+  },
+  "personal_image": {
+    "width": "90",
+    "height": "90"
+  },
+  "personal_set": {
+    "marginRight": "25"
+  },
+  "personal_message": {
+    "marginRight": "20"
+  },
+  "user_center_header_two": {
+    "width": "750",
+    "height": "150",
+    "paddingLeft": "20",
+    "flexDirection": "row",
+    "paddingRight": "20",
+    "alignItems": "center",
+    "justifyContent": "space-between"
+  },
+  "user_center_hend_and_username": {
+    "flexDirection": "row",
+    "alignItems": "center"
+  },
+  "personal_logged": {
+    "width": "150",
+    "height": "150"
+  },
+  "personal_info": {
+    "color": "#FFFFFF",
+    "fontSize": "30",
+    "marginLeft": "25"
+  },
+  "personal_icon_right": {
+    "width": "15",
+    "height": "29"
   }
 }
 
@@ -9290,6 +9410,22 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -9313,9 +9449,42 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["app_content"]
-  }, [_c('text', {
-    staticClass: ["message"]
-  }, [_vm._v("5555555555555")])])
+  }, [_c('div', {
+    staticClass: ["user_center_header"]
+  }, [_c('image', {
+    staticClass: ["bg_image"],
+    attrs: {
+      "src": "http://www.lidiwo.com/personal_bg_top.png"
+    }
+  }), _c('div', {
+    staticClass: ["user_center_header_one"]
+  }, [_c('image', {
+    staticClass: ["personal_image", "personal_set"],
+    attrs: {
+      "src": "http://www.lidiwo.com/personal_icon_set_nor.png"
+    }
+  }), _c('image', {
+    staticClass: ["personal_image", "personal_message"],
+    attrs: {
+      "src": "http://www.lidiwo.com/personal_icon_message_nor.png"
+    }
+  })]), _c('div', {
+    staticClass: ["user_center_header_two"]
+  }, [_c('div', {
+    staticClass: ["user_center_hend_and_username"]
+  }, [_c('image', {
+    staticClass: ["personal_logged"],
+    attrs: {
+      "src": "http://www.lidiwo.com/user_not_logged.png"
+    }
+  }), _c('text', {
+    staticClass: ["personal_info"]
+  }, [_vm._v("未登录")])]), _c('image', {
+    staticClass: ["personal_icon_right"],
+    attrs: {
+      "src": "http://www.lidiwo.com/icon_right_more_white.png"
+    }
+  })])])])
 }]}
 module.exports.render._withStripped = true
 
