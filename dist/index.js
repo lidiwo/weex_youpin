@@ -6342,7 +6342,6 @@ exports.default = {
     props: ["flashsaleData"],
     data: function data() {
         return {
-            TIME: new Date().getTime() + 10000 + '',
             timeBoxStyle: {
                 backgroundColor: "#A92112",
                 borderBottomRightRadius: "3px",
@@ -6373,10 +6372,6 @@ exports.default = {
         },
         countDownFinish: function countDownFinish() {
             this.isCountDownFinish = true;
-            modal.toast({
-                message: "@#@@完成",
-                duration: 0.3
-            });
         }
     }
 };
@@ -6420,7 +6415,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "timeBoxStyle": _vm.timeBoxStyle,
       "timeTextStyle": _vm.timeTextStyle,
       "dotTextStyle": _vm.dotTextStyle,
-      "time": _vm.TIME
+      "time": _vm.flashsaleData.end_time
     },
     on: {
       "wxcOnComplete": function($event) {
@@ -6522,7 +6517,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "@binding": "dotTextStyle"
       },
       "time": {
-        "@binding": "TIME"
+        "@binding": "flashsaleData.end_time"
       },
       "@inRecycleList": true
     },

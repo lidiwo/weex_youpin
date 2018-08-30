@@ -6,7 +6,7 @@
                 <div class="title_countdown" :style="{ visibility:isCountDownFinish?'hidden': 'visible'  }">
                 <image  style="width: 20px;height: 20px;margin-left: 30px" src="http://www.lidiwo.com/ltp_icon_time.png"></image>
                 <text style="color:#A92112;font-size: 20px;margin-left: 5px ">12点场</text>
-                <wxc-countdown tpl="{h}:{m}:{s}"  @wxcOnComplete="countDownFinish()" :timeBoxStyle="timeBoxStyle"  :timeTextStyle="timeTextStyle" :dotTextStyle="dotTextStyle" :time="TIME"></wxc-countdown>
+                <wxc-countdown tpl="{h}:{m}:{s}"  @wxcOnComplete="countDownFinish()" :timeBoxStyle="timeBoxStyle"  :timeTextStyle="timeTextStyle" :dotTextStyle="dotTextStyle" :time="flashsaleData.end_time"></wxc-countdown>
                 </div>
             </div>
             <div class="title_more">
@@ -45,7 +45,6 @@
         props: ["flashsaleData"],
         data: function () {
             return {
-                TIME: new Date().getTime() + 10000 + '',
                 timeBoxStyle:{
                     backgroundColor:"#A92112",
                     borderBottomRightRadius: "3px",
@@ -76,11 +75,6 @@
             },
             countDownFinish:function () {
                 this.isCountDownFinish=true;
-                modal.toast({
-                    message:"@#@@完成",
-                    duration:0.3
-                });
-
             }
         }
     }
