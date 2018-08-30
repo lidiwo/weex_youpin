@@ -1,7 +1,14 @@
 <template recyclable>
     <div class="content">
         <div class="flash_sale_title">
-            <text class="title">{{flashsaleData.title}}</text>
+            <div class="title_container">
+                <text class="title">{{flashsaleData.title}}</text>
+                <div class="title_countdown" :style="{ visibility:isCountDownFinish?'hidden': 'visible'  }">
+                <image  style="width: 20px;height: 20px;margin-left: 30px" src="http://www.lidiwo.com/ltp_icon_time.png"></image>
+                <text style="color:#A92112;font-size: 20px;margin-left: 5px ">12点场</text>
+                <wxc-countdown tpl="{h}:{m}:{s}"  @wxcOnComplete="countDownFinish()" :timeBoxStyle="timeBoxStyle"  :timeTextStyle="timeTextStyle" :dotTextStyle="dotTextStyle" :time="TIME"></wxc-countdown>
+                </div>
+            </div>
             <div class="title_more">
                 <text class="more_text"> 更多</text>
                 <image class="more_img" src="http://www.lidiwo.com/arrow_rounded.png"></image>
@@ -11,7 +18,9 @@
             <div class="flash_sale_content" v-for="index in flashsaleData['goods'].length">
                 <div class="goods_main_image_container">
                     <image class="goods_main_image" :src="flashsaleData['goods'][index-1].imgs.img800"></image>
-                    <text class="goods_discount">{{flashsaleData['goods'][index-1].discount_desc}}</text>
+                    <div class="goods_discount_container" :style="{visibility:isEmpty(flashsaleData['goods'][index-1].discount_desc)?'hidden':'visible' }">
+                        <text class="goods_discount" >{{flashsaleData['goods'][index-1].discount_desc}}</text>
+                    </div>
                 </div>
                 <text class="goods_title">{{flashsaleData['goods'][index-1].name}}</text>
                 <div class="goods_money goods_money_container">
@@ -28,22 +37,51 @@
 </template>
 <script>
     const modal = weex.requireModule('modal');
+    import { WxcCountdown } from 'weex-ui'
     import util from "@/utils/util.js";
 
     export default {
         name: "RecommendModule7",
         props: ["flashsaleData"],
         data: function () {
-            return {}
+            return {
+                TIME: new Date().getTime() + 10000 + '',
+                timeBoxStyle:{
+                    backgroundColor:"#A92112",
+                    borderBottomRightRadius: "3px",
+                    borderBottomLeftRadius: "3px",
+                    borderTopRightRadius: "3px",
+                    borderTopLeftRadius: "3px",
+                },
+                timeTextStyle:{
+                    color:"#ffffff",
+                    fontSize:"20px"
+                },
+                dotTextStyle:{
+                    color:"#A92112"
+                },
+                isCountDownFinish:false,
+            }
         },
+        components: { WxcCountdown },
         methods: {
             flashPrice: function (index) {
                 return util.formatMoney(this.flashsaleData['goods'][index].flash_price);
             },
             marketPrice: function (index) {
                 return util.formatMoney(this.flashsaleData['goods'][index].market_price)
-            }
+            },
+            isEmpty:function (str) {
+                return util.isEmpty(str);
+            },
+            countDownFinish:function () {
+                this.isCountDownFinish=true;
+                modal.toast({
+                    message:"@#@@完成",
+                    duration:0.3
+                });
 
+            }
         }
     }
 </script>
@@ -64,6 +102,16 @@
         height: 104px;
         align-items: center;
     }
+    .title_container{
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .title_countdown{
+        flex-direction: row;
+        align-items: center;
+    }
+
 
     .title {
         font-weight: bold;
@@ -124,18 +172,22 @@
         width: 140px;
         height: 140px;
     }
-
-    .goods_discount {
+    .goods_discount_container{
         position: absolute;
         left: 0px;
         bottom: 0px;
-        background-image: linear-gradient(to right, #EF6255, #E23959);
+        /*background-image: linear-gradient(to right, #EF6255, #E23959);*/
+        background-color: #EF6255;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+
+    .goods_discount {
         padding-left: 10px;
         padding-right: 10px;
         padding-bottom: 2px;
         padding-top: 2px;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
         color: white;
         font-size: 20px;
     }
