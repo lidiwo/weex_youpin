@@ -2849,7 +2849,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\MainPage.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\MainPage.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-310585f8"
@@ -3008,7 +3008,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\NavigationBar.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\NavigationBar.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-67dbf7ff"
@@ -3253,7 +3253,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\HomePage.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\HomePage.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-6c6621c4"
@@ -3350,7 +3350,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\HomeTitle.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\HomeTitle.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-8315434e"
@@ -3532,7 +3532,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\HomeTabLayout.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\HomeTabLayout.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-1b318720"
@@ -3813,7 +3813,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\RecommendPage.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendPage.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-93932bea"
@@ -4027,7 +4027,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\RecommendModule1.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule1.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__["@render"] = __vue_template__["@render"]
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -4140,7 +4140,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\CustomIndicator.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\CustomIndicator.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-6abdcebe"
@@ -4351,7 +4351,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\RecommendModule2.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule2.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__["@render"] = __vue_template__["@render"]
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -4507,7 +4507,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\RecommendModule3.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule3.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__["@render"] = __vue_template__["@render"]
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -4998,7 +4998,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\RecommendModule4.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule4.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__["@render"] = __vue_template__["@render"]
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -5520,7 +5520,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\RecommendModule5.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule5.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__["@render"] = __vue_template__["@render"]
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -5801,7 +5801,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\RecommendModule6.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule6.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__["@render"] = __vue_template__["@render"]
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -6123,7 +6123,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\RecommendModule7.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule7.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__["@render"] = __vue_template__["@render"]
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -6501,7 +6501,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\RecommendModule8.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule8.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__["@render"] = __vue_template__["@render"]
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -6774,7 +6774,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\RecommendModule9.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule9.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__["@render"] = __vue_template__["@render"]
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -7140,7 +7140,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\RecommendModule10.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule10.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__["@render"] = __vue_template__["@render"]
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -7358,7 +7358,12 @@ exports.default = {
     methods: {
         goodsPrice: function goodsPrice(index) {
             return _util2.default.formatMoney(this.recommendData[index].price);
+        },
+
+        getRowCount: function getRowCount(constant) {
+            return Math.floor(this.recommendData.length / constant);
         }
+
     },
     created: function created() {}
 };
@@ -7370,7 +7375,7 @@ exports.default = {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["content"]
-  }, [_vm._m(0), _vm._l((_vm.recommendData.length / 2), function(index1) {
+  }, [_vm._m(0), _vm._l((_vm.getRowCount(2)), function(index1) {
     return _c('div', {
       staticClass: ["goods_content"]
     }, _vm._l((2), function(index2) {
@@ -7432,7 +7437,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["goods_content"],
     attrs: {
       "[[repeat]]": {
-        "@expression": "recommendData.length/2",
+        "@expression": "getRowCount(2)",
         "@alias": "index1"
       }
     }
@@ -7631,7 +7636,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\CrowdPage.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\CrowdPage.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-a4cd1608"
@@ -7713,7 +7718,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\BrandPage.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\BrandPage.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-03ffadd6"
@@ -7877,7 +7882,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\ClassifyPage.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\ClassifyPage.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-4118387a"
@@ -8203,14 +8208,6 @@ exports.default = {
                     });
                 }
             });
-        },
-        ddd: function ddd(a, b, c) {
-            var ss = this.goodsContent['HomepageGetUclassList' + this.classifyTitles[a].ucid]['data'][(b - 1) * 4 + c].pic_url;
-
-            modal.toast({
-                message: "@@@" + a + "@@" + b + "@@@" + c + "@@" + ss,
-                duration: 0.3
-            });
         }
     },
     created: function created() {
@@ -8287,14 +8284,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "append": "tree"
     }
-  }, [(_vm.goodsContent['HomepageGetUclassList' + this.classifyTitles[_vm.selectIndex].ucid]['data'][0].visiable === 1) ? _c('div', {
+  }, [(_vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][0].visiable === 1) ? _c('div', {
     staticClass: ["main_image_cell"]
   }, [_c('image', {
     staticClass: ["main_image"],
     attrs: {
-      "src": _vm.goodsContent['HomepageGetUclassList' + this.classifyTitles[_vm.selectIndex].ucid]['data'][0].pic_url
+      "src": _vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][0].pic_url
     }
-  })]) : _vm._e()]), (this.selectIndex === this.classifyTitles.length - 1) ? _c('cell', {
+  })]) : _vm._e()]), (_vm.selectIndex === _vm.classifyTitles.length - 1) ? _c('cell', {
     appendAsTree: true,
     attrs: {
       "append": "tree"
@@ -8382,7 +8379,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\TastePage.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\TastePage.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-0c7bcee6"
@@ -8580,7 +8577,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\TasteModule1.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\TasteModule1.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-6d8fcc84"
@@ -8764,7 +8761,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\TasteModule2.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\TasteModule2.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-6d739d82"
@@ -9150,7 +9147,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\ShoppingCartPage.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\ShoppingCartPage.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-565615e7"
@@ -9365,7 +9362,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\components\\PersonPage.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\PersonPage.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-32527cd8"
@@ -9387,11 +9384,11 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "personal_scroller": {
+    "flexDirection": "column"
+  },
   "app_content": {
     "flexDirection": "column",
-    "position": "absolute",
-    "top": "0",
-    "bottom": "0",
     "width": "750",
     "backgroundColor": "#F4F4F4"
   },
@@ -9449,6 +9446,97 @@ module.exports = {
   "personal_icon_right": {
     "width": "15",
     "height": "29"
+  },
+  "personal_order_container": {
+    "paddingLeft": "20",
+    "paddingRight": "20",
+    "width": "750",
+    "height": "275",
+    "backgroundColor": "#FFFFFF",
+    "flexDirection": "column"
+  },
+  "personal_order_one": {
+    "flex": 2,
+    "borderBottomWidth": "1",
+    "borderBottomColor": "#E5E5E5",
+    "justifyContent": "space-between",
+    "alignItems": "center",
+    "flexDirection": "row"
+  },
+  "personal_order_two": {
+    "flex": 3,
+    "flexDirection": "row",
+    "marginTop": "15"
+  },
+  "order_my_text": {
+    "color": "#333333",
+    "fontSize": "30"
+  },
+  "personal_order_all": {
+    "flexDirection": "row",
+    "alignItems": "center"
+  },
+  "order_all_text": {
+    "fontSize": "25",
+    "color": "#999999"
+  },
+  "order_all_image": {
+    "width": "25",
+    "height": "25"
+  },
+  "order_type": {
+    "alignItems": "center",
+    "flexDirection": "column",
+    "width": "177",
+    "height": "165"
+  },
+  "order_type_image": {
+    "width": "70",
+    "height": "70"
+  },
+  "order_type_text": {
+    "marginTop": "15",
+    "fontSize": "27",
+    "color": "#666666"
+  },
+  "personal_banner": {
+    "width": "750",
+    "height": "217"
+  },
+  "banner_image": {
+    "width": "750",
+    "height": "217"
+  },
+  "personal_service_container": {
+    "paddingLeft": "20",
+    "paddingRight": "20",
+    "width": "750",
+    "backgroundColor": "#FFFFFF",
+    "flexDirection": "column"
+  },
+  "personal_service_one": {
+    "height": "110",
+    "flexDirection": "row",
+    "alignItems": "center"
+  },
+  "personal_service_two": {
+    "flexDirection": "column"
+  },
+  "service_type_row": {
+    "flexDirection": "row",
+    "borderTopWidth": "1",
+    "borderTopColor": "#E5E5E5"
+  },
+  "service_type_column": {
+    "marginTop": "20",
+    "flexDirection": "column",
+    "width": "178",
+    "height": "200",
+    "alignItems": "center"
+  },
+  "service_type_title": {
+    "fontSize": "25",
+    "color": "#999999"
   }
 }
 
@@ -9484,11 +9572,144 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+
+var orderType = [{
+    image: "http://www.lidiwo.com/personal_icon_paid_copy.png",
+    text: "待付款"
+}, {
+    image: "http://www.lidiwo.com/personal_icon_receipt.png",
+    text: "待发货"
+}, {
+    image: "http://www.lidiwo.com/personal_icon_appraisal.png",
+    text: "待评价"
+}, {
+    image: "http://www.lidiwo.com/personal_icon_return_goods.png",
+    text: "退款/售后"
+}];
+var serviceData = [{
+    big_icon: "http://www.lidiwo.com/personal_icon_group_buying.png",
+    name: "拼团订单",
+    title: ""
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_coupon_new.png",
+    name: "优惠券",
+    title: ""
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_gift_nor.png",
+    name: "新人邀请",
+    title: "立享红包"
+}, {
+    big_icon: "http://www.lidiwo.com/set_icon_share.png",
+    name: "分享app",
+    title: ""
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_collection_nor.png",
+    name: "我的收藏",
+    title: ""
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_assets_nor.png",
+    name: "我的资产",
+    title: "积分/特权码"
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_address_nor.png",
+    name: "地址管理",
+    title: ""
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_service_center.png",
+    name: "服务中心",
+    title: "在线客服"
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_feedback.png",
+    name: "用户反馈",
+    title: ""
+}, {
+    big_icon: "http://cdn.cnbj0.fds.api.mi-img.com/miio.files/commonfile_png_b7e92d019b956aa2d705690574b193cf.png",
+    name: "帮助中心",
+    title: ""
+}];
 
 exports.default = {
     name: "PersonPage",
     data: function data() {
-        return {};
+        return {
+            orderStatus: orderType,
+            myService: serviceData,
+            isFristLoad: false,
+            groupBuyGroupBuyNoticeCount: {},
+            homepageGetSuperBanner: {}
+        };
+    },
+    methods: {
+        getRowCount: function getRowCount(constant) {
+            return Math.ceil(this.myService.length / constant);
+        },
+        getColumnCount: function getColumnCount(constant, lines) {
+            var remainder = this.myService.length % constant;
+            return lines == this.getRowCount(constant) ? remainder == 0 ? constant : remainder : constant;
+        }
+    },
+    created: function created() {
+        var _this = this;
+
+        if (this.isFristLoad) {
+            return;
+        }
+        this.post("app/shopv3/pipe", "data={\"HomepageGetSuperBanner\":{\"model\":\"Homepage\",\"action\":\"GetSuperBanner\",\"parameters\":{}},\"GroupBuyGroupBuyNoticeCount\":{\"model\":\"GroupBuy\",\"action\":\"GroupBuyNoticeCount\",\"parameters\":{}}}", function (response) {
+            if (response.ok) {
+                if (response.data.message === "ok" || response.data.message === "OK") {
+                    _this.isFristLoad = true;
+                    var result = response.data.result;
+                    _this.homepageGetSuperBanner = result.HomepageGetSuperBanner;
+                } else {
+                    modal.toast({
+                        message: "网络请求失败",
+                        duration: 0.3
+                    });
+                }
+            } else {
+                modal.toast({
+                    message: "服务器异常",
+                    duration: 0.3
+                });
+            }
+        });
     }
 };
 
@@ -9497,11 +9718,60 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
+  return _c('scroller', {
+    staticClass: ["personal_scroller"],
+    attrs: {
+      "scrollDirection": "vertical",
+      "showScrollbar": "false"
+    }
+  }, [_c('div', {
+    staticClass: ["app_content"]
+  }, [_vm._m(0), _c('div', {
+    staticClass: ["personal_order_container"]
+  }, [_vm._m(1), _c('div', {
+    staticClass: ["personal_order_two"]
+  }, _vm._l((_vm.orderStatus), function(orderT) {
+    return _c('div', {
+      staticClass: ["order_type"]
+    }, [_c('image', {
+      staticClass: ["order_type_image"],
+      attrs: {
+        "src": orderT.image
+      }
+    }), _c('text', {
+      staticClass: ["order_type_text"]
+    }, [_vm._v(_vm._s(orderT.text))])])
+  }))]), _c('div', {
+    staticClass: ["personal_banner"]
+  }, [_c('image', {
+    staticClass: ["banner_image"],
+    attrs: {
+      "src": _vm.homepageGetSuperBanner.data['data'][0].pic_url
+    }
+  })]), _c('div', {
+    staticClass: ["personal_service_container"]
+  }, [_vm._m(2), _c('div', {
+    staticClass: ["personal_service_two"]
+  }, _vm._l((_vm.getRowCount(4)), function(index1) {
+    return _c('div', {
+      staticClass: ["service_type_row"]
+    }, _vm._l((_vm.getColumnCount(4, index1)), function(index2) {
+      return _c('div', {
+        staticClass: ["service_type_column"]
+      }, [_c('image', {
+        staticClass: ["order_type_image"],
+        attrs: {
+          "src": _vm.myService[(index1 - 1) * 4 + index2 - 1].big_icon
+        }
+      }), _c('text', {
+        staticClass: ["order_type_text"]
+      }, [_vm._v(_vm._s(_vm.myService[(index1 - 1) * 4 + index2 - 1].name))]), _c('text', {
+        staticClass: ["service_type_title"]
+      }, [_vm._v(_vm._s(_vm.myService[(index1 - 1) * 4 + index2 - 1].title))])])
+    }))
+  }))])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: ["app_content"]
-  }, [_c('div', {
     staticClass: ["user_center_header"]
   }, [_c('image', {
     staticClass: ["bg_image"],
@@ -9536,7 +9806,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": "http://www.lidiwo.com/icon_right_more_white.png"
     }
-  })])])])
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["personal_order_one"]
+  }, [_c('text', {
+    staticClass: ["order_my_text"]
+  }, [_vm._v("我的订单")]), _c('div', {
+    staticClass: ["personal_order_all"]
+  }, [_c('text', {
+    staticClass: ["order_all_text"]
+  }, [_vm._v("全部订单")]), _c('image', {
+    staticClass: ["order_all_image"],
+    attrs: {
+      "src": "http://www.lidiwo.com/icon_right_more.png"
+    }
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["personal_service_one"]
+  }, [_c('text', {
+    staticClass: ["order_my_text"]
+  }, [_vm._v("我的服务")])])
 }]}
 module.exports.render._withStripped = true
 
@@ -9592,7 +9883,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "D:\\webSpace\\weex_youpin\\src\\index.vue"
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-1a4d8e3c"

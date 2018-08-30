@@ -21,12 +21,12 @@
                 <list class="goods_scroller" show-scrollbar="false">
                     <cell>
                         <div class="main_image_cell"
-                             v-if="goodsContent['HomepageGetUclassList' + this.classifyTitles[selectIndex].ucid]['data'][0].visiable===1">
+                             v-if="goodsContent['HomepageGetUclassList' + classifyTitles[selectIndex].ucid]['data'][0].visiable===1">
                             <image class="main_image"
-                                   :src="goodsContent['HomepageGetUclassList' + this.classifyTitles[selectIndex].ucid]['data'][0].pic_url"></image>
+                                   :src="goodsContent['HomepageGetUclassList' + classifyTitles[selectIndex].ucid]['data'][0].pic_url"></image>
                         </div>
                     </cell>
-                    <cell v-if="this.selectIndex===this.classifyTitles.length-1">
+                    <cell v-if="selectIndex===classifyTitles.length-1">
                         <div class="last_classify_tab_row" v-for="index1 in  getRowCount(4,selectIndex)">
                             <div class="last_classify_tab_column"
                                  v-for="index2 in getColumnCount(4,index1,selectIndex)">
@@ -117,14 +117,6 @@
                     }
                 });
             },
-            ddd: function (a, b, c) {
-                var ss = this.goodsContent['HomepageGetUclassList' + this.classifyTitles[a].ucid]['data'][(b - 1) * 4 + c].pic_url
-
-                modal.toast({
-                    message: "@@@" + a + "@@" + b + "@@@" + c + "@@" + ss,
-                    duration: 0.3
-                });
-            }
         },
         created: function () {
             this.post("app/shopv3/pipe", "data={\"HomepageBuildClass\":{\"model\":\"Homepage\",\"action\":\"BuildClass\",\"parameters\":{}}}", response => {

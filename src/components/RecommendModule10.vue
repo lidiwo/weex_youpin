@@ -8,7 +8,7 @@
             </div>
         </div>
 
-        <div class="goods_content" v-for="index1 in  recommendData.length/2">
+        <div class="goods_content" v-for="index1 in  getRowCount(2)">
             <div class="single_goods" v-for="index2 in 2">
                 <div class="goods_image_container">
                     <image class="goods_image" :src="recommendData[(index1-1)*2+(index2-1)].pic_url"></image>
@@ -50,7 +50,12 @@
         methods: {
             goodsPrice: function (index) {
                 return util.formatMoney(this.recommendData[index].price);
-            }
+            },
+
+            getRowCount: function (constant) {
+                return Math.floor( this.recommendData.length/constant);
+            },
+
         },
         created: function () {
 
