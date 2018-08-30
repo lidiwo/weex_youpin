@@ -3,7 +3,7 @@
         <div class="flash_sale_title">
             <div class="title_container">
                 <text class="title">{{flashsaleData.title}}</text>
-                <div class="title_countdown" :style="{ visibility:isCountDownFinish?'hidden': 'visible'  }">
+                <div class="title_countdown" :style="{ visibility:isCountDownFinish?'hidden': 'visible' }">
                 <image  style="width: 20px;height: 20px;margin-left: 30px" src="http://www.lidiwo.com/ltp_icon_time.png"></image>
                 <text style="color:#A92112;font-size: 20px;margin-left: 5px ">12点场</text>
                 <wxc-countdown tpl="{h}:{m}:{s}"  @wxcOnComplete="countDownFinish()" :timeBoxStyle="timeBoxStyle"  :timeTextStyle="timeTextStyle" :dotTextStyle="dotTextStyle" :time="flashsaleData.end_time"></wxc-countdown>
