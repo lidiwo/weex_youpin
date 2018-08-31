@@ -5068,21 +5068,57 @@ module.exports = {
     "height": "30"
   },
   "crowd_funding_large_pic": {
-    "flexDirection": "row",
+    "flexDirection": "column",
     "borderTopLeftRadius": "10",
     "borderTopRightRadius": "10",
     "width": "700",
     "height": "310",
     "backgroundColor": "#F8F4EB"
   },
+  "large_pic_one": {
+    "flexDirection": "row"
+  },
+  "large_pic_two": {
+    "width": "700",
+    "height": "50",
+    "position": "absolute",
+    "bottom": "0",
+    "flexDirection": "column"
+  },
+  "large_pic_two_crowd_funding_progress1": {
+    "width": "700",
+    "height": "40",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "paddingRight": "25",
+    "paddingLeft": "25",
+    "alignItems": "center"
+  },
+  "crowd_funding_main_goods_tags": {
+    "marginLeft": "8",
+    "paddingLeft": "3",
+    "paddingRight": "3",
+    "borderBottomRightRadius": "3",
+    "borderTopLeftRadius": "3",
+    "borderBottomLeftRadius": "3",
+    "borderTopRightRadius": "3"
+  },
+  "large_pic_two_crowd_funding_progress2": {
+    "height": "10",
+    "backgroundImage": "linear-gradient(to right, #FFBB08, #F16B13)"
+  },
   "large_pic_flag1": {
-    "flex": 1,
+    "flex": 5,
     "flexDirection": "column",
     "paddingTop": "25",
     "paddingLeft": "25"
   },
   "large_pic_flag2": {
-    "flex": 1
+    "marginTop": "30",
+    "flex": 4,
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
   },
   "text_title": {
     "lines": 1,
@@ -5096,11 +5132,8 @@ module.exports = {
     "color": "#999999"
   },
   "crowd_funding_main_image": {
-    "position": "absolute",
-    "top": "25",
-    "right": "40",
-    "width": "235",
-    "height": "235"
+    "width": "230",
+    "height": "230"
   },
   "crowd_funding_small_pic": {
     "flexDirection": "row",
@@ -5111,22 +5144,47 @@ module.exports = {
   "small_pic1": {
     "backgroundColor": "#F8F8F8",
     "flexDirection": "column",
-    "flex": 1,
+    "width": "348",
     "marginRight": "2",
     "borderBottomLeftRadius": "10",
-    "paddingTop": "25",
+    "paddingTop": "25"
+  },
+  "small_pic1_one": {
     "paddingLeft": "25",
-    "paddingRight": "25"
+    "paddingRight": "25",
+    "flexDirection": "column"
+  },
+  "small_pic1_two": {
+    "height": "50",
+    "position": "absolute",
+    "bottom": "0",
+    "right": "0",
+    "left": "0",
+    "flexDirection": "column",
+    "overflow": "hidden"
+  },
+  "small_pic1_two_crowd_funding_progress1": {
+    "height": "40",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "paddingRight": "15",
+    "paddingLeft": "15",
+    "alignItems": "center"
+  },
+  "small_pic1_progressbar": {
+    "borderBottomLeftRadius": "10"
+  },
+  "small_pic2_progressbar": {
+    "borderBottomRightRadius": "10"
   },
   "small_pic2": {
     "backgroundColor": "#F8F8F8",
     "flexDirection": "column",
-    "flex": 1,
+    "width": "348",
     "marginLeft": "2",
     "borderBottomRightRadius": "10",
     "paddingTop": "25",
-    "paddingLeft": "25",
-    "paddingRight": "25"
+    "overflow": "hidden"
   },
   "small_pic_container": {
     "flexDirection": "row",
@@ -5231,6 +5289,65 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 exports.default = {
@@ -5246,7 +5363,17 @@ exports.default = {
     methods: {
         goodsPrice: function goodsPrice(index) {
             return _util2.default.formatMoney(this.crowdFundingData['items'][index].price_min);
+        },
+        crowdFundingProgress: function crowdFundingProgress(position) {
+            return Math.floor(this.crowdFundingData['items'][position].saled_count / this.crowdFundingData['items'][position].target_count * 100);
+        },
+        crowdFundingProgressWidth: function crowdFundingProgressWidth(width, position) {
+            return this.crowdFundingProgress(position) >= 100 ? width + 'px' : Math.ceil(this.crowdFundingProgress(position) / 100 * width) + 'px';
+        },
+        crowdFundingGoodsTagStatus: function crowdFundingGoodsTagStatus(tags) {
+            return tags === null || tags === undefined || tags.length === 0;
         }
+
     }
 };
 
@@ -5263,6 +5390,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["title"]
   }, [_vm._v(_vm._s(_vm.crowdFundingData.title))]), _vm._m(0)]), _c('div', {
     staticClass: ["crowd_funding_large_pic"]
+  }, [_c('div', {
+    staticClass: ["large_pic_one"]
   }, [_c('div', {
     staticClass: ["large_pic_flag1"]
   }, [_c('text', {
@@ -5288,9 +5417,57 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": _vm.crowdFundingData['items'][0].pic_url
     }
   })])]), _c('div', {
+    staticClass: ["large_pic_two"]
+  }, [_c('div', {
+    staticClass: ["large_pic_two_crowd_funding_progress1"]
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "row",
+      height: "40px",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112",
+      textAlign: "center"
+    }
+  }, [_vm._v(_vm._s(_vm.crowdFundingData['items'][0].saled_count))]), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#CCCCCC",
+      textAlign: "center"
+    }
+  }, [_vm._v(" / " + _vm._s(_vm.crowdFundingData['items'][0].target_count) + "人支持")]), _vm._l((_vm.crowdFundingData['items'][0]['tags']), function(item) {
+    return _c('div', {
+      staticClass: ["crowd_funding_main_goods_tags"],
+      style: {
+        backgroundColor: item.color,
+        visibility: _vm.crowdFundingGoodsTagStatus(_vm.crowdFundingData['items'][0]['tags']) ? 'hidden' : 'visible'
+      }
+    }, [_c('text', {
+      staticStyle: {
+        fontSize: "20px",
+        color: "white"
+      }
+    }, [_vm._v(_vm._s(item.name))])])
+  })], 2), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112"
+    }
+  }, [_vm._v(_vm._s(_vm.crowdFundingProgress(0)) + "%")])]), _c('div', {
+    staticClass: ["large_pic_two_crowd_funding_progress2"],
+    style: {
+      width: _vm.crowdFundingProgressWidth(700, 0)
+    }
+  })])]), _c('div', {
     staticClass: ["crowd_funding_small_pic"]
   }, [_c('div', {
     staticClass: ["small_pic1"]
+  }, [_c('div', {
+    staticClass: ["small_pic1_one"]
   }, [_c('text', {
     staticClass: ["text_title"]
   }, [_vm._v(_vm._s(_vm.crowdFundingData['items'][1].attr_ext.custom_name))]), _c('div', {
@@ -5312,7 +5489,55 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": _vm.crowdFundingData['items'][1].pic_url
     }
   })])]), _c('div', {
+    staticClass: ["small_pic1_two"]
+  }, [_c('div', {
+    staticClass: ["small_pic1_two_crowd_funding_progress1"]
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "row",
+      height: "40px",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112",
+      textAlign: "center"
+    }
+  }, [_vm._v(_vm._s(_vm.crowdFundingData['items'][1].saled_count))]), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#CCCCCC",
+      textAlign: "center"
+    }
+  }, [_vm._v("人支持")]), _vm._l((_vm.crowdFundingData['items'][1]['tags']), function(item) {
+    return _c('div', {
+      staticClass: ["crowd_funding_main_goods_tags"],
+      style: {
+        backgroundColor: item.color,
+        visibility: _vm.crowdFundingGoodsTagStatus(_vm.crowdFundingData['items'][1]['tags']) ? 'hidden' : 'visible'
+      }
+    }, [_c('text', {
+      staticStyle: {
+        fontSize: "20px",
+        color: "white"
+      }
+    }, [_vm._v(_vm._s(item.name))])])
+  })], 2), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112"
+    }
+  }, [_vm._v(_vm._s(_vm.crowdFundingProgress(1)) + "%")])]), _c('div', {
+    staticClass: ["large_pic_two_crowd_funding_progress2", "small_pic1_progressbar"],
+    style: {
+      width: _vm.crowdFundingProgressWidth(348, 1)
+    }
+  })])]), _c('div', {
     staticClass: ["small_pic2"]
+  }, [_c('div', {
+    staticClass: ["small_pic1_one"]
   }, [_c('text', {
     staticClass: ["text_title"]
   }, [_vm._v(_vm._s(_vm.crowdFundingData['items'][2].attr_ext.custom_name))]), _c('div', {
@@ -5332,6 +5557,52 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["small_pic"],
     attrs: {
       "src": _vm.crowdFundingData['items'][2].pic_url
+    }
+  })])]), _c('div', {
+    staticClass: ["small_pic1_two"]
+  }, [_c('div', {
+    staticClass: ["small_pic1_two_crowd_funding_progress1"]
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "row",
+      height: "40px",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112",
+      textAlign: "center"
+    }
+  }, [_vm._v(_vm._s(_vm.crowdFundingData['items'][2].saled_count))]), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#CCCCCC",
+      textAlign: "center"
+    }
+  }, [_vm._v("人支持")]), _vm._l((_vm.crowdFundingData['items'][2]['tags']), function(item) {
+    return _c('div', {
+      staticClass: ["crowd_funding_main_goods_tags"],
+      style: {
+        backgroundColor: item.color,
+        visibility: _vm.crowdFundingGoodsTagStatus(_vm.crowdFundingData['items'][2]['tags']) ? 'hidden' : 'visible'
+      }
+    }, [_c('text', {
+      staticStyle: {
+        fontSize: "20px",
+        color: "white"
+      }
+    }, [_vm._v(_vm._s(item.name))])])
+  })], 2), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112"
+    }
+  }, [_vm._v(_vm._s(_vm.crowdFundingProgress(2)) + "%")])]), _c('div', {
+    staticClass: ["large_pic_two_crowd_funding_progress2", "small_pic2_progressbar"],
+    style: {
+      width: _vm.crowdFundingProgressWidth(348, 2)
     }
   })])])])])
 },"@render":function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5365,6 +5636,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])]), _c('div', {
     staticClass: ["crowd_funding_large_pic"]
+  }, [_c('div', {
+    staticClass: ["large_pic_one"]
   }, [_c('div', {
     staticClass: ["large_pic_flag1"]
   }, [_c('text', {
@@ -5415,9 +5688,83 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })])]), _c('div', {
+    staticClass: ["large_pic_two"]
+  }, [_c('div', {
+    staticClass: ["large_pic_two_crowd_funding_progress1"]
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "row",
+      height: "40px",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112",
+      textAlign: "center"
+    },
+    attrs: {
+      "value": {
+        "@binding": "crowdFundingData['items'][0].saled_count"
+      }
+    }
+  }), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#CCCCCC",
+      textAlign: "center"
+    },
+    attrs: {
+      "value": [" / ", {
+        "@binding": "crowdFundingData['items'][0].target_count"
+      }, "人支持"]
+    }
+  }), _c('div', {
+    staticClass: ["crowd_funding_main_goods_tags"],
+    staticStyle: {
+      "backgroundColor": {
+        "@binding": "item.color"
+      },
+      "visibility": {
+        "@binding": "crowdFundingGoodsTagStatus(crowdFundingData['items'][0]['tags']) ? 'hidden' : 'visible'"
+      }
+    },
+    attrs: {
+      "[[repeat]]": {
+        "@expression": "crowdFundingData['items'][0]['tags']",
+        "@alias": "item"
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "white"
+    },
+    attrs: {
+      "value": {
+        "@binding": "item.name"
+      }
+    }
+  })])]), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112"
+    },
+    attrs: {
+      "value": [{
+        "@binding": "crowdFundingProgress(0)"
+      }, "%"]
+    }
+  })]), _c('div', {
+    staticClass: ["large_pic_two_crowd_funding_progress2"],
+    staticStyle: {}
+  })])]), _c('div', {
     staticClass: ["crowd_funding_small_pic"]
   }, [_c('div', {
     staticClass: ["small_pic1"]
+  }, [_c('div', {
+    staticClass: ["small_pic1_one"]
   }, [_c('text', {
     staticClass: ["text_title"],
     attrs: {
@@ -5459,7 +5806,79 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })])]), _c('div', {
+    staticClass: ["small_pic1_two"]
+  }, [_c('div', {
+    staticClass: ["small_pic1_two_crowd_funding_progress1"]
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "row",
+      height: "40px",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112",
+      textAlign: "center"
+    },
+    attrs: {
+      "value": {
+        "@binding": "crowdFundingData['items'][1].saled_count"
+      }
+    }
+  }), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#CCCCCC",
+      textAlign: "center"
+    },
+    attrs: {
+      "value": "人支持"
+    }
+  }), _c('div', {
+    staticClass: ["crowd_funding_main_goods_tags"],
+    staticStyle: {
+      "backgroundColor": {
+        "@binding": "item.color"
+      },
+      "visibility": {
+        "@binding": "crowdFundingGoodsTagStatus(crowdFundingData['items'][1]['tags']) ? 'hidden' : 'visible'"
+      }
+    },
+    attrs: {
+      "[[repeat]]": {
+        "@expression": "crowdFundingData['items'][1]['tags']",
+        "@alias": "item"
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "white"
+    },
+    attrs: {
+      "value": {
+        "@binding": "item.name"
+      }
+    }
+  })])]), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112"
+    },
+    attrs: {
+      "value": [{
+        "@binding": "crowdFundingProgress(1)"
+      }, "%"]
+    }
+  })]), _c('div', {
+    staticClass: ["large_pic_two_crowd_funding_progress2", "small_pic1_progressbar"],
+    staticStyle: {}
+  })])]), _c('div', {
     staticClass: ["small_pic2"]
+  }, [_c('div', {
+    staticClass: ["small_pic1_one"]
   }, [_c('text', {
     staticClass: ["text_title"],
     attrs: {
@@ -5500,6 +5919,76 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "@binding": "crowdFundingData['items'][2].pic_url"
       }
     }
+  })])]), _c('div', {
+    staticClass: ["small_pic1_two"]
+  }, [_c('div', {
+    staticClass: ["small_pic1_two_crowd_funding_progress1"]
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "row",
+      height: "40px",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112",
+      textAlign: "center"
+    },
+    attrs: {
+      "value": {
+        "@binding": "crowdFundingData['items'][2].saled_count"
+      }
+    }
+  }), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#CCCCCC",
+      textAlign: "center"
+    },
+    attrs: {
+      "value": "人支持"
+    }
+  }), _c('div', {
+    staticClass: ["crowd_funding_main_goods_tags"],
+    staticStyle: {
+      "backgroundColor": {
+        "@binding": "item.color"
+      },
+      "visibility": {
+        "@binding": "crowdFundingGoodsTagStatus(crowdFundingData['items'][2]['tags']) ? 'hidden' : 'visible'"
+      }
+    },
+    attrs: {
+      "[[repeat]]": {
+        "@expression": "crowdFundingData['items'][2]['tags']",
+        "@alias": "item"
+      }
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "white"
+    },
+    attrs: {
+      "value": {
+        "@binding": "item.name"
+      }
+    }
+  })])]), _c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#A92112"
+    },
+    attrs: {
+      "value": [{
+        "@binding": "crowdFundingProgress(2)"
+      }, "%"]
+    }
+  })]), _c('div', {
+    staticClass: ["large_pic_two_crowd_funding_progress2", "small_pic2_progressbar"],
+    staticStyle: {}
   })])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -7709,7 +8198,17 @@ exports.default = {
             return color === null || color === undefined || color === "";
         },
         hasTags: function hasTags(tags) {
-            return tags === null || tags === undefined || tags.length === 0;
+            return tags === null || tags === undefined || tags.length === 0 || this.goodsTagNameIsEmpty(tags);
+        },
+        goodsTagNameIsEmpty: function goodsTagNameIsEmpty(tags) {
+            var isNameEmpty = false;
+            for (var i = 0; i < tags.length; i++) {
+                var name = tags[i].name;
+                if (name === null || name === undefined || name === "") {
+                    isNameEmpty = true;
+                }
+            }
+            return isNameEmpty;
         }
     }
 };

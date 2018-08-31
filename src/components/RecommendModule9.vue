@@ -59,8 +59,18 @@
                 return color === null || color === undefined || color === "";
             },
             hasTags: function (tags) {
-                return tags === null || tags === undefined || tags.length === 0;
-            }
+                return tags === null || tags === undefined || tags.length === 0||this.goodsTagNameIsEmpty(tags);
+            },
+            goodsTagNameIsEmpty:function (tags) {
+                let isNameEmpty = false;
+                for(let i=0;i<tags.length;i++){
+                    const name=tags[i].name;
+                    if(name===null||name===undefined||name===""){
+                        isNameEmpty=true;
+                    }
+                }
+                return isNameEmpty;
+            },
         }
     }
 </script>
@@ -212,14 +222,6 @@
         color: white;
         font-size: 18px;
     }
-
-
-
-
-
-
-
-
 
     .goods_title {
         margin-top: 10px;
