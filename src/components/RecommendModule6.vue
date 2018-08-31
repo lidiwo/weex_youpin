@@ -7,7 +7,7 @@
             <div class="goods_price">
                 <text class="rmb_symbol">¥</text>
                 <text class="price_text">{{goodsPrice()}}</text>
-                <text class="rmb_symbol" :style="exceed_text">起</text>
+                <text class="rmb_symbol" :style="{visibility:starProductData['items'][0].attr_ext.price_tag===1?'visible':'hidden'}">起</text>
             </div>
 
             <div class="saled_count_container">
@@ -31,9 +31,6 @@
         props: ["starProductData"],
         data: function () {
             return {
-                exceed_text: {
-                    visibility: "visible",
-                },
                 content_bg: {
                     backgroundColor: this.starProductData.config.bg_color
                 }
@@ -115,7 +112,7 @@
     }
 
     .rmb_symbol {
-        margin-bottom: 5px;
+        margin-bottom: 3px;
         font-size: 20px;
         color: #A92112;
     }

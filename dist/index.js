@@ -78,7 +78,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
 
     formatMoney: function formatMoney(cent) {
-        // return cent.parseInt(cent)/100;
         return cent / 100;
     },
 
@@ -87,7 +86,12 @@ exports.default = {
             return true;
         }
         return false;
+    },
+    formatFlashsaleTime: function formatFlashsaleTime(time) {
+        var unixTimestamp = new Date(time);
+        return unixTimestamp.getHours();
     }
+
 };
 
 /***/ }),
@@ -107,7 +111,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /* weex initialized here, please do not move this line */
 var router = __webpack_require__(3);
-var App = __webpack_require__(105);
+var App = __webpack_require__(110);
 // const mixins = require('@/mixins');
 
 //全局混入http请求
@@ -2843,7 +2847,7 @@ __vue_styles__.push(__webpack_require__(6)
 __vue_exports__ = __webpack_require__(7)
 
 /* template */
-var __vue_template__ = __webpack_require__(104)
+var __vue_template__ = __webpack_require__(109)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2919,19 +2923,19 @@ var _HomePage = __webpack_require__(12);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _ClassifyPage = __webpack_require__(80);
+var _ClassifyPage = __webpack_require__(85);
 
 var _ClassifyPage2 = _interopRequireDefault(_ClassifyPage);
 
-var _TastePage = __webpack_require__(84);
+var _TastePage = __webpack_require__(89);
 
 var _TastePage2 = _interopRequireDefault(_TastePage);
 
-var _ShoppingCartPage = __webpack_require__(96);
+var _ShoppingCartPage = __webpack_require__(101);
 
 var _ShoppingCartPage2 = _interopRequireDefault(_ShoppingCartPage);
 
-var _PersonPage = __webpack_require__(100);
+var _PersonPage = __webpack_require__(105);
 
 var _PersonPage2 = _interopRequireDefault(_PersonPage);
 
@@ -3247,7 +3251,7 @@ __vue_styles__.push(__webpack_require__(13)
 __vue_exports__ = __webpack_require__(14)
 
 /* template */
-var __vue_template__ = __webpack_require__(79)
+var __vue_template__ = __webpack_require__(84)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -3526,7 +3530,7 @@ __vue_styles__.push(__webpack_require__(20)
 __vue_exports__ = __webpack_require__(21)
 
 /* template */
-var __vue_template__ = __webpack_require__(78)
+var __vue_template__ = __webpack_require__(83)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -3670,11 +3674,11 @@ var _RecommendPage = __webpack_require__(22);
 
 var _RecommendPage2 = _interopRequireDefault(_RecommendPage);
 
-var _CrowdPage = __webpack_require__(70);
+var _CrowdPage = __webpack_require__(75);
 
 var _CrowdPage2 = _interopRequireDefault(_CrowdPage);
 
-var _BrandPage = __webpack_require__(74);
+var _BrandPage = __webpack_require__(79);
 
 var _BrandPage2 = _interopRequireDefault(_BrandPage);
 
@@ -3807,7 +3811,7 @@ __vue_styles__.push(__webpack_require__(23)
 __vue_exports__ = __webpack_require__(24)
 
 /* template */
-var __vue_template__ = __webpack_require__(69)
+var __vue_template__ = __webpack_require__(74)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -3893,15 +3897,15 @@ var _RecommendModule13 = __webpack_require__(53);
 
 var _RecommendModule14 = _interopRequireDefault(_RecommendModule13);
 
-var _RecommendModule15 = __webpack_require__(57);
+var _RecommendModule15 = __webpack_require__(62);
 
 var _RecommendModule16 = _interopRequireDefault(_RecommendModule15);
 
-var _RecommendModule17 = __webpack_require__(61);
+var _RecommendModule17 = __webpack_require__(66);
 
 var _RecommendModule18 = _interopRequireDefault(_RecommendModule17);
 
-var _RecommendModule19 = __webpack_require__(65);
+var _RecommendModule19 = __webpack_require__(70);
 
 var _RecommendModule20 = _interopRequireDefault(_RecommendModule19);
 
@@ -5143,7 +5147,7 @@ module.exports = {
     "alignItems": "flex-end"
   },
   "rmb_symbol": {
-    "marginBottom": "5",
+    "marginBottom": "3",
     "fontSize": "20",
     "color": "#A92112"
   },
@@ -5273,7 +5277,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["price_text"]
   }, [_vm._v(_vm._s(_vm.goodsPrice(0)))]), _c('text', {
     staticClass: ["rmb_symbol"],
-    style: _vm.exceed_text
+    style: {
+      visibility: _vm.crowdFundingData['items'][0].attr_ext.price_tag === 1 ? 'visible' : 'hidden'
+    }
   }, [_vm._v("起")])])]), _c('div', {
     staticClass: ["large_pic_flag2"]
   }, [_c('image', {
@@ -5297,7 +5303,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["price_text"]
   }, [_vm._v(_vm._s(_vm.goodsPrice(1)))]), _c('text', {
     staticClass: ["rmb_symbol"],
-    style: _vm.exceed_text
+    style: {
+      visibility: _vm.crowdFundingData['items'][1].attr_ext.price_tag === 1 ? 'visible' : 'hidden'
+    }
   }, [_vm._v("起")])]), _c('image', {
     staticClass: ["small_pic"],
     attrs: {
@@ -5317,7 +5325,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["price_text"]
   }, [_vm._v(_vm._s(_vm.goodsPrice(2)))]), _c('text', {
     staticClass: ["rmb_symbol"],
-    style: _vm.exceed_text
+    style: {
+      visibility: _vm.crowdFundingData['items'][2].attr_ext.price_tag === 1 ? 'visible' : 'hidden'
+    }
   }, [_vm._v("起")])]), _c('image', {
     staticClass: ["small_pic"],
     attrs: {
@@ -5388,7 +5398,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('text', {
     staticClass: ["rmb_symbol"],
     staticStyle: {
-      "@binding": "exceed_text"
+      "visibility": {
+        "@binding": "crowdFundingData['items'][0].attr_ext.price_tag === 1 ? 'visible' : 'hidden'"
+      }
     },
     attrs: {
       "value": "起"
@@ -5432,7 +5444,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('text', {
     staticClass: ["rmb_symbol"],
     staticStyle: {
-      "@binding": "exceed_text"
+      "visibility": {
+        "@binding": "crowdFundingData['items'][1].attr_ext.price_tag === 1 ? 'visible' : 'hidden'"
+      }
     },
     attrs: {
       "value": "起"
@@ -5472,7 +5486,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('text', {
     staticClass: ["rmb_symbol"],
     staticStyle: {
-      "@binding": "exceed_text"
+      "visibility": {
+        "@binding": "crowdFundingData['items'][2].attr_ext.price_tag === 1 ? 'visible' : 'hidden'"
+      }
     },
     attrs: {
       "value": "起"
@@ -5582,8 +5598,62 @@ module.exports = {
     "justifyContent": "center"
   },
   "goods_image": {
-    "width": "180",
-    "height": "180"
+    "width": "160",
+    "height": "160"
+  },
+  "goods_color_type_container": {
+    "position": "absolute",
+    "top": "10",
+    "left": "10",
+    "borderBottomColor": "#9F8153",
+    "borderTopColor": "#9F8153",
+    "borderLeftColor": "#9F8153",
+    "borderRightColor": "#9F8153",
+    "borderTopWidth": "1",
+    "borderBottomWidth": "1",
+    "borderRightWidth": "1",
+    "borderLeftWidth": "1",
+    "borderBottomRightRadius": "2",
+    "borderTopLeftRadius": "2",
+    "borderBottomLeftRadius": "2",
+    "borderTopRightRadius": "2",
+    "paddingRight": "3",
+    "paddingLeft": "3",
+    "paddingTop": "8",
+    "paddingBottom": "8"
+  },
+  "goods_color_type": {
+    "fontSize": "18",
+    "color": "#9F8153",
+    "width": "18",
+    "wordWrap": "break-word",
+    "textAlign": "center",
+    "lineHeight": "22"
+  },
+  "goods_tags_container": {
+    "width": "225",
+    "height": "28",
+    "position": "absolute",
+    "bottom": "0",
+    "left": "0",
+    "right": "0",
+    "flexDirection": "row"
+  },
+  "goods_tag_text_container": {
+    "paddingLeft": "8",
+    "paddingRight": "8",
+    "height": "28",
+    "borderBottomRightRadius": "3",
+    "borderTopLeftRadius": "3",
+    "borderBottomLeftRadius": "3",
+    "borderTopRightRadius": "3",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "marginRight": "10"
+  },
+  "goods_tag_text": {
+    "color": "#FFFFFF",
+    "fontSize": "18"
   },
   "goods_title": {
     "marginTop": "10",
@@ -5597,7 +5667,7 @@ module.exports = {
     "alignItems": "flex-end"
   },
   "rmb_symbol": {
-    "marginBottom": "5",
+    "marginBottom": "3",
     "fontSize": "20",
     "color": "#A92112"
   },
@@ -5645,22 +5715,36 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 exports.default = {
     name: "RecommendModule5",
     props: ["productHotData"],
     data: function data() {
-        return {
-            exceed_text: {
-                visibility: "hidden"
-            }
-        };
+        return {};
     },
     methods: {
         goodsPrice: function goodsPrice(index) {
             return _util2.default.formatMoney(this.productHotData['items'][index].price_min);
+        },
+        hasColor: function hasColor(color) {
+            return color === null || color === undefined || color === "";
+        },
+        hasTags: function hasTags(tags) {
+            return tags === null || tags === undefined || tags.length === 0;
         }
+
     }
 };
 
@@ -5691,7 +5775,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         attrs: {
           "src": _vm.productHotData['items'][(index1 - 1) * 3 + (index2 - 1)].pic_url
         }
-      })]), _c('text', {
+      }), _c('div', {
+        staticClass: ["goods_color_type_container"],
+        style: {
+          visibility: _vm.hasColor(_vm.productHotData['items'][(index1 - 1) * 3 + (index2 - 1)].color_num) ? 'hidden' : 'visible'
+        }
+      }, [_c('text', {
+        staticClass: ["goods_color_type"]
+      }, [_vm._v(_vm._s(_vm.productHotData['items'][(index1 - 1) * 3 + (index2 - 1)].color_num) + "色可选")])]), _c('div', {
+        staticClass: ["goods_tags_container"],
+        style: {
+          visibility: _vm.hasTags(_vm.productHotData['items'][(index1 - 1) * 3 + (index2 - 1)].tags) ? 'hidden' : 'visible'
+        }
+      }, _vm._l((_vm.productHotData['items'][(index1 - 1) * 3 + (index2 - 1)].tags), function(item) {
+        return _c('div', {
+          staticClass: ["goods_tag_text_container"],
+          style: {
+            backgroundColor: item.color
+          }
+        }, [_c('text', {
+          staticClass: ["goods_tag_text"]
+        }, [_vm._v(_vm._s(item.name))])])
+      }))]), _c('text', {
         staticClass: ["goods_title"]
       }, [_vm._v(_vm._s(_vm.productHotData['items'][(index1 - 1) * 3 + (index2 - 1)].name))]), _c('div', {
         staticClass: ["goods_price"]
@@ -5701,7 +5806,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         staticClass: ["price_text"]
       }, [_vm._v(_vm._s(_vm.goodsPrice((index1 - 1) * 3 + (index2 - 1))))]), _c('text', {
         staticClass: ["rmb_symbol"],
-        style: _vm.exceed_text
+        style: {
+          visibility: _vm.productHotData['items'][(index1 - 1) * 3 + (index2 - 1)].attr_ext.price_tag === 1 ? 'visible' : 'hidden'
+        }
       }, [_vm._v("起")])])])
     }))
   })], 2)
@@ -5747,7 +5854,48 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "@binding": "productHotData['items'][(index1 - 1) * 3 + (index2 - 1)].pic_url"
       }
     }
-  })]), _c('text', {
+  }), _c('div', {
+    staticClass: ["goods_color_type_container"],
+    staticStyle: {
+      "visibility": {
+        "@binding": "hasColor(productHotData['items'][(index1 - 1) * 3 + (index2 - 1)].color_num) ? 'hidden' : 'visible'"
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["goods_color_type"],
+    attrs: {
+      "value": [{
+        "@binding": "productHotData['items'][(index1-1)*3+(index2-1)].color_num"
+      }, "色可选"]
+    }
+  })]), _c('div', {
+    staticClass: ["goods_tags_container"],
+    staticStyle: {
+      "visibility": {
+        "@binding": "hasTags(productHotData['items'][(index1 - 1) * 3 + (index2 - 1)].tags) ? 'hidden' : 'visible'"
+      }
+    }
+  }, [_c('div', {
+    staticClass: ["goods_tag_text_container"],
+    staticStyle: {
+      "backgroundColor": {
+        "@binding": "item.color"
+      }
+    },
+    attrs: {
+      "[[repeat]]": {
+        "@expression": "productHotData['items'][(index1-1)*3+(index2-1)].tags",
+        "@alias": "item"
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["goods_tag_text"],
+    attrs: {
+      "value": {
+        "@binding": "item.name"
+      }
+    }
+  })])])]), _c('text', {
     staticClass: ["goods_title"],
     attrs: {
       "value": {
@@ -5771,7 +5919,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('text', {
     staticClass: ["rmb_symbol"],
     staticStyle: {
-      "@binding": "exceed_text"
+      "visibility": {
+        "@binding": "productHotData['items'][(index1 - 1) * 3 + (index2 - 1)].attr_ext.price_tag === 1 ? 'visible' : 'hidden'"
+      }
     },
     attrs: {
       "value": "起"
@@ -5887,7 +6037,7 @@ module.exports = {
     "alignItems": "flex-end"
   },
   "rmb_symbol": {
-    "marginBottom": "5",
+    "marginBottom": "3",
     "fontSize": "20",
     "color": "#A92112"
   },
@@ -5967,9 +6117,6 @@ exports.default = {
     props: ["starProductData"],
     data: function data() {
         return {
-            exceed_text: {
-                visibility: "visible"
-            },
             content_bg: {
                 backgroundColor: this.starProductData.config.bg_color
             }
@@ -6006,7 +6153,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["price_text"]
   }, [_vm._v(_vm._s(_vm.goodsPrice()))]), _c('text', {
     staticClass: ["rmb_symbol"],
-    style: _vm.exceed_text
+    style: {
+      visibility: _vm.starProductData['items'][0].attr_ext.price_tag === 1 ? 'visible' : 'hidden'
+    }
   }, [_vm._v("起")])]), _c('div', {
     staticClass: ["saled_count_container"]
   }, [_c('text', {
@@ -6070,7 +6219,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('text', {
     staticClass: ["rmb_symbol"],
     staticStyle: {
-      "@binding": "exceed_text"
+      "visibility": {
+        "@binding": "starProductData['items'][0].attr_ext.price_tag === 1 ? 'visible' : 'hidden'"
+      }
     },
     attrs: {
       "value": "起"
@@ -6117,7 +6268,7 @@ __vue_styles__.push(__webpack_require__(54)
 __vue_exports__ = __webpack_require__(55)
 
 /* template */
-var __vue_template__ = __webpack_require__(56)
+var __vue_template__ = __webpack_require__(61)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -6288,7 +6439,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _wxcCountdown = __webpack_require__(109);
+var _wxcCountdown = __webpack_require__(56);
 
 var _wxcCountdown2 = _interopRequireDefault(_wxcCountdown);
 
@@ -6298,6 +6449,7 @@ var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
 //
 //
 //
@@ -6372,254 +6524,34 @@ exports.default = {
         },
         countDownFinish: function countDownFinish() {
             this.isCountDownFinish = true;
+        },
+        specialTime: function specialTime(time) {
+            return _util2.default.formatFlashsaleTime(time);
         }
     }
 };
 
 /***/ }),
 /* 56 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["content"]
-  }, [_c('div', {
-    staticClass: ["flash_sale_title"]
-  }, [_c('div', {
-    staticClass: ["title_container"]
-  }, [_c('text', {
-    staticClass: ["title"]
-  }, [_vm._v(_vm._s(_vm.flashsaleData.title))]), _c('div', {
-    staticClass: ["title_countdown"],
-    style: {
-      visibility: _vm.isCountDownFinish ? 'hidden' : 'visible'
-    }
-  }, [_c('image', {
-    staticStyle: {
-      width: "20px",
-      height: "20px",
-      marginLeft: "30px"
-    },
-    attrs: {
-      "src": "http://www.lidiwo.com/ltp_icon_time.png"
-    }
-  }), _c('text', {
-    staticStyle: {
-      color: "#A92112",
-      fontSize: "20px",
-      marginLeft: "5px"
-    }
-  }, [_vm._v("12点场")]), _c('wxc-countdown', {
-    attrs: {
-      "tpl": "{h}:{m}:{s}",
-      "timeBoxStyle": _vm.timeBoxStyle,
-      "timeTextStyle": _vm.timeTextStyle,
-      "dotTextStyle": _vm.dotTextStyle,
-      "time": _vm.flashsaleData.end_time
-    },
-    on: {
-      "wxcOnComplete": function($event) {
-        _vm.countDownFinish()
-      }
-    }
-  })], 1)]), _vm._m(0)]), _c('scroller', {
-    staticClass: ["content_scroller"],
-    attrs: {
-      "showScrollbar": "false",
-      "scrollDirection": "horizontal",
-      "offsetAccuracy": "5px"
-    }
-  }, _vm._l((_vm.flashsaleData['goods'].length), function(index) {
-    return _c('div', {
-      staticClass: ["flash_sale_content"]
-    }, [_c('div', {
-      staticClass: ["goods_main_image_container"]
-    }, [_c('image', {
-      staticClass: ["goods_main_image"],
-      attrs: {
-        "src": _vm.flashsaleData['goods'][index - 1].imgs.img800
-      }
-    }), _c('div', {
-      staticClass: ["goods_discount_container"],
-      style: {
-        visibility: _vm.isEmpty(_vm.flashsaleData['goods'][index - 1].discount_desc) ? 'hidden' : 'visible'
-      }
-    }, [_c('text', {
-      staticClass: ["goods_discount"]
-    }, [_vm._v(_vm._s(_vm.flashsaleData['goods'][index - 1].discount_desc))])])]), _c('text', {
-      staticClass: ["goods_title"]
-    }, [_vm._v(_vm._s(_vm.flashsaleData['goods'][index - 1].name))]), _c('div', {
-      staticClass: ["goods_money", "goods_money_container"]
-    }, [_c('div', {
-      staticClass: ["goods_money"]
-    }, [_c('text', {
-      staticClass: ["rmb_flag"]
-    }, [_vm._v("¥")]), _c('text', {
-      staticClass: ["goods_flash_price"]
-    }, [_vm._v(_vm._s(_vm.flashPrice(index - 1)))])]), _c('text', {
-      staticClass: ["goods_market_price"]
-    }, [_vm._v("¥" + _vm._s(_vm.marketPrice(index - 1)))])])])
-  }))])
-},"@render":function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["content"],
-    attrs: {
-      "@isComponentRoot": true,
-      "@templateId": _vm._uid,
-      "@componentProps": _vm.$props || {}
-    }
-  }, [_c('div', {
-    staticClass: ["flash_sale_title"]
-  }, [_c('div', {
-    staticClass: ["title_container"]
-  }, [_c('text', {
-    staticClass: ["title"],
-    attrs: {
-      "value": {
-        "@binding": "flashsaleData.title"
-      }
-    }
-  }), _c('div', {
-    staticClass: ["title_countdown"],
-    staticStyle: {
-      "visibility": {
-        "@binding": "isCountDownFinish ? 'hidden' : 'visible'"
-      }
-    }
-  }, [_c('image', {
-    staticStyle: {
-      width: "20px",
-      height: "20px",
-      marginLeft: "30px"
-    },
-    attrs: {
-      "src": "http://www.lidiwo.com/ltp_icon_time.png"
-    }
-  }), _c('text', {
-    staticStyle: {
-      color: "#A92112",
-      fontSize: "20px",
-      marginLeft: "5px"
-    },
-    attrs: {
-      "value": "12点场"
-    }
-  }), _c('wxc-countdown', {
-    attrs: {
-      "tpl": "{h}:{m}:{s}",
-      "timeBoxStyle": {
-        "@binding": "timeBoxStyle"
-      },
-      "timeTextStyle": {
-        "@binding": "timeTextStyle"
-      },
-      "dotTextStyle": {
-        "@binding": "dotTextStyle"
-      },
-      "time": {
-        "@binding": "flashsaleData.end_time"
-      },
-      "@inRecycleList": true
-    },
-    on: {
-      "wxcOnComplete": function($event) {
-        this.countDownFinish()
-      }
-    }
-  })], 1)]), _c('div', {
-    staticClass: ["title_more"]
-  }, [_c('text', {
-    staticClass: ["more_text"],
-    attrs: {
-      "value": " 更多"
-    }
-  }), _c('image', {
-    staticClass: ["more_img"],
-    attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
-    }
-  })])]), _c('scroller', {
-    staticClass: ["content_scroller"],
-    attrs: {
-      "showScrollbar": "false",
-      "scrollDirection": "horizontal",
-      "offsetAccuracy": "5px"
-    }
-  }, [_c('div', {
-    staticClass: ["flash_sale_content"],
-    attrs: {
-      "[[repeat]]": {
-        "@expression": "flashsaleData['goods'].length",
-        "@alias": "index"
-      }
-    }
-  }, [_c('div', {
-    staticClass: ["goods_main_image_container"]
-  }, [_c('image', {
-    staticClass: ["goods_main_image"],
-    attrs: {
-      "src": {
-        "@binding": "flashsaleData['goods'][index - 1].imgs.img800"
-      }
-    }
-  }), _c('div', {
-    staticClass: ["goods_discount_container"],
-    staticStyle: {
-      "visibility": {
-        "@binding": "isEmpty(flashsaleData['goods'][index - 1].discount_desc) ? 'hidden' : 'visible'"
-      }
-    }
-  }, [_c('text', {
-    staticClass: ["goods_discount"],
-    attrs: {
-      "value": {
-        "@binding": "flashsaleData['goods'][index-1].discount_desc"
-      }
-    }
-  })])]), _c('text', {
-    staticClass: ["goods_title"],
-    attrs: {
-      "value": {
-        "@binding": "flashsaleData['goods'][index-1].name"
-      }
-    }
-  }), _c('div', {
-    staticClass: ["goods_money", "goods_money_container"]
-  }, [_c('div', {
-    staticClass: ["goods_money"]
-  }, [_c('text', {
-    staticClass: ["rmb_flag"],
-    attrs: {
-      "value": "¥"
-    }
-  }), _c('text', {
-    staticClass: ["goods_flash_price"],
-    attrs: {
-      "value": {
-        "@binding": "flashPrice(index-1)"
-      }
-    }
-  })]), _c('text', {
-    staticClass: ["goods_market_price"],
-    attrs: {
-      "value": ["¥", {
-        "@binding": "marketPrice(index-1)"
-      }]
-    }
-  })])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["title_more"]
-  }, [_c('text', {
-    staticClass: ["more_text"]
-  }, [_vm._v(" 更多")]), _c('image', {
-    staticClass: ["more_img"],
-    attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
-    }
-  })])
-}]}
-module.exports.render._withStripped = true
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _index = __webpack_require__(57);
+
+Object.defineProperty(exports, 'default', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_index).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 /* 57 */
@@ -6637,3502 +6569,6 @@ __vue_exports__ = __webpack_require__(59)
 
 /* template */
 var __vue_template__ = __webpack_require__(60)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule8.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__["@render"] = __vue_template__["@render"]
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-54271500"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "content": {
-    "marginTop": "20",
-    "flexDirection": "column",
-    "width": "750",
-    "height": "472",
-    "backgroundColor": "#FFFFFF"
-  },
-  "taste_live_title": {
-    "paddingLeft": "25",
-    "paddingRight": "25",
-    "flexDirection": "row",
-    "width": "750",
-    "height": "104",
-    "alignItems": "center"
-  },
-  "title": {
-    "fontWeight": "bold",
-    "fontSize": "35"
-  },
-  "title_more": {
-    "flexDirection": "row",
-    "position": "absolute",
-    "right": "25",
-    "top": "0",
-    "bottom": "0",
-    "alignItems": "center"
-  },
-  "more_text": {
-    "fontSize": "24",
-    "color": "#999999"
-  },
-  "more_img": {
-    "marginLeft": "8",
-    "width": "30",
-    "height": "30"
-  },
-  "content_scroller": {
-    "paddingLeft": "20",
-    "flexDirection": "row",
-    "width": "750",
-    "height": "347"
-  },
-  "taste_live_content": {
-    "width": "500",
-    "height": "347",
-    "flexDirection": "column",
-    "marginRight": "15"
-  },
-  "taste_live_image": {
-    "width": "500",
-    "height": "250",
-    "borderBottomRightRadius": "5",
-    "borderTopLeftRadius": "5",
-    "borderTopRightRadius": "5",
-    "borderBottomLeftRadius": "5"
-  },
-  "taste_live_maintitle": {
-    "color": "#333333",
-    "fontSize": "30",
-    "lines": 1,
-    "textOverflow": "ellipsis",
-    "marginTop": "15"
-  },
-  "taste_live_summary": {
-    "color": "#666666",
-    "lines": 1,
-    "textOverflow": "ellipsis",
-    "fontSize": "25",
-    "marginTop": "10"
-  }
-}
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var modal = weex.requireModule('modal');
-exports.default = {
-    name: "RecommendModule8",
-    props: ["tasteLiveData"],
-    data: function data() {
-        return {};
-    }
-};
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["content"]
-  }, [_c('div', {
-    staticClass: ["taste_live_title"]
-  }, [_c('text', {
-    staticClass: ["title"]
-  }, [_vm._v(_vm._s(_vm.tasteLiveData.title))]), _vm._m(0)]), _c('scroller', {
-    staticClass: ["content_scroller"],
-    attrs: {
-      "showScrollbar": "false",
-      "scrollDirection": "horizontal",
-      "offsetAccuracy": "5px"
-    }
-  }, _vm._l((_vm.tasteLiveData['items'].length), function(index) {
-    return _c('div', {
-      staticClass: ["taste_live_content"]
-    }, [_c('image', {
-      staticClass: ["taste_live_image"],
-      attrs: {
-        "src": _vm.tasteLiveData['items'][index - 1].pic_url
-      }
-    }), _c('text', {
-      staticClass: ["taste_live_maintitle"]
-    }, [_vm._v(_vm._s(_vm.tasteLiveData['items'][index - 1].title))]), _c('text', {
-      staticClass: ["taste_live_summary"]
-    }, [_vm._v(_vm._s(_vm.tasteLiveData['items'][index - 1].summary))])])
-  }))])
-},"@render":function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["content"],
-    attrs: {
-      "@isComponentRoot": true,
-      "@templateId": _vm._uid,
-      "@componentProps": _vm.$props || {}
-    }
-  }, [_c('div', {
-    staticClass: ["taste_live_title"]
-  }, [_c('text', {
-    staticClass: ["title"],
-    attrs: {
-      "value": {
-        "@binding": "tasteLiveData.title"
-      }
-    }
-  }), _c('div', {
-    staticClass: ["title_more"]
-  }, [_c('text', {
-    staticClass: ["more_text"],
-    attrs: {
-      "value": " 更多"
-    }
-  }), _c('image', {
-    staticClass: ["more_img"],
-    attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
-    }
-  })])]), _c('scroller', {
-    staticClass: ["content_scroller"],
-    attrs: {
-      "showScrollbar": "false",
-      "scrollDirection": "horizontal",
-      "offsetAccuracy": "5px"
-    }
-  }, [_c('div', {
-    staticClass: ["taste_live_content"],
-    attrs: {
-      "[[repeat]]": {
-        "@expression": "tasteLiveData['items'].length",
-        "@alias": "index"
-      }
-    }
-  }, [_c('image', {
-    staticClass: ["taste_live_image"],
-    attrs: {
-      "src": {
-        "@binding": "tasteLiveData['items'][index - 1].pic_url"
-      }
-    }
-  }), _c('text', {
-    staticClass: ["taste_live_maintitle"],
-    attrs: {
-      "value": {
-        "@binding": "tasteLiveData['items'][index-1].title"
-      }
-    }
-  }), _c('text', {
-    staticClass: ["taste_live_summary"],
-    attrs: {
-      "value": {
-        "@binding": "tasteLiveData['items'][index-1].summary"
-      }
-    }
-  })])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["title_more"]
-  }, [_c('text', {
-    staticClass: ["more_text"]
-  }, [_vm._v(" 更多")]), _c('image', {
-    staticClass: ["more_img"],
-    attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
-    }
-  })])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(62)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(63)
-
-/* template */
-var __vue_template__ = __webpack_require__(64)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule9.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__["@render"] = __vue_template__["@render"]
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-54352c81"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "content": {
-    "flexDirection": "column",
-    "width": "750",
-    "height": "1115",
-    "marginTop": "20",
-    "backgroundColor": "#FFFFFF"
-  },
-  "taste_live_title": {
-    "paddingLeft": "25",
-    "paddingRight": "25",
-    "flexDirection": "row",
-    "width": "750",
-    "height": "104",
-    "alignItems": "center"
-  },
-  "title": {
-    "fontWeight": "bold",
-    "fontSize": "35"
-  },
-  "title_more": {
-    "flexDirection": "row",
-    "position": "absolute",
-    "right": "25",
-    "top": "0",
-    "bottom": "0",
-    "alignItems": "center"
-  },
-  "more_text": {
-    "fontSize": "24",
-    "color": "#999999"
-  },
-  "more_img": {
-    "marginLeft": "8",
-    "width": "30",
-    "height": "30"
-  },
-  "main_image_container": {
-    "width": "750",
-    "height": "170",
-    "justifyContent": "center",
-    "alignItems": "center"
-  },
-  "main_image": {
-    "width": "700",
-    "height": "170"
-  },
-  "goods_content": {
-    "marginTop": "15",
-    "width": "750",
-    "flexDirection": "row",
-    "height": "400",
-    "paddingRight": "25",
-    "paddingLeft": "25",
-    "justifyContent": "space-between"
-  },
-  "single_goods": {
-    "flexDirection": "column",
-    "width": "225",
-    "height": "400"
-  },
-  "goods_image_container": {
-    "backgroundColor": "#F8F8F8",
-    "width": "225",
-    "height": "225",
-    "alignItems": "center",
-    "justifyContent": "center",
-    "borderBottomLeftRadius": "5",
-    "borderBottomRightRadius": "5",
-    "borderTopLeftRadius": "5",
-    "borderTopRightRadius": "5"
-  },
-  "goods_image": {
-    "width": "180",
-    "height": "180"
-  },
-  "goods_title": {
-    "marginTop": "10",
-    "lines": 2,
-    "fontSize": "28",
-    "textOverflow": "ellipsis"
-  },
-  "goods_price": {
-    "flexDirection": "row",
-    "marginTop": "15",
-    "alignItems": "flex-end"
-  },
-  "rmb_symbol": {
-    "marginBottom": "5",
-    "fontSize": "20",
-    "color": "#A92112"
-  },
-  "price_text": {
-    "fontSize": "30",
-    "color": "#A92112"
-  }
-}
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _util = __webpack_require__(0);
-
-var _util2 = _interopRequireDefault(_util);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var modal = weex.requireModule('modal');
-exports.default = {
-    name: "RecommendModule9",
-    props: ["productCategoryData"],
-    data: function data() {
-        return {
-            exceed_text: {
-                visibility: "hidden"
-            }
-        };
-    },
-    methods: {
-        goodsPrice: function goodsPrice(index) {
-            return _util2.default.formatMoney(this.productCategoryData['items'][index].price_min);
-        }
-    }
-};
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["content"]
-  }, [_c('div', {
-    staticClass: ["taste_live_title"]
-  }, [_c('text', {
-    staticClass: ["title"]
-  }, [_vm._v(_vm._s(_vm.productCategoryData.title))]), _vm._m(0)]), _c('div', {
-    staticClass: ["main_image_container"]
-  }, [_c('image', {
-    staticClass: ["main_image"],
-    attrs: {
-      "src": _vm.productCategoryData.pic_url
-    }
-  })]), _vm._l((_vm.productCategoryData['items'].length / 3), function(index1) {
-    return _c('div', {
-      staticClass: ["goods_content"]
-    }, _vm._l((3), function(index2) {
-      return _c('div', {
-        staticClass: ["single_goods"]
-      }, [_c('div', {
-        staticClass: ["goods_image_container"]
-      }, [_c('image', {
-        staticClass: ["goods_image"],
-        attrs: {
-          "src": _vm.productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].pic_url
-        }
-      })]), _c('text', {
-        staticClass: ["goods_title"]
-      }, [_vm._v(_vm._s(_vm.productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].name))]), _c('div', {
-        staticClass: ["goods_price"]
-      }, [_c('text', {
-        staticClass: ["rmb_symbol"]
-      }, [_vm._v("¥")]), _c('text', {
-        staticClass: ["price_text"]
-      }, [_vm._v(_vm._s(_vm.goodsPrice((index1 - 1) * 3 + (index2 - 1))))]), _c('text', {
-        staticClass: ["rmb_symbol"],
-        style: _vm.exceed_text
-      }, [_vm._v("起")])])])
-    }))
-  })], 2)
-},"@render":function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["content"],
-    attrs: {
-      "@isComponentRoot": true,
-      "@templateId": _vm._uid,
-      "@componentProps": _vm.$props || {}
-    }
-  }, [_c('div', {
-    staticClass: ["taste_live_title"]
-  }, [_c('text', {
-    staticClass: ["title"],
-    attrs: {
-      "value": {
-        "@binding": "productCategoryData.title"
-      }
-    }
-  }), _c('div', {
-    staticClass: ["title_more"]
-  }, [_c('text', {
-    staticClass: ["more_text"],
-    attrs: {
-      "value": " 更多"
-    }
-  }), _c('image', {
-    staticClass: ["more_img"],
-    attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
-    }
-  })])]), _c('div', {
-    staticClass: ["main_image_container"]
-  }, [_c('image', {
-    staticClass: ["main_image"],
-    attrs: {
-      "src": {
-        "@binding": "productCategoryData.pic_url"
-      }
-    }
-  })]), _c('div', {
-    staticClass: ["goods_content"],
-    attrs: {
-      "[[repeat]]": {
-        "@expression": "productCategoryData['items'].length/3",
-        "@alias": "index1"
-      }
-    }
-  }, [_c('div', {
-    staticClass: ["single_goods"],
-    attrs: {
-      "[[repeat]]": {
-        "@expression": "3",
-        "@alias": "index2"
-      }
-    }
-  }, [_c('div', {
-    staticClass: ["goods_image_container"]
-  }, [_c('image', {
-    staticClass: ["goods_image"],
-    attrs: {
-      "src": {
-        "@binding": "productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].pic_url"
-      }
-    }
-  })]), _c('text', {
-    staticClass: ["goods_title"],
-    attrs: {
-      "value": {
-        "@binding": "productCategoryData['items'][(index1-1)*3+(index2-1)].name"
-      }
-    }
-  }), _c('div', {
-    staticClass: ["goods_price"]
-  }, [_c('text', {
-    staticClass: ["rmb_symbol"],
-    attrs: {
-      "value": "¥"
-    }
-  }), _c('text', {
-    staticClass: ["price_text"],
-    attrs: {
-      "value": {
-        "@binding": "goodsPrice((index1-1)*3+(index2-1))"
-      }
-    }
-  }), _c('text', {
-    staticClass: ["rmb_symbol"],
-    staticStyle: {
-      "@binding": "exceed_text"
-    },
-    attrs: {
-      "value": "起"
-    }
-  })])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["title_more"]
-  }, [_c('text', {
-    staticClass: ["more_text"]
-  }, [_vm._v(" 更多")]), _c('image', {
-    staticClass: ["more_img"],
-    attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
-    }
-  })])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(66)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(67)
-
-/* template */
-var __vue_template__ = __webpack_require__(68)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule10.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__["@render"] = __vue_template__["@render"]
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-24c51907"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "content": {
-    "marginTop": "20",
-    "flexDirection": "column",
-    "width": "750",
-    "backgroundColor": "#FFFFFF"
-  },
-  "taste_live_title": {
-    "paddingLeft": "25",
-    "paddingRight": "25",
-    "flexDirection": "row",
-    "width": "750",
-    "height": "104",
-    "alignItems": "center"
-  },
-  "title": {
-    "fontWeight": "bold",
-    "fontSize": "35"
-  },
-  "title_more": {
-    "flexDirection": "row",
-    "position": "absolute",
-    "right": "25",
-    "top": "0",
-    "bottom": "0",
-    "alignItems": "center"
-  },
-  "more_text": {
-    "fontSize": "24",
-    "color": "#999999"
-  },
-  "more_img": {
-    "marginLeft": "8",
-    "width": "30",
-    "height": "30"
-  },
-  "goods_content": {
-    "width": "750",
-    "height": "510",
-    "flexDirection": "row",
-    "paddingRight": "25",
-    "paddingLeft": "25",
-    "justifyContent": "space-between"
-  },
-  "single_goods": {
-    "flexDirection": "column",
-    "width": "345",
-    "height": "510"
-  },
-  "goods_image_container": {
-    "backgroundColor": "#FAFAFA",
-    "width": "345",
-    "height": "316",
-    "alignItems": "center",
-    "justifyContent": "center",
-    "borderTopLeftRadius": "5",
-    "borderTopRightRadius": "5"
-  },
-  "goods_image": {
-    "width": "250",
-    "height": "250"
-  },
-  "goods_summary_container": {
-    "width": "345",
-    "height": "63",
-    "paddingLeft": "5",
-    "paddingRight": "5",
-    "backgroundColor": "#F6F2F1",
-    "borderBottomLeftRadius": "5",
-    "borderBottomRightRadius": "5",
-    "justifyContent": "center"
-  },
-  "goods_summary": {
-    "color": "#9F8052",
-    "lines": 1,
-    "textOverflow": "ellipsis",
-    "fontSize": "25"
-  },
-  "goods_title": {
-    "color": "#333333",
-    "marginTop": "10",
-    "paddingRight": "5",
-    "paddingLeft": "5",
-    "lines": 1,
-    "textOverflow": "ellipsis",
-    "fontSize": "28"
-  },
-  "goods_price": {
-    "paddingLeft": "5",
-    "flexDirection": "row",
-    "marginTop": "15",
-    "alignItems": "flex-end"
-  },
-  "rmb_symbol": {
-    "marginBottom": "5",
-    "fontSize": "20",
-    "color": "#A92112"
-  },
-  "price_text": {
-    "fontSize": "30",
-    "color": "#A92112"
-  },
-  "bottom_content": {
-    "width": "750",
-    "height": "333",
-    "alignItems": "center",
-    "justifyContent": "center",
-    "backgroundColor": "#FAFAFA"
-  },
-  "line_content": {
-    "width": "750",
-    "height": "50",
-    "flexDirection": "row",
-    "alignItems": "center",
-    "justifyContent": "center"
-  },
-  "bottom_line": {
-    "width": "150",
-    "height": "1",
-    "backgroundColor": "#999999"
-  },
-  "bottom_line_text": {
-    "marginRight": "30",
-    "marginLeft": "30",
-    "fontSize": "22",
-    "color": "#999999"
-  }
-}
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _util = __webpack_require__(0);
-
-var _util2 = _interopRequireDefault(_util);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var modal = weex.requireModule('modal');
-exports.default = {
-    name: "RecommendModule10",
-    props: ["recommendData"],
-    data: function data() {
-        return {
-            exceed_text: {
-                visibility: "hidden"
-            }
-        };
-    },
-    methods: {
-        goodsPrice: function goodsPrice(index) {
-            return _util2.default.formatMoney(this.recommendData[index].price);
-        },
-
-        getRowCount: function getRowCount(constant) {
-            return Math.floor(this.recommendData.length / constant);
-        }
-
-    },
-    created: function created() {}
-};
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["content"]
-  }, [_vm._m(0), _vm._l((_vm.getRowCount(2)), function(index1) {
-    return _c('div', {
-      staticClass: ["goods_content"]
-    }, _vm._l((2), function(index2) {
-      return _c('div', {
-        staticClass: ["single_goods"]
-      }, [_c('div', {
-        staticClass: ["goods_image_container"]
-      }, [_c('image', {
-        staticClass: ["goods_image"],
-        attrs: {
-          "src": _vm.recommendData[(index1 - 1) * 2 + (index2 - 1)].pic_url
-        }
-      })]), _c('div', {
-        staticClass: ["goods_summary_container"]
-      }, [_c('text', {
-        staticClass: ["goods_summary"]
-      }, [_vm._v(_vm._s(_vm.recommendData[(index1 - 1) * 2 + (index2 - 1)].summary))])]), _c('text', {
-        staticClass: ["goods_title"]
-      }, [_vm._v(_vm._s(_vm.recommendData[(index1 - 1) * 2 + (index2 - 1)].name))]), _c('div', {
-        staticClass: ["goods_price"]
-      }, [_c('text', {
-        staticClass: ["rmb_symbol"]
-      }, [_vm._v("¥")]), _c('text', {
-        staticClass: ["price_text"]
-      }, [_vm._v(_vm._s(_vm.goodsPrice((index1 - 1) * 2 + (index2 - 1))))]), _c('text', {
-        staticClass: ["rmb_symbol"],
-        style: _vm.exceed_text
-      }, [_vm._v("起")])])])
-    }))
-  }), _vm._m(1)], 2)
-},"@render":function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["content"],
-    attrs: {
-      "@isComponentRoot": true,
-      "@templateId": _vm._uid,
-      "@componentProps": _vm.$props || {}
-    }
-  }, [_c('div', {
-    staticClass: ["taste_live_title"]
-  }, [_c('text', {
-    staticClass: ["title"],
-    attrs: {
-      "value": "专属推荐"
-    }
-  }), _c('div', {
-    staticClass: ["title_more"]
-  }, [_c('text', {
-    staticClass: ["more_text"],
-    attrs: {
-      "value": " 更多"
-    }
-  }), _c('image', {
-    staticClass: ["more_img"],
-    attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
-    }
-  })])]), _c('div', {
-    staticClass: ["goods_content"],
-    attrs: {
-      "[[repeat]]": {
-        "@expression": "getRowCount(2)",
-        "@alias": "index1"
-      }
-    }
-  }, [_c('div', {
-    staticClass: ["single_goods"],
-    attrs: {
-      "[[repeat]]": {
-        "@expression": "2",
-        "@alias": "index2"
-      }
-    }
-  }, [_c('div', {
-    staticClass: ["goods_image_container"]
-  }, [_c('image', {
-    staticClass: ["goods_image"],
-    attrs: {
-      "src": {
-        "@binding": "recommendData[(index1 - 1) * 2 + (index2 - 1)].pic_url"
-      }
-    }
-  })]), _c('div', {
-    staticClass: ["goods_summary_container"]
-  }, [_c('text', {
-    staticClass: ["goods_summary"],
-    attrs: {
-      "value": {
-        "@binding": "recommendData[(index1-1)*2+(index2-1)].summary"
-      }
-    }
-  })]), _c('text', {
-    staticClass: ["goods_title"],
-    attrs: {
-      "value": {
-        "@binding": "recommendData[(index1-1)*2+(index2-1)].name"
-      }
-    }
-  }), _c('div', {
-    staticClass: ["goods_price"]
-  }, [_c('text', {
-    staticClass: ["rmb_symbol"],
-    attrs: {
-      "value": "¥"
-    }
-  }), _c('text', {
-    staticClass: ["price_text"],
-    attrs: {
-      "value": {
-        "@binding": "goodsPrice((index1-1)*2+(index2-1))"
-      }
-    }
-  }), _c('text', {
-    staticClass: ["rmb_symbol"],
-    staticStyle: {
-      "@binding": "exceed_text"
-    },
-    attrs: {
-      "value": "起"
-    }
-  })])])]), _c('div', {
-    staticClass: ["bottom_content"]
-  }, [_c('div', {
-    staticClass: ["line_content"]
-  }, [_c('div', {
-    staticClass: ["bottom_line"]
-  }), _c('text', {
-    staticClass: ["bottom_line_text"],
-    attrs: {
-      "value": "底线在此，不能更低了"
-    }
-  }), _c('div', {
-    staticClass: ["bottom_line"]
-  })])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["taste_live_title"]
-  }, [_c('text', {
-    staticClass: ["title"]
-  }, [_vm._v("专属推荐")]), _c('div', {
-    staticClass: ["title_more"]
-  }, [_c('text', {
-    staticClass: ["more_text"]
-  }, [_vm._v(" 更多")]), _c('image', {
-    staticClass: ["more_img"],
-    attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
-    }
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["bottom_content"]
-  }, [_c('div', {
-    staticClass: ["line_content"]
-  }, [_c('div', {
-    staticClass: ["bottom_line"]
-  }), _c('text', {
-    staticClass: ["bottom_line_text"]
-  }, [_vm._v("底线在此，不能更低了")]), _c('div', {
-    staticClass: ["bottom_line"]
-  })])])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('list', {
-    staticClass: ["list_content"],
-    attrs: {
-      "showScrollbar": "false"
-    }
-  }, _vm._l((_vm.homepageDatas), function(item, index) {
-    return _c('cell', {
-      staticClass: ["cell_content"],
-      appendAsTree: true,
-      attrs: {
-        "append": "tree"
-      }
-    }, [(item.module_key === 'banner') ? _c('div', [_c('recommend_module1', {
-      attrs: {
-        "swipebanner": item.data
-      }
-    })], 1) : (item.module_key === 'kingkong') ? _c('div', [_c('recommend_module2', {
-      attrs: {
-        "menupicture": item.data
-      }
-    })], 1) : (item.module_key === 'single_image') ? _c('div', {
-      staticClass: ["single_image_container"]
-    }, [_c('image', {
-      staticClass: ["single_picture"],
-      attrs: {
-        "src": item.data.pic_url
-      }
-    })]) : (item.module_key === 'recommend') ? _c('div', [_c('recommend_module3', {
-      attrs: {
-        "recommendData": item.data
-      }
-    })], 1) : (item.module_key === 'crowd_funding') ? _c('div', [_c('recommend_module4', {
-      attrs: {
-        "crowdFundingData": item.data
-      }
-    })], 1) : (item.module_key === 'product_hot') ? _c('div', [_c('recommend_module5', {
-      attrs: {
-        "productHotData": item.data
-      }
-    })], 1) : (item.module_key === 'star_product') ? _c('div', [_c('recommend_module6', {
-      attrs: {
-        "starProductData": item.data
-      }
-    })], 1) : (item.module_key === 'flashsale') ? _c('div', [_c('recommend_module7', {
-      attrs: {
-        "flashsaleData": item.data
-      }
-    })], 1) : (item.module_key === 'taste_live') ? _c('div', [_c('recommend_module8', {
-      attrs: {
-        "tasteLiveData": item.data
-      }
-    })], 1) : (item.module_key === 'product_category') ? _c('div', [_c('recommend_module9', {
-      attrs: {
-        "productCategoryData": item.data
-      }
-    })], 1) : (item.module_key === '' || item.module_key === null || item.module_key === undefined) ? _c('div', [_c('recommend_module10', {
-      attrs: {
-        "recommendData": item.data
-      }
-    })], 1) : _c('div', [_c('text', [_vm._v(_vm._s(item.module_key) + "--" + _vm._s(index))])])])
-  }))
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(71)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(72)
-
-/* template */
-var __vue_template__ = __webpack_require__(73)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\CrowdPage.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-a4cd1608"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports) {
-
-module.exports = {}
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-    name: "CrowdPage"
-};
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('text', [_vm._v("众筹")])])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(75)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(76)
-
-/* template */
-var __vue_template__ = __webpack_require__(77)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\BrandPage.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-03ffadd6"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports) {
-
-module.exports = {}
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-    name: "BrandPage"
-};
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('text', [_vm._v("品牌")])])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["content"]
-  }, [_c('div', {
-    staticClass: ["wrapper"]
-  }, [_c('scroller', {
-    staticClass: ["scroller"],
-    attrs: {
-      "showScrollbar": "false",
-      "scrollDirection": "horizontal"
-    }
-  }, [_vm._l((_vm.tabTags), function(item, index) {
-    return _c('text', {
-      ref: 'tag' + index,
-      refInFor: true,
-      class: ['tb_tag', index === _vm.selectIndex ? 'tb_tag_select' : 'tb_tag_unselect'],
-      on: {
-        "click": function($event) {
-          _vm.click(index, $event)
-        }
-      }
-    }, [_vm._v(_vm._s(item.name) + "\n            ")])
-  }), _c('div', {
-    staticClass: ["tb_tag_line"],
-    style: _vm.tbTagLineStyle
-  }, [_c('div', {
-    staticClass: ["select_line"]
-  })])], 2), _vm._m(0)]), _c('slider', {
-    ref: "slider",
-    staticClass: ["slider"],
-    attrs: {
-      "infinite": "false",
-      "offsetXAccuracy": "0.0001px",
-      "scrollable": "true",
-      "keepIndex": "true",
-      "index": _vm.selectIndex
-    },
-    on: {
-      "change": function($event) {
-        _vm.onSliderChange($event)
-      },
-      "scroll": function($event) {
-        _vm.onSliderScroll($event)
-      }
-    }
-  }, _vm._l((_vm.tabTags), function(item, index) {
-    return _c('div', {
-      staticClass: ["web_root"]
-    }, [(index == 0) ? _c('recommend_page') : (index == 17) ? _c('crowd_page') : (index == 18) ? _c('brand_page') : (0 < index < 17) ? _c('web', {
-      staticClass: ["web_content"],
-      attrs: {
-        "src": item.link_url
-      }
-    }) : _vm._e()], 1)
-  }))])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["tb_dropdown"]
-  }, [_c('image', {
-    staticClass: ["tb_dropdown_ico"],
-    attrs: {
-      "src": "http://www.lidiwo.com/main_cat_dropdown.png"
-    }
-  })])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["wrapper"]
-  }, [_c('home_title'), _c('home_tab_layout')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(81)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(82)
-
-/* template */
-var __vue_template__ = __webpack_require__(83)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\ClassifyPage.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-4118387a"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "app_content": {
-    "flexDirection": "column",
-    "position": "absolute",
-    "top": "0",
-    "bottom": "0",
-    "width": "750",
-    "backgroundColor": "#FFFFFF"
-  },
-  "title_content": {
-    "width": "750",
-    "height": "100",
-    "backgroundColor": "#FFFFFF",
-    "borderBottomWidth": "1",
-    "borderBottomColor": "#E5E5E5"
-  },
-  "title_container": {
-    "position": "absolute",
-    "top": "18",
-    "bottom": "18",
-    "right": "30",
-    "left": "30",
-    "backgroundColor": "#F4F4F4",
-    "flexDirection": "row",
-    "alignItems": "center",
-    "borderBottomLeftRadius": "5",
-    "borderTopRightRadius": "5",
-    "borderTopLeftRadius": "5",
-    "borderBottomRightRadius": "5"
-  },
-  "title_search_icon": {
-    "marginLeft": "20",
-    "width": "45",
-    "height": "45"
-  },
-  "title_search_text": {
-    "fontSize": "30",
-    "marginLeft": "20",
-    "color": "#CCCCCC"
-  },
-  "classify_content": {
-    "position": "absolute",
-    "top": "100",
-    "bottom": "0",
-    "left": "0",
-    "right": "0",
-    "flexDirection": "row"
-  },
-  "classify_title_container": {
-    "position": "absolute",
-    "left": "0",
-    "top": "0",
-    "bottom": "0",
-    "width": "187"
-  },
-  "classify_goods_container": {
-    "width": "563",
-    "position": "absolute",
-    "right": "0",
-    "top": "0",
-    "bottom": "0"
-  },
-  "item_classify_title": {
-    "height": "92",
-    "flexDirection": "row",
-    "alignItems": "center",
-    "justifyContent": "center"
-  },
-  "item_classify_title_select": {
-    "backgroundColor": "#FFFFFF"
-  },
-  "item_classify_title_unselect": {
-    "backgroundColor": "#F6F6F6"
-  },
-  "classify_title": {
-    "fontSize": "30"
-  },
-  "classify_title_select": {
-    "color": "#9F866F"
-  },
-  "classify_title_unselect": {
-    "color": "#666666"
-  },
-  "classify_title_flag": {
-    "position": "absolute",
-    "top": "16",
-    "left": "0",
-    "width": "7",
-    "height": "60",
-    "backgroundColor": "#9F866F"
-  },
-  "classify_title_flag_select": {
-    "visibility": "visible"
-  },
-  "classify_title_flag_unselect": {
-    "visibility": "hidden"
-  },
-  "goods_scroller": {
-    "position": "absolute",
-    "top": "0",
-    "bottom": "0",
-    "left": "0",
-    "right": "0"
-  },
-  "main_image_cell": {
-    "width": "563",
-    "height": "268",
-    "alignItems": "center",
-    "marginTop": "15"
-  },
-  "main_image": {
-    "width": "533",
-    "height": "268"
-  },
-  "last_classify_tab_row": {
-    "width": "563",
-    "height": "243",
-    "flexDirection": "row",
-    "justifyContent": "flex-start"
-  },
-  "last_classify_tab_column": {
-    "marginLeft": "15",
-    "marginTop": "40",
-    "width": "122",
-    "height": "223",
-    "alignItems": "center"
-  },
-  "brand_image_container": {
-    "width": "122",
-    "height": "150"
-  },
-  "brand_image": {
-    "width": "122",
-    "height": "133"
-  },
-  "brand_title": {
-    "lines": 1,
-    "color": "#666666",
-    "fontSize": "20",
-    "textOverflow": "ellipsis"
-  },
-  "last_classify_tab_other_row": {
-    "width": "583",
-    "height": "240",
-    "flexDirection": "row",
-    "paddingRight": "15",
-    "paddingLeft": "15",
-    "justifyContent": "flex-start"
-  },
-  "last_classify_tab_other_column": {
-    "width": "184",
-    "height": "240",
-    "alignItems": "center",
-    "marginTop": "20"
-  },
-  "goods_image_container": {
-    "width": "184",
-    "height": "184",
-    "justifyContent": "center",
-    "alignItems": "center"
-  },
-  "goods_image": {
-    "width": "164",
-    "height": "164"
-  },
-  "goods_title": {
-    "lines": 1,
-    "color": "#666666",
-    "fontSize": "25"
-  }
-}
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var modal = weex.requireModule('modal');
-exports.default = {
-    name: "ClassifyPage",
-    data: function data() {
-        return {
-            isFristLoad: false,
-            classifyTitles: [],
-            goodsContent: {},
-            selectIndex: 0
-        };
-    },
-    methods: {
-        updataItem: function updataItem(index) {
-            return this.selectIndex === index ? 'item_classify_title_select' : 'item_classify_title_unselect';
-        },
-        updataItemText: function updataItemText(index) {
-            return this.selectIndex === index ? 'classify_title_select' : 'classify_title_unselect';
-        },
-        updataItemFlag: function updataItemFlag(index) {
-            return this.selectIndex === index ? 'classify_title_flag_select' : 'classify_title_flag_unselect';
-        },
-        onClick: function onClick(index) {
-            this.selectIndex = index;
-        },
-        getRowCount: function getRowCount(constant, selectPosition) {
-            return Math.ceil((this.goodsContent['HomepageGetUclassList' + this.classifyTitles[selectPosition].ucid]['data'].length - 1) / constant);
-        },
-        getColumnCount: function getColumnCount(constant, lines, selectPosition) {
-            var remainder = (this.goodsContent['HomepageGetUclassList' + this.classifyTitles[selectPosition].ucid]['data'].length - 1) % constant;
-            return lines == this.getRowCount(constant, selectPosition) ? remainder == 0 ? constant : remainder : constant;
-        },
-
-        getClassifyDetails: function getClassifyDetails() {
-            var _this = this;
-
-            var mainobj = new Object();
-            for (var i = 0; i < this.classifyTitles.length; i++) {
-                var parametersobj = new Object();
-                parametersobj['id'] = this.classifyTitles[i].ucid;
-                var obj = new Object();
-                obj['action'] = "GetUclassList";
-                obj['model'] = "Homepage";
-                obj['parameters'] = parametersobj;
-                mainobj['HomepageGetUclassList' + this.classifyTitles[i].ucid] = obj;
-            }
-            this.post("app/shopv3/pipe", "data=" + JSON.stringify(mainobj), function (response) {
-                if (response.ok) {
-                    if (response.data.message === "ok" || response.data.message === "OK") {
-                        var result = response.data.result;
-                        _this.goodsContent = result;
-                    } else {
-                        modal.toast({
-                            message: "网络请求失败",
-                            duration: 0.3
-                        });
-                    }
-                } else {
-                    modal.toast({
-                        message: "服务器异常",
-                        duration: 0.3
-                    });
-                }
-            });
-        }
-    },
-    created: function created() {
-        var _this2 = this;
-
-        this.post("app/shopv3/pipe", "data={\"HomepageBuildClass\":{\"model\":\"Homepage\",\"action\":\"BuildClass\",\"parameters\":{}}}", function (response) {
-            if (response.ok) {
-                if (response.data.message === "ok" || response.data.message === "OK") {
-                    var _classifyTitles;
-
-                    _this2.isFristLoad = true;
-                    var result = response.data.result.HomepageBuildClass;
-                    (_classifyTitles = _this2.classifyTitles).push.apply(_classifyTitles, _toConsumableArray(result['data']));
-                    _this2.getClassifyDetails();
-                } else {
-                    modal.toast({
-                        message: "网络请求失败",
-                        duration: 0.3
-                    });
-                }
-            } else {
-                modal.toast({
-                    message: "服务器异常",
-                    duration: 0.3
-                });
-            }
-        });
-    }
-};
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["app_content"]
-  }, [_vm._m(0), _c('div', {
-    staticClass: ["classify_content"]
-  }, [_c('div', {
-    staticClass: ["classify_title_container"]
-  }, [_c('list', {
-    staticClass: ["classify_title_container"],
-    attrs: {
-      "showScrollbar": "false"
-    }
-  }, _vm._l((_vm.classifyTitles), function(item, index) {
-    return _c('cell', {
-      appendAsTree: true,
-      attrs: {
-        "append": "tree"
-      },
-      on: {
-        "click": function($event) {
-          _vm.onClick(index)
-        }
-      }
-    }, [_c('div', {
-      class: ['item_classify_title', _vm.updataItem(index)]
-    }, [_c('text', {
-      class: ['classify_title', _vm.updataItemText(index)]
-    }, [_vm._v(_vm._s(item.name))]), _c('div', {
-      class: ['classify_title_flag', _vm.updataItemFlag(index)]
-    })])])
-  }))]), _c('div', {
-    staticClass: ["classify_goods_container"]
-  }, [_c('list', {
-    staticClass: ["goods_scroller"],
-    attrs: {
-      "showScrollbar": "false"
-    }
-  }, [_c('cell', {
-    appendAsTree: true,
-    attrs: {
-      "append": "tree"
-    }
-  }, [(_vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][0].visiable === 1) ? _c('div', {
-    staticClass: ["main_image_cell"]
-  }, [_c('image', {
-    staticClass: ["main_image"],
-    attrs: {
-      "src": _vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][0].pic_url
-    }
-  })]) : _vm._e()]), (_vm.selectIndex === _vm.classifyTitles.length - 1) ? _c('cell', {
-    appendAsTree: true,
-    attrs: {
-      "append": "tree"
-    }
-  }, _vm._l((_vm.getRowCount(4, _vm.selectIndex)), function(index1) {
-    return _c('div', {
-      staticClass: ["last_classify_tab_row"]
-    }, _vm._l((_vm.getColumnCount(4, index1, _vm.selectIndex)), function(index2) {
-      return _c('div', {
-        staticClass: ["last_classify_tab_column"]
-      }, [_c('div', {
-        staticClass: ["brand_image_container"]
-      }, [_c('image', {
-        staticClass: ["brand_image"],
-        attrs: {
-          "src": _vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 4 + index2].pic_url
-        }
-      })]), _c('text', {
-        staticClass: ["brand_title"]
-      }, [_vm._v(_vm._s(_vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 4 + index2].name))])])
-    }))
-  })) : _c('cell', {
-    appendAsTree: true,
-    attrs: {
-      "append": "tree"
-    }
-  }, _vm._l((_vm.getRowCount(3, _vm.selectIndex)), function(index1) {
-    return _c('div', {
-      staticClass: ["last_classify_tab_other_row"]
-    }, _vm._l((_vm.getColumnCount(3, index1, _vm.selectIndex)), function(index2) {
-      return _c('div', {
-        staticClass: ["last_classify_tab_other_column"]
-      }, [_c('div', {
-        staticClass: ["goods_image_container"]
-      }, [_c('image', {
-        staticClass: ["goods_image"],
-        attrs: {
-          "src": _vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 3 + index2].pic_url
-        }
-      })]), _c('text', {
-        staticClass: ["goods_title"]
-      }, [_vm._v(_vm._s(_vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 3 + index2].name))])])
-    }))
-  }))])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["title_content"]
-  }, [_c('div', {
-    staticClass: ["title_container"]
-  }, [_c('image', {
-    staticClass: ["title_search_icon"],
-    attrs: {
-      "src": "http://www.lidiwo.com/icon_search.png"
-    }
-  }), _c('text', {
-    staticClass: ["title_search_text"]
-  }, [_vm._v("纯米超级品牌日")])])])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(85)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(86)
-
-/* template */
-var __vue_template__ = __webpack_require__(95)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\TastePage.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-0c7bcee6"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "app_content": {
-    "flexDirection": "column",
-    "position": "absolute",
-    "top": "0",
-    "bottom": "0",
-    "width": "750",
-    "backgroundColor": "#F6F6F6"
-  },
-  "title_container": {
-    "borderBottomColor": "#E6E6E6",
-    "borderBottomWidth": "1",
-    "backgroundColor": "#FFFFFF",
-    "width": "750",
-    "height": "100",
-    "alignItems": "center",
-    "justifyContent": "center"
-  },
-  "taste_title": {
-    "color": "#333333",
-    "fontSize": "32"
-  },
-  "taste_content_container": {
-    "width": "750",
-    "position": "absolute",
-    "top": "100",
-    "bottom": "0"
-  },
-  "bottom_content": {
-    "width": "750",
-    "height": "333",
-    "alignItems": "center",
-    "justifyContent": "center"
-  },
-  "line_content": {
-    "width": "750",
-    "height": "50",
-    "flexDirection": "row",
-    "alignItems": "center",
-    "justifyContent": "center"
-  },
-  "bottom_line": {
-    "width": "150",
-    "height": "1",
-    "backgroundColor": "#999999"
-  },
-  "bottom_line_text": {
-    "marginRight": "30",
-    "marginLeft": "30",
-    "fontSize": "22",
-    "color": "#999999"
-  }
-}
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _TasteModule = __webpack_require__(87);
-
-var _TasteModule2 = _interopRequireDefault(_TasteModule);
-
-var _TasteModule3 = __webpack_require__(91);
-
-var _TasteModule4 = _interopRequireDefault(_TasteModule3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var modal = weex.requireModule('modal');
-exports.default = {
-    name: "TastePage",
-    data: function data() {
-        return {
-            showDatas: [],
-            loadFinish: false //标记是否已经成功加载数据一次
-        };
-    },
-    components: { TasteModule1: _TasteModule2.default, TasteModule2: _TasteModule4.default },
-    created: function created() {
-        var _this = this;
-
-        if (this.loadFinish) {
-            return;
-        }
-
-        this.post("app/shopv3/pipe", "data={\"PinweiGetHome\":{\"model\":\"Pinwei\",\"action\":\"GetHome\",\"parameters\":{}}}", function (response) {
-            if (response.ok) {
-                if (response.data.message === "ok" || response.data.message === "OK") {
-                    var _showDatas;
-
-                    _this.loadFinish = true;
-                    var result = response.data.result.PinweiGetHome.data;
-                    (_showDatas = _this.showDatas).push.apply(_showDatas, _toConsumableArray(result['rags']));
-                } else {
-                    modal.toast({
-                        message: "网络请求失败",
-                        duration: 0.3
-                    });
-                }
-            } else {
-                modal.toast({
-                    message: "服务器异常",
-                    duration: 0.3
-                });
-            }
-        });
-    }
-};
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(88)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(89)
-
-/* template */
-var __vue_template__ = __webpack_require__(90)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\TasteModule1.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-6d8fcc84"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "taste_wrapper": {
-    "width": "750",
-    "height": "580",
-    "backgroundColor": "#FFFFFF",
-    "flexDirection": "column"
-  },
-  "banner_slider": {
-    "width": "750",
-    "height": "390"
-  },
-  "banner_image_container": {
-    "width": "750",
-    "height": "390",
-    "flexDirection": "row",
-    "alignItems": "center",
-    "justifyContent": "center"
-  },
-  "banner_image": {
-    "borderBottomLeftRadius": "5",
-    "borderTopLeftRadius": "5",
-    "borderBottomRightRadius": "5",
-    "borderTopRightRadius": "5",
-    "width": "710",
-    "height": "355"
-  },
-  "kingkong_scroller": {
-    "marginTop": "5",
-    "width": "750",
-    "height": "167",
-    "paddingLeft": "20",
-    "flexDirection": "row"
-  },
-  "kingkong_content_container": {
-    "flexDirection": "column",
-    "width": "150",
-    "height": "167",
-    "marginRight": "20",
-    "alignItems": "center"
-  },
-  "kingkong_image": {
-    "width": "150",
-    "height": "129",
-    "borderBottomLeftRadius": "5",
-    "borderTopLeftRadius": "5",
-    "borderBottomRightRadius": "5",
-    "borderTopRightRadius": "5"
-  },
-  "kingkong_title": {
-    "marginTop": "10",
-    "fontSize": "25",
-    "color": "#333333"
-  }
-}
-
-/***/ }),
-/* 89 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-    name: "TasteModule1",
-    props: ['contentData'],
-    data: function data() {
-        return {};
-    }
-};
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["taste_wrapper"]
-  }, [_c('slider', {
-    staticClass: ["banner_slider"],
-    attrs: {
-      "autoPlay": "true",
-      "interval": "5000",
-      "infinite": "true",
-      "showIndicators": "false",
-      "scrollable": "true"
-    }
-  }, _vm._l((_vm.contentData[0]['banners']), function(item) {
-    return _c('div', {
-      staticClass: ["banner_image_container"]
-    }, [_c('image', {
-      staticClass: ["banner_image"],
-      attrs: {
-        "src": item.pic_url
-      }
-    })])
-  })), _c('scroller', {
-    staticClass: ["kingkong_scroller"],
-    attrs: {
-      "showScrollbar": "false",
-      "scrollDirection": "horizontal"
-    }
-  }, _vm._l((_vm.contentData[1]['items'].length), function(index) {
-    return _c('div', {
-      staticClass: ["kingkong_content_container"]
-    }, [_c('image', {
-      staticClass: ["kingkong_image"],
-      attrs: {
-        "src": _vm.contentData[1]['items'][index - 1].pic_url
-      }
-    }), _c('text', {
-      staticClass: ["kingkong_title"]
-    }, [_vm._v(_vm._s(_vm.contentData[1]['items'][index - 1].title))])])
-  }))])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(92)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(93)
-
-/* template */
-var __vue_template__ = __webpack_require__(94)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\TasteModule2.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-6d739d82"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "taste_wrapper": {
-    "marginTop": "20",
-    "backgroundColor": "#FFFFFF",
-    "flexDirection": "column"
-  },
-  "module_title_container": {
-    "width": "750",
-    "height": "97",
-    "justifyContent": "center",
-    "alignItems": "center"
-  },
-  "module_title": {
-    "color": "#333333",
-    "fontSize": "30"
-  },
-  "weekly_magazine": {
-    "width": "750",
-    "height": "542",
-    "backgroundColor": "#FFFFFF",
-    "flexDirection": "column"
-  },
-  "weekly_magazine_main_image_container": {
-    "width": "750",
-    "height": "197",
-    "justifyContent": "center",
-    "alignItems": "center"
-  },
-  "weekly_magazine_main_image": {
-    "width": "710",
-    "height": "197",
-    "borderBottomLeftRadius": "5",
-    "borderTopLeftRadius": "5",
-    "borderBottomRightRadius": "5",
-    "borderTopRightRadius": "5"
-  },
-  "weekly_magazine_scroller": {
-    "marginTop": "15",
-    "flexDirection": "row",
-    "width": "750",
-    "height": "323",
-    "paddingLeft": "20"
-  },
-  "weekly_magazine_content_container": {
-    "width": "212",
-    "height": "323",
-    "marginRight": "20",
-    "flexDirection": "column"
-  },
-  "weekly_magazine_goods_image": {
-    "width": "212",
-    "height": "212",
-    "backgroundColor": "#FAFAFA"
-  },
-  "weekly_magazine_goods_title": {
-    "lines": 1,
-    "textOverflow": "ellipsis",
-    "color": "#333333",
-    "fontSize": "28",
-    "marginTop": "10"
-  },
-  "weekly_magazine_goods_price": {
-    "color": "#BD2222",
-    "fontSize": "25",
-    "marginTop": "10"
-  },
-  "special_column": {
-    "width": "750",
-    "height": "597",
-    "flexDirection": "column",
-    "alignItems": "center"
-  },
-  "special_column_iamge": {
-    "width": "710",
-    "height": "355",
-    "borderBottomLeftRadius": "5",
-    "borderTopLeftRadius": "5",
-    "borderBottomRightRadius": "5",
-    "borderTopRightRadius": "5"
-  },
-  "special_column_title": {
-    "marginTop": "20",
-    "color": "#333333",
-    "fontSize": "30"
-  },
-  "special_column_subtitle": {
-    "marginTop": "20",
-    "color": "#999999",
-    "fontSize": "25"
-  },
-  "special_column_discover_container": {
-    "backgroundColor": "#997E66",
-    "borderBottomLeftRadius": "5",
-    "borderTopLeftRadius": "5",
-    "borderBottomRightRadius": "5",
-    "borderTopRightRadius": "5",
-    "paddingLeft": "40",
-    "paddingRight": "40",
-    "paddingTop": "10",
-    "paddingBottom": "10",
-    "marginTop": "20"
-  },
-  "special_column_discover": {
-    "fontSize": "30",
-    "color": "#FFFFFF"
-  },
-  "special_column_image_grid": {
-    "width": "750",
-    "height": "385",
-    "flexDirection": "column",
-    "alignItems": "center"
-  },
-  "image_grid_horizontal": {
-    "width": "710",
-    "height": "174",
-    "flexDirection": "row",
-    "justifyContent": "space-between",
-    "marginBottom": "15"
-  },
-  "image_grid_vertical": {
-    "width": "348",
-    "height": "174"
-  },
-  "show_image": {
-    "width": "348",
-    "height": "174",
-    "borderBottomLeftRadius": "5",
-    "borderTopLeftRadius": "5",
-    "borderBottomRightRadius": "5",
-    "borderTopRightRadius": "5"
-  }
-}
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _util = __webpack_require__(0);
-
-var _util2 = _interopRequireDefault(_util);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    name: "TasteModule1",
-    props: ['contentData', 'contentTitle'],
-    data: function data() {
-        return {};
-    },
-    methods: {
-        formatPrice: function formatPrice(price_min) {
-            return _util2.default.formatMoney(price_min);
-        }
-    }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["taste_wrapper"]
-  }, [_c('div', {
-    staticClass: ["module_title_container"]
-  }, [_c('text', {
-    staticClass: ["module_title"]
-  }, [_vm._v(_vm._s(_vm.contentTitle))])]), _vm._l((_vm.contentData.length), function(index) {
-    return _c('div', [(_vm.contentData[index - 1].editorName === 'pinwei_home_big_article') ? _c('div', {
-      staticClass: ["weekly_magazine"]
-    }, [_c('div', {
-      staticClass: ["weekly_magazine_main_image_container"]
-    }, [_c('image', {
-      staticClass: ["weekly_magazine_main_image"],
-      attrs: {
-        "src": _vm.contentData[index - 1].pic_url
-      }
-    })]), _c('scroller', {
-      staticClass: ["weekly_magazine_scroller"],
-      attrs: {
-        "showScrollbar": "false",
-        "scrollDirection": "horizontal"
-      }
-    }, _vm._l((_vm.contentData[index - 1]['goods_list'].length), function(goodsIndex) {
-      return _c('div', {
-        staticClass: ["weekly_magazine_content_container"]
-      }, [_c('image', {
-        staticClass: ["weekly_magazine_goods_image"],
-        attrs: {
-          "src": _vm.contentData[index - 1]['goods_list'][goodsIndex - 1].pic_url
-        }
-      }), _c('text', {
-        staticClass: ["weekly_magazine_goods_title"]
-      }, [_vm._v(_vm._s(_vm.contentData[index - 1]['goods_list'][goodsIndex - 1].name) + "\n                    ")]), _c('text', {
-        staticClass: ["weekly_magazine_goods_price"]
-      }, [_vm._v("¥" + _vm._s(_vm.formatPrice(_vm.contentData[index - 1]['goods_list'][goodsIndex - 1].price_min)) + "\n                    ")])])
-    }))]) : (_vm.contentData[index - 1].editorName === 'pinwei_home_article_cover') ? _c('div', {
-      staticClass: ["special_column"]
-    }, [_c('image', {
-      staticClass: ["special_column_iamge"],
-      attrs: {
-        "src": _vm.contentData[index - 1].pic_url
-      }
-    }), _c('text', {
-      staticClass: ["special_column_title"]
-    }, [_vm._v(_vm._s(_vm.contentData[index - 1].title))]), _c('text', {
-      staticClass: ["special_column_subtitle"]
-    }, [_vm._v(_vm._s(_vm.contentData[index - 1].subtitle))]), _vm._m(0, true)]) : (_vm.contentData[index - 1].editorName === 'pinwei_home_image_grid') ? _c('div', {
-      staticClass: ["special_column_image_grid"]
-    }, _vm._l((_vm.contentData[index - 1]['pics'].length / 2), function(index1) {
-      return _c('div', {
-        staticClass: ["image_grid_horizontal"]
-      }, _vm._l((2), function(index2) {
-        return _c('div', {
-          staticClass: ["image_grid_vertical"]
-        }, [_c('image', {
-          staticClass: ["show_image"],
-          attrs: {
-            "src": _vm.contentData[index - 1]['pics'][(index1 - 1) * 2 + (index2 - 1)].pic_url
-          }
-        })])
-      }))
-    })) : _c('div', [_c('text', [_vm._v(_vm._s(_vm.contentData[index - 1].editorName))])])])
-  })], 2)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["special_column_discover_container"]
-  }, [_c('text', {
-    staticClass: ["special_column_discover"]
-  }, [_vm._v("去发现")])])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["app_content"]
-  }, [_vm._m(0), _c('div', {
-    staticClass: ["taste_content_container"]
-  }, [_c('list', {
-    attrs: {
-      "showScrollbar": "false"
-    }
-  }, [_vm._l((_vm.showDatas), function(item, index) {
-    return _c('cell', {
-      appendAsTree: true,
-      attrs: {
-        "append": "tree"
-      }
-    }, [(item.editorName === 'pure_container') ? _c('div', [_c('taste-module1', {
-      attrs: {
-        "contentData": item['rags']
-      }
-    })], 1) : (item.editorName === 'pinwei_home_floor') ? _c('div', [_c('taste-module2', {
-      attrs: {
-        "contentData": item['rags'],
-        "contentTitle": item.title
-      }
-    })], 1) : _c('div', [_c('text', [_vm._v(_vm._s(item.editorName))])])])
-  }), _vm._m(1)], 2)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["title_container"]
-  }, [_c('text', {
-    staticClass: ["taste_title"]
-  }, [_vm._v("品味")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('cell', {
-    appendAsTree: true,
-    attrs: {
-      "append": "tree"
-    }
-  }, [_c('div', {
-    staticClass: ["bottom_content"]
-  }, [_c('div', {
-    staticClass: ["line_content"]
-  }, [_c('div', {
-    staticClass: ["bottom_line"]
-  }), _c('text', {
-    staticClass: ["bottom_line_text"]
-  }, [_vm._v("底线在此，不能更低了")]), _c('div', {
-    staticClass: ["bottom_line"]
-  })])])])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(97)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(98)
-
-/* template */
-var __vue_template__ = __webpack_require__(99)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\ShoppingCartPage.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-565615e7"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 97 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "app_wrapper": {
-    "position": "absolute",
-    "top": "0",
-    "bottom": "0",
-    "width": "750",
-    "backgroundColor": "#FAFAFC"
-  },
-  "title_container": {
-    "borderBottomColor": "#E6E6E6",
-    "borderBottomWidth": "1",
-    "backgroundColor": "#FFFFFF",
-    "width": "750",
-    "height": "100",
-    "alignItems": "center",
-    "justifyContent": "center"
-  },
-  "taste_title": {
-    "color": "#333333",
-    "fontSize": "32"
-  },
-  "edit_shopping_car_container": {
-    "position": "absolute",
-    "right": "0",
-    "top": "0",
-    "bottom": "0",
-    "justifyContent": "center"
-  },
-  "edit_shopping_car": {
-    "paddingLeft": "25",
-    "paddingRight": "25",
-    "fontSize": "27",
-    "color": "#444444"
-  },
-  "app_content": {
-    "position": "absolute",
-    "top": "100",
-    "bottom": "0",
-    "width": "750",
-    "justifyContent": "center",
-    "alignItems": "center"
-  },
-  "logging_success": {
-    "position": "absolute",
-    "top": "0",
-    "bottom": "0",
-    "width": "750",
-    "backgroundColor": "#FF0000"
-  },
-  "no_logging": {
-    "flexDirection": "column",
-    "width": "750",
-    "alignItems": "center"
-  },
-  "hite_info": {
-    "marginTop": "40",
-    "color": "#999999",
-    "fontSize": "28"
-  },
-  "go_logging": {
-    "marginTop": "30",
-    "color": "#777777",
-    "fontSize": "32",
-    "borderBottomColor": "#AAAAAA",
-    "borderTopColor": "#AAAAAA",
-    "borderLeftColor": "#AAAAAA",
-    "borderRightColor": "#AAAAAA",
-    "borderTopWidth": "1",
-    "borderBottomWidth": "1",
-    "borderRightWidth": "1",
-    "borderLeftWidth": "1",
-    "borderBottomRightRadius": "5",
-    "borderTopLeftRadius": "5",
-    "borderBottomLeftRadius": "5",
-    "borderTopRightRadius": "5",
-    "paddingTop": "15",
-    "paddingBottom": "15",
-    "paddingRight": "40",
-    "paddingLeft": "40"
-  }
-}
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-    name: "ShoppingCartPage",
-    data: function data() {
-        return {
-            isLoggingSuccess: false
-        };
-    }
-};
-
-/***/ }),
-/* 99 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["app_wrapper"]
-  }, [_c('div', {
-    staticClass: ["title_container"]
-  }, [_c('text', {
-    staticClass: ["taste_title"]
-  }, [_vm._v("购物车")]), _c('div', {
-    staticClass: ["edit_shopping_car_container"]
-  }, [_c('text', {
-    staticClass: ["edit_shopping_car"],
-    style: {
-      visibility: _vm.isLoggingSuccess ? 'visible' : 'hidden'
-    }
-  }, [_vm._v("编辑")])])]), _c('div', {
-    staticClass: ["app_content"]
-  }, [_vm._m(0), _c('div', {
-    staticClass: ["logging_success"],
-    style: {
-      visibility: _vm.isLoggingSuccess ? 'visible' : 'hidden'
-    }
-  }, [_c('text', [_vm._v("登录成功")])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["no_logging"]
-  }, [_c('image', {
-    staticStyle: {
-      width: "213px",
-      height: "183px"
-    },
-    attrs: {
-      "src": "http://www.lidiwo.com/cart_empty.png"
-    }
-  }), _c('text', {
-    staticClass: ["hite_info"]
-  }, [_vm._v("登录后才能看到商品哦~")]), _c('text', {
-    staticClass: ["go_logging"]
-  }, [_vm._v("立即登录")])])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 100 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(101)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(102)
-
-/* template */
-var __vue_template__ = __webpack_require__(103)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\PersonPage.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-32527cd8"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 101 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "personal_scroller": {
-    "flexDirection": "column"
-  },
-  "app_content": {
-    "flexDirection": "column",
-    "width": "750",
-    "backgroundColor": "#F4F4F4"
-  },
-  "user_center_header": {
-    "flexDirection": "column",
-    "width": "750",
-    "height": "323"
-  },
-  "bg_image": {
-    "position": "absolute",
-    "top": "0",
-    "bottom": "0",
-    "left": "0",
-    "right": "0"
-  },
-  "user_center_header_one": {
-    "flexDirection": "row",
-    "width": "750",
-    "height": "100",
-    "justifyContent": "flex-end",
-    "alignItems": "flex-end"
-  },
-  "personal_image": {
-    "width": "90",
-    "height": "90"
-  },
-  "personal_set": {
-    "marginRight": "25"
-  },
-  "personal_message": {
-    "marginRight": "20"
-  },
-  "user_center_header_two": {
-    "width": "750",
-    "height": "150",
-    "paddingLeft": "20",
-    "flexDirection": "row",
-    "paddingRight": "20",
-    "alignItems": "center",
-    "justifyContent": "space-between"
-  },
-  "user_center_hend_and_username": {
-    "flexDirection": "row",
-    "alignItems": "center"
-  },
-  "personal_logged": {
-    "width": "150",
-    "height": "150"
-  },
-  "personal_info": {
-    "color": "#FFFFFF",
-    "fontSize": "30",
-    "marginLeft": "25"
-  },
-  "personal_icon_right": {
-    "width": "15",
-    "height": "29"
-  },
-  "personal_order_container": {
-    "paddingLeft": "20",
-    "paddingRight": "20",
-    "width": "750",
-    "height": "275",
-    "backgroundColor": "#FFFFFF",
-    "flexDirection": "column"
-  },
-  "personal_order_one": {
-    "flex": 2,
-    "borderBottomWidth": "1",
-    "borderBottomColor": "#E5E5E5",
-    "justifyContent": "space-between",
-    "alignItems": "center",
-    "flexDirection": "row"
-  },
-  "personal_order_two": {
-    "flex": 3,
-    "flexDirection": "row",
-    "marginTop": "15"
-  },
-  "order_my_text": {
-    "color": "#333333",
-    "fontSize": "30"
-  },
-  "personal_order_all": {
-    "flexDirection": "row",
-    "alignItems": "center"
-  },
-  "order_all_text": {
-    "fontSize": "25",
-    "color": "#999999"
-  },
-  "order_all_image": {
-    "width": "25",
-    "height": "25"
-  },
-  "order_type": {
-    "alignItems": "center",
-    "flexDirection": "column",
-    "width": "177",
-    "height": "165"
-  },
-  "order_type_image": {
-    "width": "70",
-    "height": "70"
-  },
-  "order_type_text": {
-    "marginTop": "15",
-    "fontSize": "27",
-    "color": "#666666"
-  },
-  "personal_banner": {
-    "width": "750",
-    "height": "217"
-  },
-  "banner_image": {
-    "width": "750",
-    "height": "217"
-  },
-  "personal_service_container": {
-    "paddingLeft": "20",
-    "paddingRight": "20",
-    "width": "750",
-    "backgroundColor": "#FFFFFF",
-    "flexDirection": "column"
-  },
-  "personal_service_one": {
-    "height": "110",
-    "flexDirection": "row",
-    "alignItems": "center"
-  },
-  "personal_service_two": {
-    "flexDirection": "column"
-  },
-  "service_type_row": {
-    "flexDirection": "row",
-    "borderTopWidth": "1",
-    "borderTopColor": "#E5E5E5"
-  },
-  "service_type_column": {
-    "marginTop": "20",
-    "flexDirection": "column",
-    "width": "178",
-    "height": "200",
-    "alignItems": "center"
-  },
-  "service_type_title": {
-    "fontSize": "25",
-    "color": "#999999"
-  }
-}
-
-/***/ }),
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var modal = weex.requireModule('modal');
-
-var orderType = [{
-    image: "http://www.lidiwo.com/personal_icon_paid_copy.png",
-    text: "待付款"
-}, {
-    image: "http://www.lidiwo.com/personal_icon_receipt.png",
-    text: "待发货"
-}, {
-    image: "http://www.lidiwo.com/personal_icon_appraisal.png",
-    text: "待评价"
-}, {
-    image: "http://www.lidiwo.com/personal_icon_return_goods.png",
-    text: "退款/售后"
-}];
-var serviceData = [{
-    big_icon: "http://www.lidiwo.com/personal_icon_group_buying.png",
-    name: "拼团订单",
-    title: ""
-}, {
-    big_icon: "http://www.lidiwo.com/personal_icon_coupon_new.png",
-    name: "优惠券",
-    title: ""
-}, {
-    big_icon: "http://www.lidiwo.com/personal_icon_gift_nor.png",
-    name: "新人邀请",
-    title: "立享红包"
-}, {
-    big_icon: "http://www.lidiwo.com/set_icon_share.png",
-    name: "分享app",
-    title: ""
-}, {
-    big_icon: "http://www.lidiwo.com/personal_icon_collection_nor.png",
-    name: "我的收藏",
-    title: ""
-}, {
-    big_icon: "http://www.lidiwo.com/personal_icon_assets_nor.png",
-    name: "我的资产",
-    title: "积分/特权码"
-}, {
-    big_icon: "http://www.lidiwo.com/personal_icon_address_nor.png",
-    name: "地址管理",
-    title: ""
-}, {
-    big_icon: "http://www.lidiwo.com/personal_icon_service_center.png",
-    name: "服务中心",
-    title: "在线客服"
-}, {
-    big_icon: "http://www.lidiwo.com/personal_icon_feedback.png",
-    name: "用户反馈",
-    title: ""
-}, {
-    big_icon: "http://cdn.cnbj0.fds.api.mi-img.com/miio.files/commonfile_png_b7e92d019b956aa2d705690574b193cf.png",
-    name: "帮助中心",
-    title: ""
-}];
-
-exports.default = {
-    name: "PersonPage",
-    data: function data() {
-        return {
-            orderStatus: orderType,
-            myService: serviceData,
-            isFristLoad: false,
-            groupBuyGroupBuyNoticeCount: {},
-            homepageGetSuperBanner: {}
-        };
-    },
-    methods: {
-        getRowCount: function getRowCount(constant) {
-            return Math.ceil(this.myService.length / constant);
-        },
-        getColumnCount: function getColumnCount(constant, lines) {
-            var remainder = this.myService.length % constant;
-            return lines == this.getRowCount(constant) ? remainder == 0 ? constant : remainder : constant;
-        }
-    },
-    created: function created() {
-        var _this = this;
-
-        if (this.isFristLoad) {
-            return;
-        }
-        this.post("app/shopv3/pipe", "data={\"HomepageGetSuperBanner\":{\"model\":\"Homepage\",\"action\":\"GetSuperBanner\",\"parameters\":{}},\"GroupBuyGroupBuyNoticeCount\":{\"model\":\"GroupBuy\",\"action\":\"GroupBuyNoticeCount\",\"parameters\":{}}}", function (response) {
-            if (response.ok) {
-                if (response.data.message === "ok" || response.data.message === "OK") {
-                    _this.isFristLoad = true;
-                    var result = response.data.result;
-                    _this.homepageGetSuperBanner = result.HomepageGetSuperBanner;
-                } else {
-                    modal.toast({
-                        message: "网络请求失败",
-                        duration: 0.3
-                    });
-                }
-            } else {
-                modal.toast({
-                    message: "服务器异常",
-                    duration: 0.3
-                });
-            }
-        });
-    }
-};
-
-/***/ }),
-/* 103 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('scroller', {
-    staticClass: ["personal_scroller"],
-    attrs: {
-      "scrollDirection": "vertical",
-      "showScrollbar": "false"
-    }
-  }, [_c('div', {
-    staticClass: ["app_content"]
-  }, [_vm._m(0), _c('div', {
-    staticClass: ["personal_order_container"]
-  }, [_vm._m(1), _c('div', {
-    staticClass: ["personal_order_two"]
-  }, _vm._l((_vm.orderStatus), function(orderT) {
-    return _c('div', {
-      staticClass: ["order_type"]
-    }, [_c('image', {
-      staticClass: ["order_type_image"],
-      attrs: {
-        "src": orderT.image
-      }
-    }), _c('text', {
-      staticClass: ["order_type_text"]
-    }, [_vm._v(_vm._s(orderT.text))])])
-  }))]), _c('div', {
-    staticClass: ["personal_banner"]
-  }, [_c('image', {
-    staticClass: ["banner_image"],
-    attrs: {
-      "src": _vm.homepageGetSuperBanner.data['data'][0].pic_url
-    }
-  })]), _c('div', {
-    staticClass: ["personal_service_container"]
-  }, [_vm._m(2), _c('div', {
-    staticClass: ["personal_service_two"]
-  }, _vm._l((_vm.getRowCount(4)), function(index1) {
-    return _c('div', {
-      staticClass: ["service_type_row"]
-    }, _vm._l((_vm.getColumnCount(4, index1)), function(index2) {
-      return _c('div', {
-        staticClass: ["service_type_column"]
-      }, [_c('image', {
-        staticClass: ["order_type_image"],
-        attrs: {
-          "src": _vm.myService[(index1 - 1) * 4 + index2 - 1].big_icon
-        }
-      }), _c('text', {
-        staticClass: ["order_type_text"]
-      }, [_vm._v(_vm._s(_vm.myService[(index1 - 1) * 4 + index2 - 1].name))]), _c('text', {
-        staticClass: ["service_type_title"]
-      }, [_vm._v(_vm._s(_vm.myService[(index1 - 1) * 4 + index2 - 1].title))])])
-    }))
-  }))])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["user_center_header"]
-  }, [_c('image', {
-    staticClass: ["bg_image"],
-    attrs: {
-      "src": "http://www.lidiwo.com/personal_bg_top.png"
-    }
-  }), _c('div', {
-    staticClass: ["user_center_header_one"]
-  }, [_c('image', {
-    staticClass: ["personal_image", "personal_set"],
-    attrs: {
-      "src": "http://www.lidiwo.com/personal_icon_set_nor.png"
-    }
-  }), _c('image', {
-    staticClass: ["personal_image", "personal_message"],
-    attrs: {
-      "src": "http://www.lidiwo.com/personal_icon_message_nor.png"
-    }
-  })]), _c('div', {
-    staticClass: ["user_center_header_two"]
-  }, [_c('div', {
-    staticClass: ["user_center_hend_and_username"]
-  }, [_c('image', {
-    staticClass: ["personal_logged"],
-    attrs: {
-      "src": "http://www.lidiwo.com/user_not_logged.png"
-    }
-  }), _c('text', {
-    staticClass: ["personal_info"]
-  }, [_vm._v("未登录")])]), _c('image', {
-    staticClass: ["personal_icon_right"],
-    attrs: {
-      "src": "http://www.lidiwo.com/icon_right_more_white.png"
-    }
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["personal_order_one"]
-  }, [_c('text', {
-    staticClass: ["order_my_text"]
-  }, [_vm._v("我的订单")]), _c('div', {
-    staticClass: ["personal_order_all"]
-  }, [_c('text', {
-    staticClass: ["order_all_text"]
-  }, [_vm._v("全部订单")]), _c('image', {
-    staticClass: ["order_all_image"],
-    attrs: {
-      "src": "http://www.lidiwo.com/icon_right_more.png"
-    }
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["personal_service_one"]
-  }, [_c('text', {
-    staticClass: ["order_my_text"]
-  }, [_vm._v("我的服务")])])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 104 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["app-wrapper"]
-  }, [_c('div', {
-    ref: "r_box_container",
-    staticClass: ["r_box_container"]
-  }, _vm._l((5), function(flag) {
-    return _c('div', {
-      staticClass: ["r-box"],
-      style: {
-        left: (flag - 1) * 750
-      }
-    }, [(flag === 1) ? _c('home_page') : _vm._e(), (flag === 2) ? _c('classify_page') : _vm._e(), (flag === 3) ? _c('taste_page') : _vm._e(), (flag === 4) ? _c('shopping_cart_page') : _vm._e(), (flag === 5) ? _c('person_page') : _vm._e()], 1)
-  })), _c('navigation_bar', {
-    on: {
-      "selectIndex": _vm.getSelectIndex
-    }
-  })], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(106)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(107)
-
-/* template */
-var __vue_template__ = __webpack_require__(108)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\index.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-1a4d8e3c"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "wrapper": {
-    "position": "absolute",
-    "top": "0",
-    "bottom": "0",
-    "right": "0",
-    "left": "0"
-  }
-}
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-
-exports.default = {
-    name: 'App',
-    data: function data() {
-        return {};
-    }
-};
-
-/***/ }),
-/* 108 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["wrapper"]
-  }, [_c('router-view')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 109 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _index = __webpack_require__(110);
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_index).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 110 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(111)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(112)
-
-/* template */
-var __vue_template__ = __webpack_require__(113)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -10162,7 +6598,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 111 */
+/* 58 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -10173,7 +6609,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 112 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10404,7 +6840,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 113 */
+/* 60 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10473,6 +6909,3861 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     style: _vm.mrDotTextStyle
   }, [_vm._v(_vm._s(_vm.getDot(_vm.tplIndexOfSeconds, -1)))])]) : _vm._e()])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["content"]
+  }, [_c('div', {
+    staticClass: ["flash_sale_title"]
+  }, [_c('div', {
+    staticClass: ["title_container"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v(_vm._s(_vm.flashsaleData.title))]), _c('div', {
+    staticClass: ["title_countdown"],
+    style: {
+      visibility: _vm.isCountDownFinish ? 'hidden' : 'visible'
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "20px",
+      height: "20px",
+      marginLeft: "30px"
+    },
+    attrs: {
+      "src": "http://www.lidiwo.com/ltp_icon_time.png"
+    }
+  }), _c('text', {
+    staticStyle: {
+      color: "#A92112",
+      fontSize: "20px",
+      marginLeft: "5px"
+    }
+  }, [_vm._v(_vm._s(_vm.specialTime(_vm.flashsaleData.start_time * 1000)) + "点场")]), _c('wxc-countdown', {
+    attrs: {
+      "tpl": "{h}:{m}:{s}",
+      "timeBoxStyle": _vm.timeBoxStyle,
+      "timeTextStyle": _vm.timeTextStyle,
+      "dotTextStyle": _vm.dotTextStyle,
+      "time": _vm.flashsaleData.end_time * 1000
+    },
+    on: {
+      "wxcOnComplete": function($event) {
+        _vm.countDownFinish()
+      }
+    }
+  })], 1)]), _vm._m(0)]), _c('scroller', {
+    staticClass: ["content_scroller"],
+    attrs: {
+      "showScrollbar": "false",
+      "scrollDirection": "horizontal",
+      "offsetAccuracy": "5px"
+    }
+  }, _vm._l((_vm.flashsaleData['goods'].length), function(index) {
+    return _c('div', {
+      staticClass: ["flash_sale_content"]
+    }, [_c('div', {
+      staticClass: ["goods_main_image_container"]
+    }, [_c('image', {
+      staticClass: ["goods_main_image"],
+      attrs: {
+        "src": _vm.flashsaleData['goods'][index - 1].imgs.img800
+      }
+    }), _c('div', {
+      staticClass: ["goods_discount_container"],
+      style: {
+        visibility: _vm.isEmpty(_vm.flashsaleData['goods'][index - 1].discount_desc) ? 'hidden' : 'visible'
+      }
+    }, [_c('text', {
+      staticClass: ["goods_discount"]
+    }, [_vm._v(_vm._s(_vm.flashsaleData['goods'][index - 1].discount_desc))])])]), _c('text', {
+      staticClass: ["goods_title"]
+    }, [_vm._v(_vm._s(_vm.flashsaleData['goods'][index - 1].name))]), _c('div', {
+      staticClass: ["goods_money", "goods_money_container"]
+    }, [_c('div', {
+      staticClass: ["goods_money"]
+    }, [_c('text', {
+      staticClass: ["rmb_flag"]
+    }, [_vm._v("¥")]), _c('text', {
+      staticClass: ["goods_flash_price"]
+    }, [_vm._v(_vm._s(_vm.flashPrice(index - 1)))])]), _c('text', {
+      staticClass: ["goods_market_price"]
+    }, [_vm._v("¥" + _vm._s(_vm.marketPrice(index - 1)))])])])
+  }))])
+},"@render":function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["content"],
+    attrs: {
+      "@isComponentRoot": true,
+      "@templateId": _vm._uid,
+      "@componentProps": _vm.$props || {}
+    }
+  }, [_c('div', {
+    staticClass: ["flash_sale_title"]
+  }, [_c('div', {
+    staticClass: ["title_container"]
+  }, [_c('text', {
+    staticClass: ["title"],
+    attrs: {
+      "value": {
+        "@binding": "flashsaleData.title"
+      }
+    }
+  }), _c('div', {
+    staticClass: ["title_countdown"],
+    staticStyle: {
+      "visibility": {
+        "@binding": "isCountDownFinish ? 'hidden' : 'visible'"
+      }
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "20px",
+      height: "20px",
+      marginLeft: "30px"
+    },
+    attrs: {
+      "src": "http://www.lidiwo.com/ltp_icon_time.png"
+    }
+  }), _c('text', {
+    staticStyle: {
+      color: "#A92112",
+      fontSize: "20px",
+      marginLeft: "5px"
+    },
+    attrs: {
+      "value": [{
+        "@binding": "specialTime(flashsaleData.start_time*1000)"
+      }, "点场"]
+    }
+  }), _c('wxc-countdown', {
+    attrs: {
+      "tpl": "{h}:{m}:{s}",
+      "timeBoxStyle": {
+        "@binding": "timeBoxStyle"
+      },
+      "timeTextStyle": {
+        "@binding": "timeTextStyle"
+      },
+      "dotTextStyle": {
+        "@binding": "dotTextStyle"
+      },
+      "time": {
+        "@binding": "flashsaleData.end_time * 1000"
+      },
+      "@inRecycleList": true
+    },
+    on: {
+      "wxcOnComplete": function($event) {
+        this.countDownFinish()
+      }
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["title_more"]
+  }, [_c('text', {
+    staticClass: ["more_text"],
+    attrs: {
+      "value": " 更多"
+    }
+  }), _c('image', {
+    staticClass: ["more_img"],
+    attrs: {
+      "src": "http://www.lidiwo.com/arrow_rounded.png"
+    }
+  })])]), _c('scroller', {
+    staticClass: ["content_scroller"],
+    attrs: {
+      "showScrollbar": "false",
+      "scrollDirection": "horizontal",
+      "offsetAccuracy": "5px"
+    }
+  }, [_c('div', {
+    staticClass: ["flash_sale_content"],
+    attrs: {
+      "[[repeat]]": {
+        "@expression": "flashsaleData['goods'].length",
+        "@alias": "index"
+      }
+    }
+  }, [_c('div', {
+    staticClass: ["goods_main_image_container"]
+  }, [_c('image', {
+    staticClass: ["goods_main_image"],
+    attrs: {
+      "src": {
+        "@binding": "flashsaleData['goods'][index - 1].imgs.img800"
+      }
+    }
+  }), _c('div', {
+    staticClass: ["goods_discount_container"],
+    staticStyle: {
+      "visibility": {
+        "@binding": "isEmpty(flashsaleData['goods'][index - 1].discount_desc) ? 'hidden' : 'visible'"
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["goods_discount"],
+    attrs: {
+      "value": {
+        "@binding": "flashsaleData['goods'][index-1].discount_desc"
+      }
+    }
+  })])]), _c('text', {
+    staticClass: ["goods_title"],
+    attrs: {
+      "value": {
+        "@binding": "flashsaleData['goods'][index-1].name"
+      }
+    }
+  }), _c('div', {
+    staticClass: ["goods_money", "goods_money_container"]
+  }, [_c('div', {
+    staticClass: ["goods_money"]
+  }, [_c('text', {
+    staticClass: ["rmb_flag"],
+    attrs: {
+      "value": "¥"
+    }
+  }), _c('text', {
+    staticClass: ["goods_flash_price"],
+    attrs: {
+      "value": {
+        "@binding": "flashPrice(index-1)"
+      }
+    }
+  })]), _c('text', {
+    staticClass: ["goods_market_price"],
+    attrs: {
+      "value": ["¥", {
+        "@binding": "marketPrice(index-1)"
+      }]
+    }
+  })])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["title_more"]
+  }, [_c('text', {
+    staticClass: ["more_text"]
+  }, [_vm._v(" 更多")]), _c('image', {
+    staticClass: ["more_img"],
+    attrs: {
+      "src": "http://www.lidiwo.com/arrow_rounded.png"
+    }
+  })])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(63)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(64)
+
+/* template */
+var __vue_template__ = __webpack_require__(65)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule8.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__["@render"] = __vue_template__["@render"]
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-54271500"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "content": {
+    "marginTop": "20",
+    "flexDirection": "column",
+    "width": "750",
+    "height": "472",
+    "backgroundColor": "#FFFFFF"
+  },
+  "taste_live_title": {
+    "paddingLeft": "25",
+    "paddingRight": "25",
+    "flexDirection": "row",
+    "width": "750",
+    "height": "104",
+    "alignItems": "center"
+  },
+  "title": {
+    "fontWeight": "bold",
+    "fontSize": "35"
+  },
+  "title_more": {
+    "flexDirection": "row",
+    "position": "absolute",
+    "right": "25",
+    "top": "0",
+    "bottom": "0",
+    "alignItems": "center"
+  },
+  "more_text": {
+    "fontSize": "24",
+    "color": "#999999"
+  },
+  "more_img": {
+    "marginLeft": "8",
+    "width": "30",
+    "height": "30"
+  },
+  "content_scroller": {
+    "paddingLeft": "20",
+    "flexDirection": "row",
+    "width": "750",
+    "height": "347"
+  },
+  "taste_live_content": {
+    "width": "500",
+    "height": "347",
+    "flexDirection": "column",
+    "marginRight": "15"
+  },
+  "taste_live_image": {
+    "width": "500",
+    "height": "250",
+    "borderBottomRightRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderTopRightRadius": "5",
+    "borderBottomLeftRadius": "5"
+  },
+  "taste_live_maintitle": {
+    "color": "#333333",
+    "fontSize": "30",
+    "lines": 1,
+    "textOverflow": "ellipsis",
+    "marginTop": "15"
+  },
+  "taste_live_summary": {
+    "color": "#666666",
+    "lines": 1,
+    "textOverflow": "ellipsis",
+    "fontSize": "25",
+    "marginTop": "10"
+  }
+}
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+exports.default = {
+    name: "RecommendModule8",
+    props: ["tasteLiveData"],
+    data: function data() {
+        return {};
+    }
+};
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["content"]
+  }, [_c('div', {
+    staticClass: ["taste_live_title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v(_vm._s(_vm.tasteLiveData.title))]), _vm._m(0)]), _c('scroller', {
+    staticClass: ["content_scroller"],
+    attrs: {
+      "showScrollbar": "false",
+      "scrollDirection": "horizontal",
+      "offsetAccuracy": "5px"
+    }
+  }, _vm._l((_vm.tasteLiveData['items'].length), function(index) {
+    return _c('div', {
+      staticClass: ["taste_live_content"]
+    }, [_c('image', {
+      staticClass: ["taste_live_image"],
+      attrs: {
+        "src": _vm.tasteLiveData['items'][index - 1].pic_url
+      }
+    }), _c('text', {
+      staticClass: ["taste_live_maintitle"]
+    }, [_vm._v(_vm._s(_vm.tasteLiveData['items'][index - 1].title))]), _c('text', {
+      staticClass: ["taste_live_summary"]
+    }, [_vm._v(_vm._s(_vm.tasteLiveData['items'][index - 1].summary))])])
+  }))])
+},"@render":function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["content"],
+    attrs: {
+      "@isComponentRoot": true,
+      "@templateId": _vm._uid,
+      "@componentProps": _vm.$props || {}
+    }
+  }, [_c('div', {
+    staticClass: ["taste_live_title"]
+  }, [_c('text', {
+    staticClass: ["title"],
+    attrs: {
+      "value": {
+        "@binding": "tasteLiveData.title"
+      }
+    }
+  }), _c('div', {
+    staticClass: ["title_more"]
+  }, [_c('text', {
+    staticClass: ["more_text"],
+    attrs: {
+      "value": " 更多"
+    }
+  }), _c('image', {
+    staticClass: ["more_img"],
+    attrs: {
+      "src": "http://www.lidiwo.com/arrow_rounded.png"
+    }
+  })])]), _c('scroller', {
+    staticClass: ["content_scroller"],
+    attrs: {
+      "showScrollbar": "false",
+      "scrollDirection": "horizontal",
+      "offsetAccuracy": "5px"
+    }
+  }, [_c('div', {
+    staticClass: ["taste_live_content"],
+    attrs: {
+      "[[repeat]]": {
+        "@expression": "tasteLiveData['items'].length",
+        "@alias": "index"
+      }
+    }
+  }, [_c('image', {
+    staticClass: ["taste_live_image"],
+    attrs: {
+      "src": {
+        "@binding": "tasteLiveData['items'][index - 1].pic_url"
+      }
+    }
+  }), _c('text', {
+    staticClass: ["taste_live_maintitle"],
+    attrs: {
+      "value": {
+        "@binding": "tasteLiveData['items'][index-1].title"
+      }
+    }
+  }), _c('text', {
+    staticClass: ["taste_live_summary"],
+    attrs: {
+      "value": {
+        "@binding": "tasteLiveData['items'][index-1].summary"
+      }
+    }
+  })])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["title_more"]
+  }, [_c('text', {
+    staticClass: ["more_text"]
+  }, [_vm._v(" 更多")]), _c('image', {
+    staticClass: ["more_img"],
+    attrs: {
+      "src": "http://www.lidiwo.com/arrow_rounded.png"
+    }
+  })])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(67)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(68)
+
+/* template */
+var __vue_template__ = __webpack_require__(69)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule9.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__["@render"] = __vue_template__["@render"]
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-54352c81"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "content": {
+    "flexDirection": "column",
+    "width": "750",
+    "height": "1115",
+    "marginTop": "20",
+    "backgroundColor": "#FFFFFF"
+  },
+  "taste_live_title": {
+    "paddingLeft": "25",
+    "paddingRight": "25",
+    "flexDirection": "row",
+    "width": "750",
+    "height": "104",
+    "alignItems": "center"
+  },
+  "title": {
+    "fontWeight": "bold",
+    "fontSize": "35"
+  },
+  "title_more": {
+    "flexDirection": "row",
+    "position": "absolute",
+    "right": "25",
+    "top": "0",
+    "bottom": "0",
+    "alignItems": "center"
+  },
+  "more_text": {
+    "fontSize": "24",
+    "color": "#999999"
+  },
+  "more_img": {
+    "marginLeft": "8",
+    "width": "30",
+    "height": "30"
+  },
+  "main_image_container": {
+    "width": "750",
+    "height": "170",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "main_image": {
+    "width": "700",
+    "height": "170"
+  },
+  "goods_content": {
+    "marginTop": "15",
+    "width": "750",
+    "flexDirection": "row",
+    "height": "400",
+    "paddingRight": "25",
+    "paddingLeft": "25",
+    "justifyContent": "space-between"
+  },
+  "single_goods": {
+    "flexDirection": "column",
+    "width": "225",
+    "height": "400"
+  },
+  "goods_image_container": {
+    "backgroundColor": "#F8F8F8",
+    "width": "225",
+    "height": "225",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "borderBottomLeftRadius": "5",
+    "borderBottomRightRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderTopRightRadius": "5"
+  },
+  "goods_image": {
+    "width": "160",
+    "height": "160"
+  },
+  "goods_color_type_container": {
+    "position": "absolute",
+    "top": "10",
+    "left": "10",
+    "borderBottomColor": "#9F8153",
+    "borderTopColor": "#9F8153",
+    "borderLeftColor": "#9F8153",
+    "borderRightColor": "#9F8153",
+    "borderTopWidth": "1",
+    "borderBottomWidth": "1",
+    "borderRightWidth": "1",
+    "borderLeftWidth": "1",
+    "borderBottomRightRadius": "2",
+    "borderTopLeftRadius": "2",
+    "borderBottomLeftRadius": "2",
+    "borderTopRightRadius": "2",
+    "paddingRight": "3",
+    "paddingLeft": "3",
+    "paddingTop": "8",
+    "paddingBottom": "8"
+  },
+  "goods_color_type": {
+    "fontSize": "18",
+    "color": "#9F8153",
+    "width": "18",
+    "wordWrap": "break-word",
+    "textAlign": "center",
+    "lineHeight": "22"
+  },
+  "goods_tags_container": {
+    "width": "225",
+    "height": "28",
+    "position": "absolute",
+    "bottom": "0",
+    "left": "0",
+    "right": "0",
+    "flexDirection": "row"
+  },
+  "goods_tag_text_container": {
+    "paddingLeft": "8",
+    "paddingRight": "8",
+    "height": "28",
+    "borderBottomRightRadius": "3",
+    "borderTopLeftRadius": "3",
+    "borderBottomLeftRadius": "3",
+    "borderTopRightRadius": "3",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "marginRight": "10"
+  },
+  "goods_tag_text": {
+    "color": "#FFFFFF",
+    "fontSize": "18"
+  },
+  "goods_title": {
+    "marginTop": "10",
+    "lines": 2,
+    "fontSize": "28",
+    "textOverflow": "ellipsis"
+  },
+  "goods_price": {
+    "flexDirection": "row",
+    "marginTop": "15",
+    "alignItems": "flex-end"
+  },
+  "rmb_symbol": {
+    "marginBottom": "3",
+    "fontSize": "20",
+    "color": "#A92112"
+  },
+  "price_text": {
+    "fontSize": "30",
+    "color": "#A92112"
+  }
+}
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _util = __webpack_require__(0);
+
+var _util2 = _interopRequireDefault(_util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+exports.default = {
+    name: "RecommendModule9",
+    props: ["productCategoryData"],
+    data: function data() {
+        return {};
+    },
+    methods: {
+        goodsPrice: function goodsPrice(index) {
+            return _util2.default.formatMoney(this.productCategoryData['items'][index].price_min);
+        },
+        hasColor: function hasColor(color) {
+            return color === null || color === undefined || color === "";
+        },
+        hasTags: function hasTags(tags) {
+            return tags === null || tags === undefined || tags.length === 0;
+        }
+    }
+};
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["content"]
+  }, [_c('div', {
+    staticClass: ["taste_live_title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v(_vm._s(_vm.productCategoryData.title))]), _vm._m(0)]), _c('div', {
+    staticClass: ["main_image_container"]
+  }, [_c('image', {
+    staticClass: ["main_image"],
+    attrs: {
+      "src": _vm.productCategoryData.pic_url
+    }
+  })]), _vm._l((_vm.productCategoryData['items'].length / 3), function(index1) {
+    return _c('div', {
+      staticClass: ["goods_content"]
+    }, _vm._l((3), function(index2) {
+      return _c('div', {
+        staticClass: ["single_goods"]
+      }, [_c('div', {
+        staticClass: ["goods_image_container"]
+      }, [_c('image', {
+        staticClass: ["goods_image"],
+        attrs: {
+          "src": _vm.productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].pic_url
+        }
+      }), _c('div', {
+        staticClass: ["goods_color_type_container"],
+        style: {
+          visibility: _vm.hasColor(_vm.productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].color_num) ? 'hidden' : 'visible'
+        }
+      }, [_c('text', {
+        staticClass: ["goods_color_type"]
+      }, [_vm._v(_vm._s(_vm.productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].color_num) + "色可选")])]), _c('div', {
+        staticClass: ["goods_tags_container"],
+        style: {
+          visibility: _vm.hasTags(_vm.productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].tags) ? 'hidden' : 'visible'
+        }
+      }, _vm._l((_vm.productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].tags), function(item) {
+        return _c('div', {
+          staticClass: ["goods_tag_text_container"],
+          style: {
+            backgroundColor: item.color
+          }
+        }, [_c('text', {
+          staticClass: ["goods_tag_text"]
+        }, [_vm._v(_vm._s(item.name))])])
+      }))]), _c('text', {
+        staticClass: ["goods_title"]
+      }, [_vm._v(_vm._s(_vm.productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].name))]), _c('div', {
+        staticClass: ["goods_price"]
+      }, [_c('text', {
+        staticClass: ["rmb_symbol"]
+      }, [_vm._v("¥")]), _c('text', {
+        staticClass: ["price_text"]
+      }, [_vm._v(_vm._s(_vm.goodsPrice((index1 - 1) * 3 + (index2 - 1))))]), _c('text', {
+        staticClass: ["rmb_symbol"],
+        style: {
+          visibility: _vm.productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].attr_ext.price_tag === 1 ? 'visible' : 'hidden'
+        }
+      }, [_vm._v("起")])])])
+    }))
+  })], 2)
+},"@render":function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["content"],
+    attrs: {
+      "@isComponentRoot": true,
+      "@templateId": _vm._uid,
+      "@componentProps": _vm.$props || {}
+    }
+  }, [_c('div', {
+    staticClass: ["taste_live_title"]
+  }, [_c('text', {
+    staticClass: ["title"],
+    attrs: {
+      "value": {
+        "@binding": "productCategoryData.title"
+      }
+    }
+  }), _c('div', {
+    staticClass: ["title_more"]
+  }, [_c('text', {
+    staticClass: ["more_text"],
+    attrs: {
+      "value": " 更多"
+    }
+  }), _c('image', {
+    staticClass: ["more_img"],
+    attrs: {
+      "src": "http://www.lidiwo.com/arrow_rounded.png"
+    }
+  })])]), _c('div', {
+    staticClass: ["main_image_container"]
+  }, [_c('image', {
+    staticClass: ["main_image"],
+    attrs: {
+      "src": {
+        "@binding": "productCategoryData.pic_url"
+      }
+    }
+  })]), _c('div', {
+    staticClass: ["goods_content"],
+    attrs: {
+      "[[repeat]]": {
+        "@expression": "productCategoryData['items'].length/3",
+        "@alias": "index1"
+      }
+    }
+  }, [_c('div', {
+    staticClass: ["single_goods"],
+    attrs: {
+      "[[repeat]]": {
+        "@expression": "3",
+        "@alias": "index2"
+      }
+    }
+  }, [_c('div', {
+    staticClass: ["goods_image_container"]
+  }, [_c('image', {
+    staticClass: ["goods_image"],
+    attrs: {
+      "src": {
+        "@binding": "productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].pic_url"
+      }
+    }
+  }), _c('div', {
+    staticClass: ["goods_color_type_container"],
+    staticStyle: {
+      "visibility": {
+        "@binding": "hasColor(productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].color_num) ? 'hidden' : 'visible'"
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["goods_color_type"],
+    attrs: {
+      "value": [{
+        "@binding": "productCategoryData['items'][(index1-1)*3+(index2-1)].color_num"
+      }, "色可选"]
+    }
+  })]), _c('div', {
+    staticClass: ["goods_tags_container"],
+    staticStyle: {
+      "visibility": {
+        "@binding": "hasTags(productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].tags) ? 'hidden' : 'visible'"
+      }
+    }
+  }, [_c('div', {
+    staticClass: ["goods_tag_text_container"],
+    staticStyle: {
+      "backgroundColor": {
+        "@binding": "item.color"
+      }
+    },
+    attrs: {
+      "[[repeat]]": {
+        "@expression": "productCategoryData['items'][(index1-1)*3+(index2-1)].tags",
+        "@alias": "item"
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["goods_tag_text"],
+    attrs: {
+      "value": {
+        "@binding": "item.name"
+      }
+    }
+  })])])]), _c('text', {
+    staticClass: ["goods_title"],
+    attrs: {
+      "value": {
+        "@binding": "productCategoryData['items'][(index1-1)*3+(index2-1)].name"
+      }
+    }
+  }), _c('div', {
+    staticClass: ["goods_price"]
+  }, [_c('text', {
+    staticClass: ["rmb_symbol"],
+    attrs: {
+      "value": "¥"
+    }
+  }), _c('text', {
+    staticClass: ["price_text"],
+    attrs: {
+      "value": {
+        "@binding": "goodsPrice((index1-1)*3+(index2-1))"
+      }
+    }
+  }), _c('text', {
+    staticClass: ["rmb_symbol"],
+    staticStyle: {
+      "visibility": {
+        "@binding": "productCategoryData['items'][(index1 - 1) * 3 + (index2 - 1)].attr_ext.price_tag === 1 ? 'visible' : 'hidden'"
+      }
+    },
+    attrs: {
+      "value": "起"
+    }
+  })])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["title_more"]
+  }, [_c('text', {
+    staticClass: ["more_text"]
+  }, [_vm._v(" 更多")]), _c('image', {
+    staticClass: ["more_img"],
+    attrs: {
+      "src": "http://www.lidiwo.com/arrow_rounded.png"
+    }
+  })])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(71)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(72)
+
+/* template */
+var __vue_template__ = __webpack_require__(73)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\RecommendModule10.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__["@render"] = __vue_template__["@render"]
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-24c51907"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "content": {
+    "marginTop": "20",
+    "flexDirection": "column",
+    "width": "750",
+    "backgroundColor": "#FFFFFF"
+  },
+  "taste_live_title": {
+    "paddingLeft": "25",
+    "paddingRight": "25",
+    "flexDirection": "row",
+    "width": "750",
+    "height": "104",
+    "alignItems": "center"
+  },
+  "title": {
+    "fontWeight": "bold",
+    "fontSize": "35"
+  },
+  "title_more": {
+    "flexDirection": "row",
+    "position": "absolute",
+    "right": "25",
+    "top": "0",
+    "bottom": "0",
+    "alignItems": "center"
+  },
+  "more_text": {
+    "fontSize": "24",
+    "color": "#999999"
+  },
+  "more_img": {
+    "marginLeft": "8",
+    "width": "30",
+    "height": "30"
+  },
+  "goods_content": {
+    "width": "750",
+    "height": "510",
+    "flexDirection": "row",
+    "paddingRight": "25",
+    "paddingLeft": "25",
+    "justifyContent": "space-between"
+  },
+  "single_goods": {
+    "flexDirection": "column",
+    "width": "345",
+    "height": "510"
+  },
+  "goods_image_container": {
+    "backgroundColor": "#FAFAFA",
+    "width": "345",
+    "height": "316",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "borderTopLeftRadius": "5",
+    "borderTopRightRadius": "5"
+  },
+  "goods_image": {
+    "width": "250",
+    "height": "250"
+  },
+  "goods_summary_container": {
+    "width": "345",
+    "height": "63",
+    "paddingLeft": "5",
+    "paddingRight": "5",
+    "backgroundColor": "#F6F2F1",
+    "borderBottomLeftRadius": "5",
+    "borderBottomRightRadius": "5",
+    "justifyContent": "center"
+  },
+  "goods_summary": {
+    "color": "#9F8052",
+    "lines": 1,
+    "textOverflow": "ellipsis",
+    "fontSize": "25"
+  },
+  "goods_title": {
+    "color": "#333333",
+    "marginTop": "10",
+    "paddingRight": "5",
+    "paddingLeft": "5",
+    "lines": 1,
+    "textOverflow": "ellipsis",
+    "fontSize": "28"
+  },
+  "goods_price": {
+    "paddingLeft": "5",
+    "flexDirection": "row",
+    "marginTop": "15",
+    "alignItems": "flex-end"
+  },
+  "rmb_symbol": {
+    "marginBottom": "3",
+    "fontSize": "20",
+    "color": "#A92112"
+  },
+  "price_text": {
+    "fontSize": "30",
+    "color": "#A92112"
+  },
+  "bottom_content": {
+    "width": "750",
+    "height": "333",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor": "#FAFAFA"
+  },
+  "line_content": {
+    "width": "750",
+    "height": "50",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "bottom_line": {
+    "width": "150",
+    "height": "1",
+    "backgroundColor": "#999999"
+  },
+  "bottom_line_text": {
+    "marginRight": "30",
+    "marginLeft": "30",
+    "fontSize": "22",
+    "color": "#999999"
+  }
+}
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _util = __webpack_require__(0);
+
+var _util2 = _interopRequireDefault(_util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+exports.default = {
+    name: "RecommendModule10",
+    props: ["recommendData"],
+    data: function data() {
+        return {};
+    },
+    methods: {
+        goodsPrice: function goodsPrice(index) {
+            return _util2.default.formatMoney(this.recommendData[index].price);
+        },
+
+        getRowCount: function getRowCount(constant) {
+            return Math.floor(this.recommendData.length / constant);
+        }
+
+    },
+    created: function created() {}
+};
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["content"]
+  }, [_vm._m(0), _vm._l((_vm.getRowCount(2)), function(index1) {
+    return _c('div', {
+      staticClass: ["goods_content"]
+    }, _vm._l((2), function(index2) {
+      return _c('div', {
+        staticClass: ["single_goods"]
+      }, [_c('div', {
+        staticClass: ["goods_image_container"]
+      }, [_c('image', {
+        staticClass: ["goods_image"],
+        attrs: {
+          "src": _vm.recommendData[(index1 - 1) * 2 + (index2 - 1)].pic_url
+        }
+      })]), _c('div', {
+        staticClass: ["goods_summary_container"]
+      }, [_c('text', {
+        staticClass: ["goods_summary"]
+      }, [_vm._v(_vm._s(_vm.recommendData[(index1 - 1) * 2 + (index2 - 1)].summary))])]), _c('text', {
+        staticClass: ["goods_title"]
+      }, [_vm._v(_vm._s(_vm.recommendData[(index1 - 1) * 2 + (index2 - 1)].name))]), _c('div', {
+        staticClass: ["goods_price"]
+      }, [_c('text', {
+        staticClass: ["rmb_symbol"]
+      }, [_vm._v("¥")]), _c('text', {
+        staticClass: ["price_text"]
+      }, [_vm._v(_vm._s(_vm.goodsPrice((index1 - 1) * 2 + (index2 - 1))))]), _c('text', {
+        staticClass: ["rmb_symbol"],
+        style: {
+          visibility: _vm.recommendData[(index1 - 1) * 2 + (index2 - 1)].attr_ext.price_tag === 1 ? 'visible' : 'hidden'
+        }
+      }, [_vm._v("起")])])])
+    }))
+  }), _vm._m(1)], 2)
+},"@render":function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["content"],
+    attrs: {
+      "@isComponentRoot": true,
+      "@templateId": _vm._uid,
+      "@componentProps": _vm.$props || {}
+    }
+  }, [_c('div', {
+    staticClass: ["taste_live_title"]
+  }, [_c('text', {
+    staticClass: ["title"],
+    attrs: {
+      "value": "专属推荐"
+    }
+  }), _c('div', {
+    staticClass: ["title_more"]
+  }, [_c('text', {
+    staticClass: ["more_text"],
+    attrs: {
+      "value": " 更多"
+    }
+  }), _c('image', {
+    staticClass: ["more_img"],
+    attrs: {
+      "src": "http://www.lidiwo.com/arrow_rounded.png"
+    }
+  })])]), _c('div', {
+    staticClass: ["goods_content"],
+    attrs: {
+      "[[repeat]]": {
+        "@expression": "getRowCount(2)",
+        "@alias": "index1"
+      }
+    }
+  }, [_c('div', {
+    staticClass: ["single_goods"],
+    attrs: {
+      "[[repeat]]": {
+        "@expression": "2",
+        "@alias": "index2"
+      }
+    }
+  }, [_c('div', {
+    staticClass: ["goods_image_container"]
+  }, [_c('image', {
+    staticClass: ["goods_image"],
+    attrs: {
+      "src": {
+        "@binding": "recommendData[(index1 - 1) * 2 + (index2 - 1)].pic_url"
+      }
+    }
+  })]), _c('div', {
+    staticClass: ["goods_summary_container"]
+  }, [_c('text', {
+    staticClass: ["goods_summary"],
+    attrs: {
+      "value": {
+        "@binding": "recommendData[(index1-1)*2+(index2-1)].summary"
+      }
+    }
+  })]), _c('text', {
+    staticClass: ["goods_title"],
+    attrs: {
+      "value": {
+        "@binding": "recommendData[(index1-1)*2+(index2-1)].name"
+      }
+    }
+  }), _c('div', {
+    staticClass: ["goods_price"]
+  }, [_c('text', {
+    staticClass: ["rmb_symbol"],
+    attrs: {
+      "value": "¥"
+    }
+  }), _c('text', {
+    staticClass: ["price_text"],
+    attrs: {
+      "value": {
+        "@binding": "goodsPrice((index1-1)*2+(index2-1))"
+      }
+    }
+  }), _c('text', {
+    staticClass: ["rmb_symbol"],
+    staticStyle: {
+      "visibility": {
+        "@binding": "recommendData[(index1 - 1) * 2 + (index2 - 1)].attr_ext.price_tag === 1 ? 'visible' : 'hidden'"
+      }
+    },
+    attrs: {
+      "value": "起"
+    }
+  })])])]), _c('div', {
+    staticClass: ["bottom_content"]
+  }, [_c('div', {
+    staticClass: ["line_content"]
+  }, [_c('div', {
+    staticClass: ["bottom_line"]
+  }), _c('text', {
+    staticClass: ["bottom_line_text"],
+    attrs: {
+      "value": "底线在此，不能更低了"
+    }
+  }), _c('div', {
+    staticClass: ["bottom_line"]
+  })])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["taste_live_title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("专属推荐")]), _c('div', {
+    staticClass: ["title_more"]
+  }, [_c('text', {
+    staticClass: ["more_text"]
+  }, [_vm._v(" 更多")]), _c('image', {
+    staticClass: ["more_img"],
+    attrs: {
+      "src": "http://www.lidiwo.com/arrow_rounded.png"
+    }
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["bottom_content"]
+  }, [_c('div', {
+    staticClass: ["line_content"]
+  }, [_c('div', {
+    staticClass: ["bottom_line"]
+  }), _c('text', {
+    staticClass: ["bottom_line_text"]
+  }, [_vm._v("底线在此，不能更低了")]), _c('div', {
+    staticClass: ["bottom_line"]
+  })])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('list', {
+    staticClass: ["list_content"],
+    attrs: {
+      "showScrollbar": "false"
+    }
+  }, _vm._l((_vm.homepageDatas), function(item, index) {
+    return _c('cell', {
+      staticClass: ["cell_content"],
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [(item.module_key === 'banner') ? _c('div', [_c('recommend_module1', {
+      attrs: {
+        "swipebanner": item.data
+      }
+    })], 1) : (item.module_key === 'kingkong') ? _c('div', [_c('recommend_module2', {
+      attrs: {
+        "menupicture": item.data
+      }
+    })], 1) : (item.module_key === 'single_image') ? _c('div', {
+      staticClass: ["single_image_container"]
+    }, [_c('image', {
+      staticClass: ["single_picture"],
+      attrs: {
+        "src": item.data.pic_url
+      }
+    })]) : (item.module_key === 'recommend') ? _c('div', [_c('recommend_module3', {
+      attrs: {
+        "recommendData": item.data
+      }
+    })], 1) : (item.module_key === 'crowd_funding') ? _c('div', [_c('recommend_module4', {
+      attrs: {
+        "crowdFundingData": item.data
+      }
+    })], 1) : (item.module_key === 'product_hot') ? _c('div', [_c('recommend_module5', {
+      attrs: {
+        "productHotData": item.data
+      }
+    })], 1) : (item.module_key === 'star_product') ? _c('div', [_c('recommend_module6', {
+      attrs: {
+        "starProductData": item.data
+      }
+    })], 1) : (item.module_key === 'flashsale') ? _c('div', [_c('recommend_module7', {
+      attrs: {
+        "flashsaleData": item.data
+      }
+    })], 1) : (item.module_key === 'taste_live') ? _c('div', [_c('recommend_module8', {
+      attrs: {
+        "tasteLiveData": item.data
+      }
+    })], 1) : (item.module_key === 'product_category') ? _c('div', [_c('recommend_module9', {
+      attrs: {
+        "productCategoryData": item.data
+      }
+    })], 1) : (item.module_key === '' || item.module_key === null || item.module_key === undefined) ? _c('div', [_c('recommend_module10', {
+      attrs: {
+        "recommendData": item.data
+      }
+    })], 1) : _c('div', [_c('text', [_vm._v(_vm._s(item.module_key) + "--" + _vm._s(index))])])])
+  }))
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(76)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(77)
+
+/* template */
+var __vue_template__ = __webpack_require__(78)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\CrowdPage.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-a4cd1608"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports) {
+
+module.exports = {}
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    name: "CrowdPage"
+};
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('text', [_vm._v("众筹")])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(80)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(81)
+
+/* template */
+var __vue_template__ = __webpack_require__(82)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\BrandPage.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-03ffadd6"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports) {
+
+module.exports = {}
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    name: "BrandPage"
+};
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('text', [_vm._v("品牌")])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["content"]
+  }, [_c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('scroller', {
+    staticClass: ["scroller"],
+    attrs: {
+      "showScrollbar": "false",
+      "scrollDirection": "horizontal"
+    }
+  }, [_vm._l((_vm.tabTags), function(item, index) {
+    return _c('text', {
+      ref: 'tag' + index,
+      refInFor: true,
+      class: ['tb_tag', index === _vm.selectIndex ? 'tb_tag_select' : 'tb_tag_unselect'],
+      on: {
+        "click": function($event) {
+          _vm.click(index, $event)
+        }
+      }
+    }, [_vm._v(_vm._s(item.name) + "\n            ")])
+  }), _c('div', {
+    staticClass: ["tb_tag_line"],
+    style: _vm.tbTagLineStyle
+  }, [_c('div', {
+    staticClass: ["select_line"]
+  })])], 2), _vm._m(0)]), _c('slider', {
+    ref: "slider",
+    staticClass: ["slider"],
+    attrs: {
+      "infinite": "false",
+      "offsetXAccuracy": "0.0001px",
+      "scrollable": "true",
+      "keepIndex": "true",
+      "index": _vm.selectIndex
+    },
+    on: {
+      "change": function($event) {
+        _vm.onSliderChange($event)
+      },
+      "scroll": function($event) {
+        _vm.onSliderScroll($event)
+      }
+    }
+  }, _vm._l((_vm.tabTags), function(item, index) {
+    return _c('div', {
+      staticClass: ["web_root"]
+    }, [(index == 0) ? _c('recommend_page') : (index == 17) ? _c('crowd_page') : (index == 18) ? _c('brand_page') : (0 < index < 17) ? _c('web', {
+      staticClass: ["web_content"],
+      attrs: {
+        "src": item.link_url
+      }
+    }) : _vm._e()], 1)
+  }))])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["tb_dropdown"]
+  }, [_c('image', {
+    staticClass: ["tb_dropdown_ico"],
+    attrs: {
+      "src": "http://www.lidiwo.com/main_cat_dropdown.png"
+    }
+  })])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('home_title'), _c('home_tab_layout')], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(86)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(87)
+
+/* template */
+var __vue_template__ = __webpack_require__(88)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\ClassifyPage.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-4118387a"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "app_content": {
+    "flexDirection": "column",
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "width": "750",
+    "backgroundColor": "#FFFFFF"
+  },
+  "title_content": {
+    "width": "750",
+    "height": "100",
+    "backgroundColor": "#FFFFFF",
+    "borderBottomWidth": "1",
+    "borderBottomColor": "#E5E5E5"
+  },
+  "title_container": {
+    "position": "absolute",
+    "top": "18",
+    "bottom": "18",
+    "right": "30",
+    "left": "30",
+    "backgroundColor": "#F4F4F4",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "borderBottomLeftRadius": "5",
+    "borderTopRightRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderBottomRightRadius": "5"
+  },
+  "title_search_icon": {
+    "marginLeft": "20",
+    "width": "45",
+    "height": "45"
+  },
+  "title_search_text": {
+    "fontSize": "30",
+    "marginLeft": "20",
+    "color": "#CCCCCC"
+  },
+  "classify_content": {
+    "position": "absolute",
+    "top": "100",
+    "bottom": "0",
+    "left": "0",
+    "right": "0",
+    "flexDirection": "row"
+  },
+  "classify_title_container": {
+    "position": "absolute",
+    "left": "0",
+    "top": "0",
+    "bottom": "0",
+    "width": "187"
+  },
+  "classify_goods_container": {
+    "width": "563",
+    "position": "absolute",
+    "right": "0",
+    "top": "0",
+    "bottom": "0"
+  },
+  "item_classify_title": {
+    "height": "92",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "item_classify_title_select": {
+    "backgroundColor": "#FFFFFF"
+  },
+  "item_classify_title_unselect": {
+    "backgroundColor": "#F6F6F6"
+  },
+  "classify_title": {
+    "fontSize": "30"
+  },
+  "classify_title_select": {
+    "color": "#9F866F"
+  },
+  "classify_title_unselect": {
+    "color": "#666666"
+  },
+  "classify_title_flag": {
+    "position": "absolute",
+    "top": "16",
+    "left": "0",
+    "width": "7",
+    "height": "60",
+    "backgroundColor": "#9F866F"
+  },
+  "classify_title_flag_select": {
+    "visibility": "visible"
+  },
+  "classify_title_flag_unselect": {
+    "visibility": "hidden"
+  },
+  "goods_scroller": {
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "left": "0",
+    "right": "0"
+  },
+  "main_image_cell": {
+    "width": "563",
+    "height": "268",
+    "alignItems": "center",
+    "marginTop": "15"
+  },
+  "main_image": {
+    "width": "533",
+    "height": "268"
+  },
+  "last_classify_tab_row": {
+    "width": "563",
+    "height": "243",
+    "flexDirection": "row",
+    "justifyContent": "flex-start"
+  },
+  "last_classify_tab_column": {
+    "marginLeft": "15",
+    "marginTop": "40",
+    "width": "122",
+    "height": "223",
+    "alignItems": "center"
+  },
+  "brand_image_container": {
+    "width": "122",
+    "height": "150"
+  },
+  "brand_image": {
+    "width": "122",
+    "height": "133"
+  },
+  "brand_title": {
+    "lines": 1,
+    "color": "#666666",
+    "fontSize": "20",
+    "textOverflow": "ellipsis"
+  },
+  "last_classify_tab_other_row": {
+    "width": "583",
+    "height": "240",
+    "flexDirection": "row",
+    "paddingRight": "15",
+    "paddingLeft": "15",
+    "justifyContent": "flex-start"
+  },
+  "last_classify_tab_other_column": {
+    "width": "184",
+    "height": "240",
+    "alignItems": "center",
+    "marginTop": "20"
+  },
+  "goods_image_container": {
+    "width": "184",
+    "height": "184",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "goods_image": {
+    "width": "164",
+    "height": "164"
+  },
+  "goods_title": {
+    "lines": 1,
+    "color": "#666666",
+    "fontSize": "25"
+  }
+}
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+exports.default = {
+    name: "ClassifyPage",
+    data: function data() {
+        return {
+            isFristLoad: false,
+            classifyTitles: [],
+            goodsContent: {},
+            selectIndex: 0
+        };
+    },
+    methods: {
+        updataItem: function updataItem(index) {
+            return this.selectIndex === index ? 'item_classify_title_select' : 'item_classify_title_unselect';
+        },
+        updataItemText: function updataItemText(index) {
+            return this.selectIndex === index ? 'classify_title_select' : 'classify_title_unselect';
+        },
+        updataItemFlag: function updataItemFlag(index) {
+            return this.selectIndex === index ? 'classify_title_flag_select' : 'classify_title_flag_unselect';
+        },
+        onClick: function onClick(index) {
+            this.selectIndex = index;
+        },
+        getRowCount: function getRowCount(constant, selectPosition) {
+            return Math.ceil((this.goodsContent['HomepageGetUclassList' + this.classifyTitles[selectPosition].ucid]['data'].length - 1) / constant);
+        },
+        getColumnCount: function getColumnCount(constant, lines, selectPosition) {
+            var remainder = (this.goodsContent['HomepageGetUclassList' + this.classifyTitles[selectPosition].ucid]['data'].length - 1) % constant;
+            return lines == this.getRowCount(constant, selectPosition) ? remainder == 0 ? constant : remainder : constant;
+        },
+
+        getClassifyDetails: function getClassifyDetails() {
+            var _this = this;
+
+            var mainobj = new Object();
+            for (var i = 0; i < this.classifyTitles.length; i++) {
+                var parametersobj = new Object();
+                parametersobj['id'] = this.classifyTitles[i].ucid;
+                var obj = new Object();
+                obj['action'] = "GetUclassList";
+                obj['model'] = "Homepage";
+                obj['parameters'] = parametersobj;
+                mainobj['HomepageGetUclassList' + this.classifyTitles[i].ucid] = obj;
+            }
+            this.post("app/shopv3/pipe", "data=" + JSON.stringify(mainobj), function (response) {
+                if (response.ok) {
+                    if (response.data.message === "ok" || response.data.message === "OK") {
+                        var result = response.data.result;
+                        _this.goodsContent = result;
+                    } else {
+                        modal.toast({
+                            message: "网络请求失败",
+                            duration: 0.3
+                        });
+                    }
+                } else {
+                    modal.toast({
+                        message: "服务器异常",
+                        duration: 0.3
+                    });
+                }
+            });
+        }
+    },
+    created: function created() {
+        var _this2 = this;
+
+        this.post("app/shopv3/pipe", "data={\"HomepageBuildClass\":{\"model\":\"Homepage\",\"action\":\"BuildClass\",\"parameters\":{}}}", function (response) {
+            if (response.ok) {
+                if (response.data.message === "ok" || response.data.message === "OK") {
+                    var _classifyTitles;
+
+                    _this2.isFristLoad = true;
+                    var result = response.data.result.HomepageBuildClass;
+                    (_classifyTitles = _this2.classifyTitles).push.apply(_classifyTitles, _toConsumableArray(result['data']));
+                    _this2.getClassifyDetails();
+                } else {
+                    modal.toast({
+                        message: "网络请求失败",
+                        duration: 0.3
+                    });
+                }
+            } else {
+                modal.toast({
+                    message: "服务器异常",
+                    duration: 0.3
+                });
+            }
+        });
+    }
+};
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["app_content"]
+  }, [_vm._m(0), _c('div', {
+    staticClass: ["classify_content"]
+  }, [_c('div', {
+    staticClass: ["classify_title_container"]
+  }, [_c('list', {
+    staticClass: ["classify_title_container"],
+    attrs: {
+      "showScrollbar": "false"
+    }
+  }, _vm._l((_vm.classifyTitles), function(item, index) {
+    return _c('cell', {
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      },
+      on: {
+        "click": function($event) {
+          _vm.onClick(index)
+        }
+      }
+    }, [_c('div', {
+      class: ['item_classify_title', _vm.updataItem(index)]
+    }, [_c('text', {
+      class: ['classify_title', _vm.updataItemText(index)]
+    }, [_vm._v(_vm._s(item.name))]), _c('div', {
+      class: ['classify_title_flag', _vm.updataItemFlag(index)]
+    })])])
+  }))]), _c('div', {
+    staticClass: ["classify_goods_container"]
+  }, [_c('list', {
+    staticClass: ["goods_scroller"],
+    attrs: {
+      "showScrollbar": "false"
+    }
+  }, [_c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [(_vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][0].visiable === 1) ? _c('div', {
+    staticClass: ["main_image_cell"]
+  }, [_c('image', {
+    staticClass: ["main_image"],
+    attrs: {
+      "src": _vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][0].pic_url
+    }
+  })]) : _vm._e()]), (_vm.selectIndex === _vm.classifyTitles.length - 1) ? _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, _vm._l((_vm.getRowCount(4, _vm.selectIndex)), function(index1) {
+    return _c('div', {
+      staticClass: ["last_classify_tab_row"]
+    }, _vm._l((_vm.getColumnCount(4, index1, _vm.selectIndex)), function(index2) {
+      return _c('div', {
+        staticClass: ["last_classify_tab_column"]
+      }, [_c('div', {
+        staticClass: ["brand_image_container"]
+      }, [_c('image', {
+        staticClass: ["brand_image"],
+        attrs: {
+          "src": _vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 4 + index2].pic_url
+        }
+      })]), _c('text', {
+        staticClass: ["brand_title"]
+      }, [_vm._v(_vm._s(_vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 4 + index2].name))])])
+    }))
+  })) : _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, _vm._l((_vm.getRowCount(3, _vm.selectIndex)), function(index1) {
+    return _c('div', {
+      staticClass: ["last_classify_tab_other_row"]
+    }, _vm._l((_vm.getColumnCount(3, index1, _vm.selectIndex)), function(index2) {
+      return _c('div', {
+        staticClass: ["last_classify_tab_other_column"]
+      }, [_c('div', {
+        staticClass: ["goods_image_container"]
+      }, [_c('image', {
+        staticClass: ["goods_image"],
+        attrs: {
+          "src": _vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 3 + index2].pic_url
+        }
+      })]), _c('text', {
+        staticClass: ["goods_title"]
+      }, [_vm._v(_vm._s(_vm.goodsContent['HomepageGetUclassList' + _vm.classifyTitles[_vm.selectIndex].ucid]['data'][(index1 - 1) * 3 + index2].name))])])
+    }))
+  }))])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["title_content"]
+  }, [_c('div', {
+    staticClass: ["title_container"]
+  }, [_c('image', {
+    staticClass: ["title_search_icon"],
+    attrs: {
+      "src": "http://www.lidiwo.com/icon_search.png"
+    }
+  }), _c('text', {
+    staticClass: ["title_search_text"]
+  }, [_vm._v("纯米超级品牌日")])])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(90)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(91)
+
+/* template */
+var __vue_template__ = __webpack_require__(100)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\TastePage.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-0c7bcee6"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "app_content": {
+    "flexDirection": "column",
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "width": "750",
+    "backgroundColor": "#F6F6F6"
+  },
+  "title_container": {
+    "borderBottomColor": "#E6E6E6",
+    "borderBottomWidth": "1",
+    "backgroundColor": "#FFFFFF",
+    "width": "750",
+    "height": "100",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "taste_title": {
+    "color": "#333333",
+    "fontSize": "32"
+  },
+  "taste_content_container": {
+    "width": "750",
+    "position": "absolute",
+    "top": "100",
+    "bottom": "0"
+  },
+  "bottom_content": {
+    "width": "750",
+    "height": "333",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "line_content": {
+    "width": "750",
+    "height": "50",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "bottom_line": {
+    "width": "150",
+    "height": "1",
+    "backgroundColor": "#999999"
+  },
+  "bottom_line_text": {
+    "marginRight": "30",
+    "marginLeft": "30",
+    "fontSize": "22",
+    "color": "#999999"
+  }
+}
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _TasteModule = __webpack_require__(92);
+
+var _TasteModule2 = _interopRequireDefault(_TasteModule);
+
+var _TasteModule3 = __webpack_require__(96);
+
+var _TasteModule4 = _interopRequireDefault(_TasteModule3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+exports.default = {
+    name: "TastePage",
+    data: function data() {
+        return {
+            showDatas: [],
+            loadFinish: false //标记是否已经成功加载数据一次
+        };
+    },
+    components: { TasteModule1: _TasteModule2.default, TasteModule2: _TasteModule4.default },
+    created: function created() {
+        var _this = this;
+
+        if (this.loadFinish) {
+            return;
+        }
+
+        this.post("app/shopv3/pipe", "data={\"PinweiGetHome\":{\"model\":\"Pinwei\",\"action\":\"GetHome\",\"parameters\":{}}}", function (response) {
+            if (response.ok) {
+                if (response.data.message === "ok" || response.data.message === "OK") {
+                    var _showDatas;
+
+                    _this.loadFinish = true;
+                    var result = response.data.result.PinweiGetHome.data;
+                    (_showDatas = _this.showDatas).push.apply(_showDatas, _toConsumableArray(result['rags']));
+                } else {
+                    modal.toast({
+                        message: "网络请求失败",
+                        duration: 0.3
+                    });
+                }
+            } else {
+                modal.toast({
+                    message: "服务器异常",
+                    duration: 0.3
+                });
+            }
+        });
+    }
+};
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(93)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(94)
+
+/* template */
+var __vue_template__ = __webpack_require__(95)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\TasteModule1.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-6d8fcc84"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "taste_wrapper": {
+    "width": "750",
+    "height": "580",
+    "backgroundColor": "#FFFFFF",
+    "flexDirection": "column"
+  },
+  "banner_slider": {
+    "width": "750",
+    "height": "390"
+  },
+  "banner_image_container": {
+    "width": "750",
+    "height": "390",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "banner_image": {
+    "borderBottomLeftRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderBottomRightRadius": "5",
+    "borderTopRightRadius": "5",
+    "width": "710",
+    "height": "355"
+  },
+  "kingkong_scroller": {
+    "marginTop": "5",
+    "width": "750",
+    "height": "167",
+    "paddingLeft": "20",
+    "flexDirection": "row"
+  },
+  "kingkong_content_container": {
+    "flexDirection": "column",
+    "width": "150",
+    "height": "167",
+    "marginRight": "20",
+    "alignItems": "center"
+  },
+  "kingkong_image": {
+    "width": "150",
+    "height": "129",
+    "borderBottomLeftRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderBottomRightRadius": "5",
+    "borderTopRightRadius": "5"
+  },
+  "kingkong_title": {
+    "marginTop": "10",
+    "fontSize": "25",
+    "color": "#333333"
+  }
+}
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    name: "TasteModule1",
+    props: ['contentData'],
+    data: function data() {
+        return {};
+    }
+};
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["taste_wrapper"]
+  }, [_c('slider', {
+    staticClass: ["banner_slider"],
+    attrs: {
+      "autoPlay": "true",
+      "interval": "5000",
+      "infinite": "true",
+      "showIndicators": "false",
+      "scrollable": "true"
+    }
+  }, _vm._l((_vm.contentData[0]['banners']), function(item) {
+    return _c('div', {
+      staticClass: ["banner_image_container"]
+    }, [_c('image', {
+      staticClass: ["banner_image"],
+      attrs: {
+        "src": item.pic_url
+      }
+    })])
+  })), _c('scroller', {
+    staticClass: ["kingkong_scroller"],
+    attrs: {
+      "showScrollbar": "false",
+      "scrollDirection": "horizontal"
+    }
+  }, _vm._l((_vm.contentData[1]['items'].length), function(index) {
+    return _c('div', {
+      staticClass: ["kingkong_content_container"]
+    }, [_c('image', {
+      staticClass: ["kingkong_image"],
+      attrs: {
+        "src": _vm.contentData[1]['items'][index - 1].pic_url
+      }
+    }), _c('text', {
+      staticClass: ["kingkong_title"]
+    }, [_vm._v(_vm._s(_vm.contentData[1]['items'][index - 1].title))])])
+  }))])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(97)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(98)
+
+/* template */
+var __vue_template__ = __webpack_require__(99)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\TasteModule2.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-6d739d82"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "taste_wrapper": {
+    "marginTop": "20",
+    "backgroundColor": "#FFFFFF",
+    "flexDirection": "column"
+  },
+  "module_title_container": {
+    "width": "750",
+    "height": "97",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "module_title": {
+    "color": "#333333",
+    "fontSize": "30"
+  },
+  "weekly_magazine": {
+    "width": "750",
+    "height": "542",
+    "backgroundColor": "#FFFFFF",
+    "flexDirection": "column"
+  },
+  "weekly_magazine_main_image_container": {
+    "width": "750",
+    "height": "197",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "weekly_magazine_main_image": {
+    "width": "710",
+    "height": "197",
+    "borderBottomLeftRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderBottomRightRadius": "5",
+    "borderTopRightRadius": "5"
+  },
+  "weekly_magazine_scroller": {
+    "marginTop": "15",
+    "flexDirection": "row",
+    "width": "750",
+    "height": "323",
+    "paddingLeft": "20"
+  },
+  "weekly_magazine_content_container": {
+    "width": "212",
+    "height": "323",
+    "marginRight": "20",
+    "flexDirection": "column"
+  },
+  "weekly_magazine_goods_image": {
+    "width": "212",
+    "height": "212",
+    "backgroundColor": "#FAFAFA"
+  },
+  "weekly_magazine_goods_title": {
+    "lines": 1,
+    "textOverflow": "ellipsis",
+    "color": "#333333",
+    "fontSize": "28",
+    "marginTop": "10"
+  },
+  "weekly_magazine_goods_price": {
+    "color": "#BD2222",
+    "fontSize": "25",
+    "marginTop": "10"
+  },
+  "special_column": {
+    "width": "750",
+    "height": "597",
+    "flexDirection": "column",
+    "alignItems": "center"
+  },
+  "special_column_iamge": {
+    "width": "710",
+    "height": "355",
+    "borderBottomLeftRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderBottomRightRadius": "5",
+    "borderTopRightRadius": "5"
+  },
+  "special_column_title": {
+    "marginTop": "20",
+    "color": "#333333",
+    "fontSize": "30"
+  },
+  "special_column_subtitle": {
+    "marginTop": "20",
+    "color": "#999999",
+    "fontSize": "25"
+  },
+  "special_column_discover_container": {
+    "backgroundColor": "#997E66",
+    "borderBottomLeftRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderBottomRightRadius": "5",
+    "borderTopRightRadius": "5",
+    "paddingLeft": "40",
+    "paddingRight": "40",
+    "paddingTop": "10",
+    "paddingBottom": "10",
+    "marginTop": "20"
+  },
+  "special_column_discover": {
+    "fontSize": "30",
+    "color": "#FFFFFF"
+  },
+  "special_column_image_grid": {
+    "width": "750",
+    "height": "385",
+    "flexDirection": "column",
+    "alignItems": "center"
+  },
+  "image_grid_horizontal": {
+    "width": "710",
+    "height": "174",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "marginBottom": "15"
+  },
+  "image_grid_vertical": {
+    "width": "348",
+    "height": "174"
+  },
+  "show_image": {
+    "width": "348",
+    "height": "174",
+    "borderBottomLeftRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderBottomRightRadius": "5",
+    "borderTopRightRadius": "5"
+  }
+}
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _util = __webpack_require__(0);
+
+var _util2 = _interopRequireDefault(_util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    name: "TasteModule1",
+    props: ['contentData', 'contentTitle'],
+    data: function data() {
+        return {};
+    },
+    methods: {
+        formatPrice: function formatPrice(price_min) {
+            return _util2.default.formatMoney(price_min);
+        }
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["taste_wrapper"]
+  }, [_c('div', {
+    staticClass: ["module_title_container"]
+  }, [_c('text', {
+    staticClass: ["module_title"]
+  }, [_vm._v(_vm._s(_vm.contentTitle))])]), _vm._l((_vm.contentData.length), function(index) {
+    return _c('div', [(_vm.contentData[index - 1].editorName === 'pinwei_home_big_article') ? _c('div', {
+      staticClass: ["weekly_magazine"]
+    }, [_c('div', {
+      staticClass: ["weekly_magazine_main_image_container"]
+    }, [_c('image', {
+      staticClass: ["weekly_magazine_main_image"],
+      attrs: {
+        "src": _vm.contentData[index - 1].pic_url
+      }
+    })]), _c('scroller', {
+      staticClass: ["weekly_magazine_scroller"],
+      attrs: {
+        "showScrollbar": "false",
+        "scrollDirection": "horizontal"
+      }
+    }, _vm._l((_vm.contentData[index - 1]['goods_list'].length), function(goodsIndex) {
+      return _c('div', {
+        staticClass: ["weekly_magazine_content_container"]
+      }, [_c('image', {
+        staticClass: ["weekly_magazine_goods_image"],
+        attrs: {
+          "src": _vm.contentData[index - 1]['goods_list'][goodsIndex - 1].pic_url
+        }
+      }), _c('text', {
+        staticClass: ["weekly_magazine_goods_title"]
+      }, [_vm._v(_vm._s(_vm.contentData[index - 1]['goods_list'][goodsIndex - 1].name) + "\n                    ")]), _c('text', {
+        staticClass: ["weekly_magazine_goods_price"]
+      }, [_vm._v("¥" + _vm._s(_vm.formatPrice(_vm.contentData[index - 1]['goods_list'][goodsIndex - 1].price_min)) + "\n                    ")])])
+    }))]) : (_vm.contentData[index - 1].editorName === 'pinwei_home_article_cover') ? _c('div', {
+      staticClass: ["special_column"]
+    }, [_c('image', {
+      staticClass: ["special_column_iamge"],
+      attrs: {
+        "src": _vm.contentData[index - 1].pic_url
+      }
+    }), _c('text', {
+      staticClass: ["special_column_title"]
+    }, [_vm._v(_vm._s(_vm.contentData[index - 1].title))]), _c('text', {
+      staticClass: ["special_column_subtitle"]
+    }, [_vm._v(_vm._s(_vm.contentData[index - 1].subtitle))]), _vm._m(0, true)]) : (_vm.contentData[index - 1].editorName === 'pinwei_home_image_grid') ? _c('div', {
+      staticClass: ["special_column_image_grid"]
+    }, _vm._l((_vm.contentData[index - 1]['pics'].length / 2), function(index1) {
+      return _c('div', {
+        staticClass: ["image_grid_horizontal"]
+      }, _vm._l((2), function(index2) {
+        return _c('div', {
+          staticClass: ["image_grid_vertical"]
+        }, [_c('image', {
+          staticClass: ["show_image"],
+          attrs: {
+            "src": _vm.contentData[index - 1]['pics'][(index1 - 1) * 2 + (index2 - 1)].pic_url
+          }
+        })])
+      }))
+    })) : _c('div', [_c('text', [_vm._v(_vm._s(_vm.contentData[index - 1].editorName))])])])
+  })], 2)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["special_column_discover_container"]
+  }, [_c('text', {
+    staticClass: ["special_column_discover"]
+  }, [_vm._v("去发现")])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["app_content"]
+  }, [_vm._m(0), _c('div', {
+    staticClass: ["taste_content_container"]
+  }, [_c('list', {
+    attrs: {
+      "showScrollbar": "false"
+    }
+  }, [_vm._l((_vm.showDatas), function(item, index) {
+    return _c('cell', {
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [(item.editorName === 'pure_container') ? _c('div', [_c('taste-module1', {
+      attrs: {
+        "contentData": item['rags']
+      }
+    })], 1) : (item.editorName === 'pinwei_home_floor') ? _c('div', [_c('taste-module2', {
+      attrs: {
+        "contentData": item['rags'],
+        "contentTitle": item.title
+      }
+    })], 1) : _c('div', [_c('text', [_vm._v(_vm._s(item.editorName))])])])
+  }), _vm._m(1)], 2)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["title_container"]
+  }, [_c('text', {
+    staticClass: ["taste_title"]
+  }, [_vm._v("品味")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('div', {
+    staticClass: ["bottom_content"]
+  }, [_c('div', {
+    staticClass: ["line_content"]
+  }, [_c('div', {
+    staticClass: ["bottom_line"]
+  }), _c('text', {
+    staticClass: ["bottom_line_text"]
+  }, [_vm._v("底线在此，不能更低了")]), _c('div', {
+    staticClass: ["bottom_line"]
+  })])])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(102)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(103)
+
+/* template */
+var __vue_template__ = __webpack_require__(104)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\ShoppingCartPage.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-565615e7"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "app_wrapper": {
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "width": "750",
+    "backgroundColor": "#FAFAFC"
+  },
+  "title_container": {
+    "borderBottomColor": "#E6E6E6",
+    "borderBottomWidth": "1",
+    "backgroundColor": "#FFFFFF",
+    "width": "750",
+    "height": "100",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "taste_title": {
+    "color": "#333333",
+    "fontSize": "32"
+  },
+  "edit_shopping_car_container": {
+    "position": "absolute",
+    "right": "0",
+    "top": "0",
+    "bottom": "0",
+    "justifyContent": "center"
+  },
+  "edit_shopping_car": {
+    "paddingLeft": "25",
+    "paddingRight": "25",
+    "fontSize": "27",
+    "color": "#444444"
+  },
+  "app_content": {
+    "position": "absolute",
+    "top": "100",
+    "bottom": "0",
+    "width": "750",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "logging_success": {
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "width": "750",
+    "backgroundColor": "#FF0000"
+  },
+  "no_logging": {
+    "flexDirection": "column",
+    "width": "750",
+    "alignItems": "center"
+  },
+  "hite_info": {
+    "marginTop": "40",
+    "color": "#999999",
+    "fontSize": "28"
+  },
+  "go_logging": {
+    "marginTop": "30",
+    "color": "#777777",
+    "fontSize": "32",
+    "borderBottomColor": "#AAAAAA",
+    "borderTopColor": "#AAAAAA",
+    "borderLeftColor": "#AAAAAA",
+    "borderRightColor": "#AAAAAA",
+    "borderTopWidth": "1",
+    "borderBottomWidth": "1",
+    "borderRightWidth": "1",
+    "borderLeftWidth": "1",
+    "borderBottomRightRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderBottomLeftRadius": "5",
+    "borderTopRightRadius": "5",
+    "paddingTop": "15",
+    "paddingBottom": "15",
+    "paddingRight": "40",
+    "paddingLeft": "40"
+  }
+}
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    name: "ShoppingCartPage",
+    data: function data() {
+        return {
+            isLoggingSuccess: false
+        };
+    }
+};
+
+/***/ }),
+/* 104 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["app_wrapper"]
+  }, [_c('div', {
+    staticClass: ["title_container"]
+  }, [_c('text', {
+    staticClass: ["taste_title"]
+  }, [_vm._v("购物车")]), _c('div', {
+    staticClass: ["edit_shopping_car_container"]
+  }, [_c('text', {
+    staticClass: ["edit_shopping_car"],
+    style: {
+      visibility: _vm.isLoggingSuccess ? 'visible' : 'hidden'
+    }
+  }, [_vm._v("编辑")])])]), _c('div', {
+    staticClass: ["app_content"]
+  }, [_vm._m(0), _c('div', {
+    staticClass: ["logging_success"],
+    style: {
+      visibility: _vm.isLoggingSuccess ? 'visible' : 'hidden'
+    }
+  }, [_c('text', [_vm._v("登录成功")])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["no_logging"]
+  }, [_c('image', {
+    staticStyle: {
+      width: "213px",
+      height: "183px"
+    },
+    attrs: {
+      "src": "http://www.lidiwo.com/cart_empty.png"
+    }
+  }), _c('text', {
+    staticClass: ["hite_info"]
+  }, [_vm._v("登录后才能看到商品哦~")]), _c('text', {
+    staticClass: ["go_logging"]
+  }, [_vm._v("立即登录")])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(106)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(107)
+
+/* template */
+var __vue_template__ = __webpack_require__(108)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\components\\PersonPage.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-32527cd8"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "personal_scroller": {
+    "flexDirection": "column"
+  },
+  "app_content": {
+    "flexDirection": "column",
+    "width": "750",
+    "backgroundColor": "#F4F4F4"
+  },
+  "user_center_header": {
+    "flexDirection": "column",
+    "width": "750",
+    "height": "323"
+  },
+  "bg_image": {
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "left": "0",
+    "right": "0"
+  },
+  "user_center_header_one": {
+    "flexDirection": "row",
+    "width": "750",
+    "height": "100",
+    "justifyContent": "flex-end",
+    "alignItems": "flex-end"
+  },
+  "personal_image": {
+    "width": "90",
+    "height": "90"
+  },
+  "personal_set": {
+    "marginRight": "25"
+  },
+  "personal_message": {
+    "marginRight": "20"
+  },
+  "user_center_header_two": {
+    "width": "750",
+    "height": "150",
+    "paddingLeft": "20",
+    "flexDirection": "row",
+    "paddingRight": "20",
+    "alignItems": "center",
+    "justifyContent": "space-between"
+  },
+  "user_center_hend_and_username": {
+    "flexDirection": "row",
+    "alignItems": "center"
+  },
+  "personal_logged": {
+    "width": "150",
+    "height": "150"
+  },
+  "personal_info": {
+    "color": "#FFFFFF",
+    "fontSize": "30",
+    "marginLeft": "25"
+  },
+  "personal_icon_right": {
+    "width": "15",
+    "height": "29"
+  },
+  "personal_order_container": {
+    "paddingLeft": "20",
+    "paddingRight": "20",
+    "width": "750",
+    "height": "275",
+    "backgroundColor": "#FFFFFF",
+    "flexDirection": "column"
+  },
+  "personal_order_one": {
+    "flex": 2,
+    "borderBottomWidth": "1",
+    "borderBottomColor": "#E5E5E5",
+    "justifyContent": "space-between",
+    "alignItems": "center",
+    "flexDirection": "row"
+  },
+  "personal_order_two": {
+    "flex": 3,
+    "flexDirection": "row",
+    "marginTop": "15"
+  },
+  "order_my_text": {
+    "color": "#333333",
+    "fontSize": "30"
+  },
+  "personal_order_all": {
+    "flexDirection": "row",
+    "alignItems": "center"
+  },
+  "order_all_text": {
+    "fontSize": "25",
+    "color": "#999999"
+  },
+  "order_all_image": {
+    "width": "25",
+    "height": "25"
+  },
+  "order_type": {
+    "alignItems": "center",
+    "flexDirection": "column",
+    "width": "177",
+    "height": "165"
+  },
+  "order_type_image": {
+    "width": "70",
+    "height": "70"
+  },
+  "order_type_text": {
+    "marginTop": "15",
+    "fontSize": "27",
+    "color": "#666666"
+  },
+  "personal_banner": {
+    "width": "750",
+    "height": "217"
+  },
+  "banner_image": {
+    "width": "750",
+    "height": "217"
+  },
+  "personal_service_container": {
+    "paddingLeft": "20",
+    "paddingRight": "20",
+    "width": "750",
+    "backgroundColor": "#FFFFFF",
+    "flexDirection": "column"
+  },
+  "personal_service_one": {
+    "height": "110",
+    "flexDirection": "row",
+    "alignItems": "center"
+  },
+  "personal_service_two": {
+    "flexDirection": "column"
+  },
+  "service_type_row": {
+    "flexDirection": "row",
+    "borderTopWidth": "1",
+    "borderTopColor": "#E5E5E5"
+  },
+  "service_type_column": {
+    "marginTop": "20",
+    "flexDirection": "column",
+    "width": "178",
+    "height": "200",
+    "alignItems": "center"
+  },
+  "service_type_title": {
+    "fontSize": "25",
+    "color": "#999999"
+  }
+}
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+
+var orderType = [{
+    image: "http://www.lidiwo.com/personal_icon_paid_copy.png",
+    text: "待付款"
+}, {
+    image: "http://www.lidiwo.com/personal_icon_receipt.png",
+    text: "待发货"
+}, {
+    image: "http://www.lidiwo.com/personal_icon_appraisal.png",
+    text: "待评价"
+}, {
+    image: "http://www.lidiwo.com/personal_icon_return_goods.png",
+    text: "退款/售后"
+}];
+var serviceData = [{
+    big_icon: "http://www.lidiwo.com/personal_icon_group_buying.png",
+    name: "拼团订单",
+    title: ""
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_coupon_new.png",
+    name: "优惠券",
+    title: ""
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_gift_nor.png",
+    name: "新人邀请",
+    title: "立享红包"
+}, {
+    big_icon: "http://www.lidiwo.com/set_icon_share.png",
+    name: "分享app",
+    title: ""
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_collection_nor.png",
+    name: "我的收藏",
+    title: ""
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_assets_nor.png",
+    name: "我的资产",
+    title: "积分/特权码"
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_address_nor.png",
+    name: "地址管理",
+    title: ""
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_service_center.png",
+    name: "服务中心",
+    title: "在线客服"
+}, {
+    big_icon: "http://www.lidiwo.com/personal_icon_feedback.png",
+    name: "用户反馈",
+    title: ""
+}, {
+    big_icon: "http://cdn.cnbj0.fds.api.mi-img.com/miio.files/commonfile_png_b7e92d019b956aa2d705690574b193cf.png",
+    name: "帮助中心",
+    title: ""
+}];
+
+exports.default = {
+    name: "PersonPage",
+    data: function data() {
+        return {
+            orderStatus: orderType,
+            myService: serviceData,
+            isFristLoad: false,
+            groupBuyGroupBuyNoticeCount: {},
+            homepageGetSuperBanner: {}
+        };
+    },
+    methods: {
+        getRowCount: function getRowCount(constant) {
+            return Math.ceil(this.myService.length / constant);
+        },
+        getColumnCount: function getColumnCount(constant, lines) {
+            var remainder = this.myService.length % constant;
+            return lines == this.getRowCount(constant) ? remainder == 0 ? constant : remainder : constant;
+        }
+    },
+    created: function created() {
+        var _this = this;
+
+        if (this.isFristLoad) {
+            return;
+        }
+        this.post("app/shopv3/pipe", "data={\"HomepageGetSuperBanner\":{\"model\":\"Homepage\",\"action\":\"GetSuperBanner\",\"parameters\":{}},\"GroupBuyGroupBuyNoticeCount\":{\"model\":\"GroupBuy\",\"action\":\"GroupBuyNoticeCount\",\"parameters\":{}}}", function (response) {
+            if (response.ok) {
+                if (response.data.message === "ok" || response.data.message === "OK") {
+                    _this.isFristLoad = true;
+                    var result = response.data.result;
+                    _this.homepageGetSuperBanner = result.HomepageGetSuperBanner;
+                } else {
+                    modal.toast({
+                        message: "网络请求失败",
+                        duration: 0.3
+                    });
+                }
+            } else {
+                modal.toast({
+                    message: "服务器异常",
+                    duration: 0.3
+                });
+            }
+        });
+    }
+};
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('scroller', {
+    staticClass: ["personal_scroller"],
+    attrs: {
+      "scrollDirection": "vertical",
+      "showScrollbar": "false"
+    }
+  }, [_c('div', {
+    staticClass: ["app_content"]
+  }, [_vm._m(0), _c('div', {
+    staticClass: ["personal_order_container"]
+  }, [_vm._m(1), _c('div', {
+    staticClass: ["personal_order_two"]
+  }, _vm._l((_vm.orderStatus), function(orderT) {
+    return _c('div', {
+      staticClass: ["order_type"]
+    }, [_c('image', {
+      staticClass: ["order_type_image"],
+      attrs: {
+        "src": orderT.image
+      }
+    }), _c('text', {
+      staticClass: ["order_type_text"]
+    }, [_vm._v(_vm._s(orderT.text))])])
+  }))]), _c('div', {
+    staticClass: ["personal_banner"]
+  }, [_c('image', {
+    staticClass: ["banner_image"],
+    attrs: {
+      "src": _vm.homepageGetSuperBanner.data['data'][0].pic_url
+    }
+  })]), _c('div', {
+    staticClass: ["personal_service_container"]
+  }, [_vm._m(2), _c('div', {
+    staticClass: ["personal_service_two"]
+  }, _vm._l((_vm.getRowCount(4)), function(index1) {
+    return _c('div', {
+      staticClass: ["service_type_row"]
+    }, _vm._l((_vm.getColumnCount(4, index1)), function(index2) {
+      return _c('div', {
+        staticClass: ["service_type_column"]
+      }, [_c('image', {
+        staticClass: ["order_type_image"],
+        attrs: {
+          "src": _vm.myService[(index1 - 1) * 4 + index2 - 1].big_icon
+        }
+      }), _c('text', {
+        staticClass: ["order_type_text"]
+      }, [_vm._v(_vm._s(_vm.myService[(index1 - 1) * 4 + index2 - 1].name))]), _c('text', {
+        staticClass: ["service_type_title"]
+      }, [_vm._v(_vm._s(_vm.myService[(index1 - 1) * 4 + index2 - 1].title))])])
+    }))
+  }))])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["user_center_header"]
+  }, [_c('image', {
+    staticClass: ["bg_image"],
+    attrs: {
+      "src": "http://www.lidiwo.com/personal_bg_top.png"
+    }
+  }), _c('div', {
+    staticClass: ["user_center_header_one"]
+  }, [_c('image', {
+    staticClass: ["personal_image", "personal_set"],
+    attrs: {
+      "src": "http://www.lidiwo.com/personal_icon_set_nor.png"
+    }
+  }), _c('image', {
+    staticClass: ["personal_image", "personal_message"],
+    attrs: {
+      "src": "http://www.lidiwo.com/personal_icon_message_nor.png"
+    }
+  })]), _c('div', {
+    staticClass: ["user_center_header_two"]
+  }, [_c('div', {
+    staticClass: ["user_center_hend_and_username"]
+  }, [_c('image', {
+    staticClass: ["personal_logged"],
+    attrs: {
+      "src": "http://www.lidiwo.com/user_not_logged.png"
+    }
+  }), _c('text', {
+    staticClass: ["personal_info"]
+  }, [_vm._v("未登录")])]), _c('image', {
+    staticClass: ["personal_icon_right"],
+    attrs: {
+      "src": "http://www.lidiwo.com/icon_right_more_white.png"
+    }
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["personal_order_one"]
+  }, [_c('text', {
+    staticClass: ["order_my_text"]
+  }, [_vm._v("我的订单")]), _c('div', {
+    staticClass: ["personal_order_all"]
+  }, [_c('text', {
+    staticClass: ["order_all_text"]
+  }, [_vm._v("全部订单")]), _c('image', {
+    staticClass: ["order_all_image"],
+    attrs: {
+      "src": "http://www.lidiwo.com/icon_right_more.png"
+    }
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["personal_service_one"]
+  }, [_c('text', {
+    staticClass: ["order_my_text"]
+  }, [_vm._v("我的服务")])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["app-wrapper"]
+  }, [_c('div', {
+    ref: "r_box_container",
+    staticClass: ["r_box_container"]
+  }, _vm._l((5), function(flag) {
+    return _c('div', {
+      staticClass: ["r-box"],
+      style: {
+        left: (flag - 1) * 750
+      }
+    }, [(flag === 1) ? _c('home_page') : _vm._e(), (flag === 2) ? _c('classify_page') : _vm._e(), (flag === 3) ? _c('taste_page') : _vm._e(), (flag === 4) ? _c('shopping_cart_page') : _vm._e(), (flag === 5) ? _c('person_page') : _vm._e()], 1)
+  })), _c('navigation_bar', {
+    on: {
+      "selectIndex": _vm.getSelectIndex
+    }
+  })], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(111)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(112)
+
+/* template */
+var __vue_template__ = __webpack_require__(113)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "D:\\H_WorkSpace\\weex_youpin\\src\\index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-1a4d8e3c"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wrapper": {
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "right": "0",
+    "left": "0"
+  }
+}
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+
+exports.default = {
+    name: 'App',
+    data: function data() {
+        return {};
+    }
+};
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('router-view')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

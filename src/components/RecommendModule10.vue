@@ -20,7 +20,7 @@
                 <div class="goods_price">
                     <text class="rmb_symbol">¥</text>
                     <text class="price_text">{{goodsPrice((index1-1)*2+(index2-1))}}</text>
-                    <text class="rmb_symbol" :style="exceed_text">起</text>
+                    <text class="rmb_symbol" :style="{visibility:recommendData[(index1-1)*2+(index2-1)].attr_ext.price_tag===1?'visible':'hidden'}">起</text>
                 </div>
             </div>
         </div>
@@ -42,9 +42,6 @@
         props: ["recommendData"],
         data: function () {
             return {
-                exceed_text: {
-                    visibility: "hidden",
-                },
             }
         },
         methods: {
@@ -171,7 +168,7 @@
     }
 
     .rmb_symbol {
-        margin-bottom: 5px;
+        margin-bottom: 3px;
         font-size: 20px;
         color: #A92112;
     }

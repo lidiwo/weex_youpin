@@ -14,7 +14,7 @@
                 <div class="main_goods_price">
                     <text class="rmb_symbol">¥</text>
                     <text class="price_text">{{goodsPrice(0)}}</text>
-                    <text class="rmb_symbol" :style="exceed_text">起</text>
+                    <text class="rmb_symbol" :style="{visibility:crowdFundingData['items'][0].attr_ext.price_tag===1?'visible':'hidden'}">起</text>
                 </div>
 
             </div>
@@ -29,7 +29,7 @@
                     <div class="goods_price">
                         <text class="rmb_symbol">¥</text>
                         <text class="price_text">{{goodsPrice(1)}}</text>
-                        <text class="rmb_symbol" :style="exceed_text">起</text>
+                        <text class="rmb_symbol":style="{visibility:crowdFundingData['items'][1].attr_ext.price_tag===1?'visible':'hidden'}">起</text>
                     </div>
                     <image class="small_pic" :src="crowdFundingData['items'][1].pic_url"></image>
                 </div>
@@ -40,7 +40,7 @@
                     <div class="goods_price">
                         <text class="rmb_symbol">¥</text>
                         <text class="price_text">{{goodsPrice(2)}}</text>
-                        <text class="rmb_symbol" :style="exceed_text">起</text>
+                        <text class="rmb_symbol" :style="{visibility:crowdFundingData['items'][2].attr_ext.price_tag===1?'visible':'hidden'}">起</text>
                     </div>
                     <image class="small_pic" :src="crowdFundingData['items'][2].pic_url"></image>
                 </div>
@@ -204,7 +204,7 @@
     }
 
     .rmb_symbol {
-        margin-bottom: 5px;
+        margin-bottom: 3px;
         font-size: 20px;
         color: #A92112;
     }
