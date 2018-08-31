@@ -180,6 +180,4 @@
         font-size: 30px;
         color: #A92112;
     }
-
-
 </style>
