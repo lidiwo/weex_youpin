@@ -39,13 +39,10 @@
             return {
                 isFristLoad: false,
                 showDatas: [],
-                message: JSON.parse("{\"background_img\":\"https://shop.io.mi-img.com/app/shop/img?id=shop_411bfa8d328c4ab7915509edc1401ff3.jpeg&w=530&h=255\"}"),
+
             }
         },
         methods: {
-            getBrandMainImage: function (style) {
-                return JSON.parse(style).background_img;
-            }
 
         },
         created: function () {

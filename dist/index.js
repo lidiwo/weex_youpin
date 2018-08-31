@@ -8975,7 +8975,40 @@ module.exports = __vue_exports__
 /* 76 */
 /***/ (function(module, exports) {
 
-module.exports = {}
+module.exports = {
+  "wrapper": {
+    "backgroundColor": "#F4F4F4",
+    "flexDirection": "column",
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "width": "750"
+  },
+  "bottom_content": {
+    "width": "750",
+    "height": "333",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "line_content": {
+    "width": "750",
+    "height": "50",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "bottom_line": {
+    "width": "150",
+    "height": "1",
+    "backgroundColor": "#999999"
+  },
+  "bottom_line_text": {
+    "marginRight": "30",
+    "marginLeft": "30",
+    "fontSize": "22",
+    "color": "#999999"
+  }
+}
 
 /***/ }),
 /* 77 */
@@ -8993,9 +9026,110 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
+var modal = weex.requireModule('modal');
 exports.default = {
-    name: "CrowdPage"
+    name: "CrowdPage",
+    data: function data() {
+        return {
+            isFristLoad: false,
+            crowdingData: [],
+            crowdFinishData: []
+
+        };
+    },
+    methods: {
+        getRowCount: function getRowCount(constant, list) {
+            return Math.floor(list.length / constant);
+        },
+        getColumnCount: function getColumnCount(constant, list, lines) {
+            var remainder = list.length % constant;
+            return lines == this.getRowCount(constant, list) ? remainder == 0 ? constant : remainder : constant;
+        }
+    },
+    created: function created() {
+        var _this = this;
+
+        if (this.isFristLoad) {
+            return;
+        }
+        this.post("app/shop/gpipe", "data={\"HomepageBuildHome\":{\"model\":\"Homepage\",\"action\":\"BuildHome\",\"parameters\":{\"id\":78}}}", function (response) {
+            if (response.ok) {
+                if (response.data.message === "ok" || response.data.message === "OK") {
+                    _this.isFristLoad = true;
+                    var datas = response.data.result.HomepageBuildHome;
+                    var result = datas['data'];
+                    for (var i = 0; i < result.length; i++) {
+                        if (result[i].status == 0) {
+                            //正在众筹
+                            _this.crowdingData.push(result[i]);
+                        } else if (result[i].status == 1) {
+                            //往期众筹
+                            _this.crowdFinishData.push(result[i]);
+                        }
+                    }
+                } else {
+                    modal.toast({
+                        message: "网络请求失败",
+                        duration: 0.3
+                    });
+                }
+            } else {
+                modal.toast({
+                    message: "服务器异常",
+                    duration: 0.3
+                });
+            }
+        });
+    }
 };
 
 /***/ }),
@@ -9003,9 +9137,170 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
+  return _c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('list', {
+    staticClass: ["wrapper"],
+    attrs: {
+      "showScrollbar": "false"
+    }
+  }, [_c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "column",
+      backgroundColor: "white"
+    }
+  }, [_vm._m(0), _c('div', {
+    staticStyle: {
+      backgroundColor: "#EDEDED"
+    }
+  }, _vm._l((_vm.getRowCount(2, _vm.crowdingData)), function(index1) {
+    return _c('div', {
+      staticStyle: {
+        width: "750px",
+        height: "462px",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginBottom: "2px"
+      }
+    }, _vm._l((_vm.getColumnCount(2, _vm.crowdingData, index1)), function(index2) {
+      return _c('div', {
+        staticStyle: {
+          width: "374px",
+          height: "462px",
+          flexDirection: "column",
+          backgroundColor: "#0088fb"
+        }
+      })
+    }))
+  }))])]), _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "column",
+      backgroundColor: "white",
+      marginTop: "15px"
+    }
+  }, [_vm._m(1), _c('div', {
+    staticStyle: {
+      backgroundColor: "#EDEDED"
+    }
+  }, _vm._l((_vm.getRowCount(2, _vm.crowdFinishData)), function(index1) {
+    return _c('div', {
+      staticStyle: {
+        width: "750px",
+        height: "427px",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginBottom: "2px"
+      }
+    }, _vm._l((_vm.getColumnCount(2, _vm.crowdFinishData, index1)), function(index2) {
+      return _c('div', {
+        staticStyle: {
+          width: "374px",
+          height: "427px",
+          flexDirection: "column",
+          backgroundColor: "white"
+        }
+      }, [_c('div', {
+        staticStyle: {
+          width: "374px",
+          height: "280px",
+          justifyContent: "center",
+          alignItems: "center"
+        }
+      }, [_c('image', {
+        staticStyle: {
+          width: "280px",
+          height: "280px"
+        },
+        attrs: {
+          "src": _vm.crowdFinishData[(index1 - 1) * 2 + index2 - 1].pic_url
+        }
+      })]), _c('div', {
+        staticStyle: {
+          flexDirection: "column",
+          paddingRight: "30px",
+          paddingLeft: "30px"
+        }
+      }, [_c('text', {
+        staticStyle: {
+          color: "#4D453E",
+          fontSize: "25px",
+          lines: "1",
+          textOverflow: "ellipsis"
+        }
+      }, [_vm._v(_vm._s(_vm.crowdFinishData[(index1 - 1) * 2 + index2 - 1].attr_ext.custom_name))])])])
+    }))
+  }))])]), _vm._m(2), _vm._m(3)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('text', [_vm._v("众筹")])])
+  return _c('div', {
+    staticStyle: {
+      width: "750px",
+      height: "80px",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#666666",
+      fontSize: "30px"
+    }
+  }, [_vm._v("正在众筹")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      width: "750px",
+      height: "80px",
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#666666",
+      fontSize: "30px"
+    }
+  }, [_vm._v("往期众筹")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "750px",
+      height: "332px",
+      marginTop: "15px"
+    },
+    attrs: {
+      "src": "http://www.lidiwo.com/crowdfunding_statement.jpg"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('div', {
+    staticClass: ["bottom_content"]
+  }, [_c('div', {
+    staticClass: ["line_content"]
+  }, [_c('div', {
+    staticClass: ["bottom_line"]
+  }), _c('text', {
+    staticClass: ["bottom_line_text"]
+  }, [_vm._v("底线在此，不能更低了")]), _c('div', {
+    staticClass: ["bottom_line"]
+  })])])])
 }]}
 module.exports.render._withStripped = true
 
@@ -9170,16 +9465,11 @@ exports.default = {
     data: function data() {
         return {
             isFristLoad: false,
-            showDatas: [],
-            message: JSON.parse("{\"background_img\":\"https://shop.io.mi-img.com/app/shop/img?id=shop_411bfa8d328c4ab7915509edc1401ff3.jpeg&w=530&h=255\"}")
+            showDatas: []
+
         };
     },
-    methods: {
-        getBrandMainImage: function getBrandMainImage(style) {
-            return JSON.parse(style).background_img;
-        }
-
-    },
+    methods: {},
     created: function created() {
         var _this = this;
 
