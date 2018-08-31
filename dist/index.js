@@ -9057,7 +9057,65 @@ module.exports = __vue_exports__
 /* 80 */
 /***/ (function(module, exports) {
 
-module.exports = {}
+module.exports = {
+  "wrapper": {
+    "backgroundColor": "#FFFFFF",
+    "flexDirection": "column",
+    "position": "absolute",
+    "top": "0",
+    "bottom": "0",
+    "width": "750"
+  },
+  "brand_content_container": {
+    "marginLeft": "20",
+    "marginRight": "20",
+    "width": "710",
+    "height": "442",
+    "marginTop": "20",
+    "borderTopColor": "#DADADA",
+    "borderBottomColor": "#DADADA",
+    "borderRightColor": "#DADADA",
+    "borderLeftColor": "#DADADA",
+    "borderBottomWidth": "1",
+    "borderTopWidth": "1",
+    "borderRightWidth": "1",
+    "borderLeftWidth": "1"
+  },
+  "brand_main_image": {
+    "width": "710",
+    "height": "342"
+  },
+  "brand_info_container": {
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "alignItems": "center"
+  },
+  "bottom_content": {
+    "width": "750",
+    "height": "333",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "backgroundColor": "#FAFAFA"
+  },
+  "line_content": {
+    "width": "750",
+    "height": "50",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "bottom_line": {
+    "width": "150",
+    "height": "1",
+    "backgroundColor": "#999999"
+  },
+  "bottom_line_text": {
+    "marginRight": "30",
+    "marginLeft": "30",
+    "fontSize": "22",
+    "color": "#999999"
+  }
+}
 
 /***/ }),
 /* 81 */
@@ -9069,6 +9127,35 @@ module.exports = {}
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -9076,8 +9163,51 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+
 exports.default = {
-    name: "BrandPage"
+    name: "BrandPage",
+    data: function data() {
+        return {
+            isFristLoad: false,
+            showDatas: [],
+            message: JSON.parse("{\"background_img\":\"https://shop.io.mi-img.com/app/shop/img?id=shop_411bfa8d328c4ab7915509edc1401ff3.jpeg&w=530&h=255\"}")
+        };
+    },
+    methods: {
+        getBrandMainImage: function getBrandMainImage(style) {
+            return JSON.parse(style).background_img;
+        }
+
+    },
+    created: function created() {
+        var _this = this;
+
+        if (this.isFristLoad) {
+            return;
+        }
+        this.post("app/shop/gpipe", "data={\"HomepageBuildHome\":{\"model\":\"Homepage\",\"action\":\"BuildHome\",\"parameters\":{\"id\":79}}}", function (response) {
+            if (response.ok) {
+                if (response.data.message === "ok" || response.data.message === "OK") {
+                    var _showDatas;
+
+                    _this.isFristLoad = true;
+                    var result = response.data.result.HomepageBuildHome;
+                    (_showDatas = _this.showDatas).push.apply(_showDatas, _toConsumableArray(result['data']));
+                } else {
+                    modal.toast({
+                        message: "网络请求失败",
+                        duration: 0.3
+                    });
+                }
+            } else {
+                modal.toast({
+                    message: "服务器异常",
+                    duration: 0.3
+                });
+            }
+        });
+    }
 };
 
 /***/ }),
@@ -9085,9 +9215,88 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
+  return _c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('list', {
+    staticClass: ["wrapper"],
+    attrs: {
+      "showScrollbar": "false"
+    }
+  }, [_vm._l((_vm.showDatas), function(item) {
+    return _c('cell', {
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [_c('div', {
+      staticClass: ["brand_content_container"]
+    }, [_c('image', {
+      staticClass: ["brand_main_image"],
+      attrs: {
+        "src": item['data'][0].pic_url
+      }
+    }), _c('div', {
+      staticClass: ["brand_info_container"]
+    }, [_c('div', {
+      staticStyle: {
+        marginLeft: "15px",
+        marginTop: "15px",
+        marginBottom: "15px",
+        flexDirection: "row",
+        alignItems: "center"
+      }
+    }, [_c('image', {
+      staticStyle: {
+        width: "70px",
+        height: "70px"
+      },
+      attrs: {
+        "src": item.content.pic_url
+      }
+    }), _c('div', {
+      staticStyle: {
+        flexDirection: "column",
+        marginLeft: "20px"
+      }
+    }, [_c('text', {
+      staticStyle: {
+        color: "#4D453E",
+        fontSize: "25px"
+      }
+    }, [_vm._v(_vm._s(item.content.short_name))]), _c('text', {
+      staticStyle: {
+        color: "#666666",
+        fontSize: "20px",
+        marginTop: "3px"
+      }
+    }, [_vm._v(_vm._s(item.content.summary))])])]), _c('image', {
+      staticStyle: {
+        width: "15px",
+        height: "30px",
+        marginRight: "20px"
+      },
+      attrs: {
+        "src": "http://www.lidiwo.com/next.png"
+      }
+    })])])])
+  }), _vm._m(0)], 2)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('text', [_vm._v("品牌")])])
+  return _c('cell', {
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('div', {
+    staticClass: ["bottom_content"]
+  }, [_c('div', {
+    staticClass: ["line_content"]
+  }, [_c('div', {
+    staticClass: ["bottom_line"]
+  }), _c('text', {
+    staticClass: ["bottom_line_text"]
+  }, [_vm._v("底线在此，不能更低了")]), _c('div', {
+    staticClass: ["bottom_line"]
+  })])])])
 }]}
 module.exports.render._withStripped = true
 
