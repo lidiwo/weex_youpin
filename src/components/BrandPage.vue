@@ -12,7 +12,7 @@
                                 <text style="color: #666666;font-size: 20px;margin-top: 3px">{{item.content.summary}}</text>
                             </div>
                         </div>
-                        <image style="width: 15px ;height: 30px;margin-right:20px " src="http://www.lidiwo.com/next.png" ></image>
+                        <image style="width: 15px ;height: 30px;margin-right:20px " src="http://hehanzhao.com/image/next.png" ></image>
                     </div>
                 </div>
             </cell>

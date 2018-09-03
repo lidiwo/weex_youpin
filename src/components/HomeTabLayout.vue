@@ -13,7 +13,7 @@
 
             </scroller>
             <div class="tb_dropdown">
-                <image class="tb_dropdown_ico" src="http://www.lidiwo.com/main_cat_dropdown.png"></image>
+                <image class="tb_dropdown_ico" src="http://hehanzhao.com/image/main_cat_dropdown.png"></image>
             </div>
         </div>
         <slider class="slider" infinite="false" offset-x-accuracy="0.0001px" scrollable="true" keep-index="true"

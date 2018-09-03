@@ -1,16 +1,16 @@
 <template>
     <div class="wrapper" >
         <div>
-            <image class="title_logo" src="http://www.lidiwo.com/logo.png"></image>
+            <image class="title_logo" src="http://hehanzhao.com/image/logo.png"></image>
         </div>
 
         <div class="title_search">
-            <image class="title_search_icon" src="http://www.lidiwo.com/icon_search.png"></image>
+            <image class="title_search_icon" src="http://hehanzhao.com/image/icon_search.png"></image>
             <text class="title_search_text">云米超级品牌日</text>
-            <image class="title_search_scan" src="http://www.lidiwo.com/icon_scan.png"></image>
+            <image class="title_search_scan" src="http://hehanzhao.com/image/icon_scan.png"></image>
         </div>
         <div>
-            <image class="title_notice" src="http://www.lidiwo.com/main_title_notice.png"></image>
+            <image class="title_notice" src="http://hehanzhao.com/image/main_title_notice.png"></image>
         </div>
 
     </div>

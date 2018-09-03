@@ -8,7 +8,7 @@
         </div>
         <div class="app_content">
             <div class="no_logging">
-                <image style="width:213px;height:183px;" src="http://www.lidiwo.com/cart_empty.png"></image>
+                <image style="width:213px;height:183px;" src="http://hehanzhao.com/image/cart_empty.png"></image>
                 <text class="hite_info">登录后才能看到商品哦~</text>
                 <text class="go_logging">立即登录</text>
             </div>

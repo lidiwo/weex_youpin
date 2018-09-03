@@ -2,7 +2,7 @@
     <div class="content">
         <slider auto-play="true" interval="3000" scrollable="true" infinite="true" show-indicators="false" @change="changeHandler($event)">
             <div v-for="item in swipebanner['items']">
-                <image class="image_swipebanner" placeholder="http://www.lidiwo.com/banner_placeholder.png"
+                <image class="image_swipebanner" placeholder="http://hehanzhao.com/image/banner_placeholder.png"
                        :src="item.pic_url"></image>
             </div>
         </slider>

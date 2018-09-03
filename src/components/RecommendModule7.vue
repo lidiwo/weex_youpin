@@ -5,14 +5,14 @@
                 <text class="title"
                 >{{flashsaleData.title}}</text>
                 <div class="title_countdown" :style="{ visibility:isCountDownFinish?'hidden': 'visible' }">
-                <image  style="width: 20px;height: 20px;margin-left: 30px" src="http://www.lidiwo.com/ltp_icon_time.png"></image>
+                <image  style="width: 20px;height: 20px;margin-left: 30px" src="http://hehanzhao.com/image/ltp_icon_time.png"></image>
                 <text style="color:#A92112;font-size: 20px;margin-left: 5px ">{{specialTime(flashsaleData.start_time*1000)}}点场</text>
                 <wxc-countdown tpl="{h}:{m}:{s}"  @wxcOnComplete="countDownFinish()" :timeBoxStyle="timeBoxStyle"  :timeTextStyle="timeTextStyle" :dotTextStyle="dotTextStyle" :time="flashsaleData.end_time*1000"></wxc-countdown>
                 </div>
             </div>
             <div class="title_more">
                 <text class="more_text"> 更多</text>
-                <image class="more_img" src="http://www.lidiwo.com/arrow_rounded.png"></image>
+                <image class="more_img" src="http://hehanzhao.com/image/arrow_rounded.png"></image>
             </div>
         </div>
         <scroller class="content_scroller" show-scrollbar="false" scroll-direction="horizontal" offset-accuracy="5px">

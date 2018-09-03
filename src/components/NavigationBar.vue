@@ -45,21 +45,21 @@
                     return
                 }
                 this.selectPosition = key
-                this.homeUrl = (0=== this.selectPosition) ? "http://www.lidiwo.com/tab_01_1.png" : "http://www.lidiwo.com/tab_01_0.png";
-                this.classifyUrl = (1 === this.selectPosition) ? "http://www.lidiwo.com/tab_02_1.png" : "http://www.lidiwo.com/tab_02_0.png";
-                this.tasteUrl = (2 === this.selectPosition) ? "http://www.lidiwo.com/tab_03_1.png" : "http://www.lidiwo.com/tab_03_0.png";
-                this.shoppingCartUrl = (3 === this.selectPosition) ? "http://www.lidiwo.com/tab_04_1.png" : "http://www.lidiwo.com/tab_04_0.png";
-                this.personUrl = (4=== this.selectPosition) ? "http://www.lidiwo.com/tab_05_1.png" : "http://www.lidiwo.com/tab_05_0.png";
+                this.homeUrl = (0=== this.selectPosition) ? "http://hehanzhao.com/image/tab_01_1.png" : "http://hehanzhao.com/image/tab_01_0.png";
+                this.classifyUrl = (1 === this.selectPosition) ? "http://hehanzhao.com/image/tab_02_1.png" : "http://hehanzhao.com/image/tab_02_0.png";
+                this.tasteUrl = (2 === this.selectPosition) ? "http://hehanzhao.com/image/tab_03_1.png" : "http://hehanzhao.com/image/tab_03_0.png";
+                this.shoppingCartUrl = (3 === this.selectPosition) ? "http://hehanzhao.com/image/tab_04_1.png" : "http://hehanzhao.com/image/tab_04_0.png";
+                this.personUrl = (4=== this.selectPosition) ? "http://hehanzhao.com/image/tab_05_1.png" : "http://hehanzhao.com/image/tab_05_0.png";
                 this.$emit('selectIndex',this.selectPosition);
                // this.$router.push('/' + key);
             }
         },
         created: function () {
-            this.homeUrl = (0 === this.selectPosition) ? "http://www.lidiwo.com/tab_01_1.png" : "http://www.lidiwo.com/tab_01_0.png";
-            this.classifyUrl = (1 === this.selectPosition) ? "http://www.lidiwo.com/tab_02_1.png" : "http://www.lidiwo.com/tab_02_0.png";
-            this.tasteUrl = (2 === this.selectPosition) ? "http://www.lidiwo.com/tab_03_1.png" : "http://www.lidiwo.com/tab_03_0.png";
-            this.shoppingCartUrl = (3 === this.selectPosition) ? "http://www.lidiwo.com/tab_04_1.png" : "http://www.lidiwo.com/tab_04_0.png";
-            this.personUrl = (4 === this.selectPosition) ? "http://www.lidiwo.com/tab_05_1.png" : "http://www.lidiwo.com/tab_05_0.png";
+            this.homeUrl = (0 === this.selectPosition) ? "http://hehanzhao.com/image/tab_01_1.png" : "http://hehanzhao.com/image/tab_01_0.png";
+            this.classifyUrl = (1 === this.selectPosition) ? "http://hehanzhao.com/image/tab_02_1.png" : "http://hehanzhao.com/image/tab_02_0.png";
+            this.tasteUrl = (2 === this.selectPosition) ? "http://hehanzhao.com/image/tab_03_1.png" : "http://hehanzhao.com/image/tab_03_0.png";
+            this.shoppingCartUrl = (3 === this.selectPosition) ? "http://hehanzhao.com/image/tab_04_1.png" : "http://hehanzhao.com/image/tab_04_0.png";
+            this.personUrl = (4 === this.selectPosition) ? "http://hehanzhao.com/image/tab_05_1.png" : "http://hehanzhao.com/image/tab_05_0.png";
         },
     }
 </script>

@@ -4,7 +4,7 @@
             <text class="title">专属推荐</text>
             <div class="title_more">
                 <text class="more_text"> 更多</text>
-                <image class="more_img" src="http://www.lidiwo.com/arrow_rounded.png"></image>
+                <image class="more_img" src="http://hehanzhao.com/image/arrow_rounded.png"></image>
             </div>
         </div>
 

@@ -2,7 +2,7 @@
     <div class="app_content">
         <div class="title_content">
             <div class="title_container">
-                <image class="title_search_icon" src="http://www.lidiwo.com/icon_search.png"></image>
+                <image class="title_search_icon" src="http://hehanzhao.com/image/icon_search.png"></image>
                 <text class="title_search_text">纯米超级品牌日</text>
             </div>
         </div>

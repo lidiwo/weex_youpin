@@ -66,7 +66,7 @@
                 </div>
             </cell>
             <cell>
-                <image style="width: 750px;height: 332px;margin-top: 15px" src="http://www.lidiwo.com/crowdfunding_statement.jpg"></image>
+                <image style="width: 750px;height: 332px;margin-top: 15px" src="http://hehanzhao.com/image/crowdfunding_statement.jpg"></image>
             </cell>
             <cell>
                 <div class="bottom_content">

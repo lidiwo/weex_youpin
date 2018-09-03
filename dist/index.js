@@ -3132,21 +3132,21 @@ exports.default = {
                 return;
             }
             this.selectPosition = key;
-            this.homeUrl = 0 === this.selectPosition ? "http://www.lidiwo.com/tab_01_1.png" : "http://www.lidiwo.com/tab_01_0.png";
-            this.classifyUrl = 1 === this.selectPosition ? "http://www.lidiwo.com/tab_02_1.png" : "http://www.lidiwo.com/tab_02_0.png";
-            this.tasteUrl = 2 === this.selectPosition ? "http://www.lidiwo.com/tab_03_1.png" : "http://www.lidiwo.com/tab_03_0.png";
-            this.shoppingCartUrl = 3 === this.selectPosition ? "http://www.lidiwo.com/tab_04_1.png" : "http://www.lidiwo.com/tab_04_0.png";
-            this.personUrl = 4 === this.selectPosition ? "http://www.lidiwo.com/tab_05_1.png" : "http://www.lidiwo.com/tab_05_0.png";
+            this.homeUrl = 0 === this.selectPosition ? "http://hehanzhao.com/image/tab_01_1.png" : "http://hehanzhao.com/image/tab_01_0.png";
+            this.classifyUrl = 1 === this.selectPosition ? "http://hehanzhao.com/image/tab_02_1.png" : "http://hehanzhao.com/image/tab_02_0.png";
+            this.tasteUrl = 2 === this.selectPosition ? "http://hehanzhao.com/image/tab_03_1.png" : "http://hehanzhao.com/image/tab_03_0.png";
+            this.shoppingCartUrl = 3 === this.selectPosition ? "http://hehanzhao.com/image/tab_04_1.png" : "http://hehanzhao.com/image/tab_04_0.png";
+            this.personUrl = 4 === this.selectPosition ? "http://hehanzhao.com/image/tab_05_1.png" : "http://hehanzhao.com/image/tab_05_0.png";
             this.$emit('selectIndex', this.selectPosition);
             // this.$router.push('/' + key);
         }
     },
     created: function created() {
-        this.homeUrl = 0 === this.selectPosition ? "http://www.lidiwo.com/tab_01_1.png" : "http://www.lidiwo.com/tab_01_0.png";
-        this.classifyUrl = 1 === this.selectPosition ? "http://www.lidiwo.com/tab_02_1.png" : "http://www.lidiwo.com/tab_02_0.png";
-        this.tasteUrl = 2 === this.selectPosition ? "http://www.lidiwo.com/tab_03_1.png" : "http://www.lidiwo.com/tab_03_0.png";
-        this.shoppingCartUrl = 3 === this.selectPosition ? "http://www.lidiwo.com/tab_04_1.png" : "http://www.lidiwo.com/tab_04_0.png";
-        this.personUrl = 4 === this.selectPosition ? "http://www.lidiwo.com/tab_05_1.png" : "http://www.lidiwo.com/tab_05_0.png";
+        this.homeUrl = 0 === this.selectPosition ? "http://hehanzhao.com/image/tab_01_1.png" : "http://hehanzhao.com/image/tab_01_0.png";
+        this.classifyUrl = 1 === this.selectPosition ? "http://hehanzhao.com/image/tab_02_1.png" : "http://hehanzhao.com/image/tab_02_0.png";
+        this.tasteUrl = 2 === this.selectPosition ? "http://hehanzhao.com/image/tab_03_1.png" : "http://hehanzhao.com/image/tab_03_0.png";
+        this.shoppingCartUrl = 3 === this.selectPosition ? "http://hehanzhao.com/image/tab_04_1.png" : "http://hehanzhao.com/image/tab_04_0.png";
+        this.personUrl = 4 === this.selectPosition ? "http://hehanzhao.com/image/tab_05_1.png" : "http://hehanzhao.com/image/tab_05_0.png";
     }
 };
 
@@ -3485,26 +3485,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', [_c('image', {
     staticClass: ["title_logo"],
     attrs: {
-      "src": "http://www.lidiwo.com/logo.png"
+      "src": "http://hehanzhao.com/image/logo.png"
     }
   })]), _c('div', {
     staticClass: ["title_search"]
   }, [_c('image', {
     staticClass: ["title_search_icon"],
     attrs: {
-      "src": "http://www.lidiwo.com/icon_search.png"
+      "src": "http://hehanzhao.com/image/icon_search.png"
     }
   }), _c('text', {
     staticClass: ["title_search_text"]
   }, [_vm._v("云米超级品牌日")]), _c('image', {
     staticClass: ["title_search_scan"],
     attrs: {
-      "src": "http://www.lidiwo.com/icon_scan.png"
+      "src": "http://hehanzhao.com/image/icon_scan.png"
     }
   })]), _c('div', [_c('image', {
     staticClass: ["title_notice"],
     attrs: {
-      "src": "http://www.lidiwo.com/main_title_notice.png"
+      "src": "http://hehanzhao.com/image/main_title_notice.png"
     }
   })])])
 }]}
@@ -4267,7 +4267,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('div', [_c('image', {
       staticClass: ["image_swipebanner"],
       attrs: {
-        "placeholder": "http://www.lidiwo.com/banner_placeholder.png",
+        "placeholder": "http://hehanzhao.com/image/banner_placeholder.png",
         "src": item.pic_url
       }
     })])
@@ -4309,7 +4309,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('image', {
     staticClass: ["image_swipebanner"],
     attrs: {
-      "placeholder": "http://www.lidiwo.com/banner_placeholder.png",
+      "placeholder": "http://hehanzhao.com/image/banner_placeholder.png",
       "src": {
         "@binding": "item.pic_url"
       }
@@ -4838,7 +4838,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])]), _c('div', {
     staticClass: ["nominate_large_pic"],
@@ -4970,7 +4970,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(" 更多")]), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])
 }]}
@@ -5627,7 +5627,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])]), _c('div', {
     staticClass: ["crowd_funding_large_pic"]
@@ -5993,7 +5993,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(" 更多")]), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])
 }]}
@@ -7421,7 +7421,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       marginLeft: "30px"
     },
     attrs: {
-      "src": "http://www.lidiwo.com/ltp_icon_time.png"
+      "src": "http://hehanzhao.com/image/ltp_icon_time.png"
     }
   }), _c('text', {
     staticStyle: {
@@ -7513,7 +7513,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       marginLeft: "30px"
     },
     attrs: {
-      "src": "http://www.lidiwo.com/ltp_icon_time.png"
+      "src": "http://hehanzhao.com/image/ltp_icon_time.png"
     }
   }), _c('text', {
     staticStyle: {
@@ -7558,7 +7558,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])]), _c('scroller', {
     staticClass: ["content_scroller"],
@@ -7637,7 +7637,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(" 更多")]), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])
 }]}
@@ -7863,7 +7863,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])]), _c('scroller', {
     staticClass: ["content_scroller"],
@@ -7910,7 +7910,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(" 更多")]), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])
 }]}
@@ -8303,7 +8303,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])]), _c('div', {
     staticClass: ["main_image_container"]
@@ -8420,7 +8420,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(" 更多")]), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])
 }]}
@@ -8742,7 +8742,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])]), _c('div', {
     staticClass: ["goods_content"],
@@ -8835,7 +8835,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(" 更多")]), _c('image', {
     staticClass: ["more_img"],
     attrs: {
-      "src": "http://www.lidiwo.com/arrow_rounded.png"
+      "src": "http://hehanzhao.com/image/arrow_rounded.png"
     }
   })])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9453,7 +9453,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       marginTop: "15px"
     },
     attrs: {
-      "src": "http://www.lidiwo.com/crowdfunding_statement.jpg"
+      "src": "http://hehanzhao.com/image/crowdfunding_statement.jpg"
     }
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9738,7 +9738,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         marginRight: "20px"
       },
       attrs: {
-        "src": "http://www.lidiwo.com/next.png"
+        "src": "http://hehanzhao.com/image/next.png"
       }
     })])])])
   }), _vm._m(0)], 2)])
@@ -9827,7 +9827,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('image', {
     staticClass: ["tb_dropdown_ico"],
     attrs: {
-      "src": "http://www.lidiwo.com/main_cat_dropdown.png"
+      "src": "http://hehanzhao.com/image/main_cat_dropdown.png"
     }
   })])
 }]}
@@ -10333,7 +10333,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('image', {
     staticClass: ["title_search_icon"],
     attrs: {
-      "src": "http://www.lidiwo.com/icon_search.png"
+      "src": "http://hehanzhao.com/image/icon_search.png"
     }
   }), _c('text', {
     staticClass: ["title_search_text"]
@@ -11314,7 +11314,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       height: "183px"
     },
     attrs: {
-      "src": "http://www.lidiwo.com/cart_empty.png"
+      "src": "http://hehanzhao.com/image/cart_empty.png"
     }
   }), _c('text', {
     staticClass: ["hite_info"]
@@ -11600,52 +11600,52 @@ Object.defineProperty(exports, "__esModule", {
 var modal = weex.requireModule('modal');
 
 var orderType = [{
-    image: "http://www.lidiwo.com/personal_icon_paid_copy.png",
+    image: "http://hehanzhao.com/image/personal_icon_paid_copy.png",
     text: "待付款"
 }, {
-    image: "http://www.lidiwo.com/personal_icon_receipt.png",
+    image: "http://hehanzhao.com/image/personal_icon_receipt.png",
     text: "待发货"
 }, {
-    image: "http://www.lidiwo.com/personal_icon_appraisal.png",
+    image: "http://hehanzhao.com/image/personal_icon_appraisal.png",
     text: "待评价"
 }, {
-    image: "http://www.lidiwo.com/personal_icon_return_goods.png",
+    image: "http://hehanzhao.com/image/personal_icon_return_goods.png",
     text: "退款/售后"
 }];
 var serviceData = [{
-    big_icon: "http://www.lidiwo.com/personal_icon_group_buying.png",
+    big_icon: "http://hehanzhao.com/image/personal_icon_group_buying.png",
     name: "拼团订单",
     title: ""
 }, {
-    big_icon: "http://www.lidiwo.com/personal_icon_coupon_new.png",
+    big_icon: "http://hehanzhao.com/image/personal_icon_coupon_new.png",
     name: "优惠券",
     title: ""
 }, {
-    big_icon: "http://www.lidiwo.com/personal_icon_gift_nor.png",
+    big_icon: "http://hehanzhao.com/image/personal_icon_gift_nor.png",
     name: "新人邀请",
     title: "立享红包"
 }, {
-    big_icon: "http://www.lidiwo.com/set_icon_share.png",
+    big_icon: "http://hehanzhao.com/image/set_icon_share.png",
     name: "分享app",
     title: ""
 }, {
-    big_icon: "http://www.lidiwo.com/personal_icon_collection_nor.png",
+    big_icon: "http://hehanzhao.com/image/personal_icon_collection_nor.png",
     name: "我的收藏",
     title: ""
 }, {
-    big_icon: "http://www.lidiwo.com/personal_icon_assets_nor.png",
+    big_icon: "http://hehanzhao.com/image/personal_icon_assets_nor.png",
     name: "我的资产",
     title: "积分/特权码"
 }, {
-    big_icon: "http://www.lidiwo.com/personal_icon_address_nor.png",
+    big_icon: "http://hehanzhao.com/image/personal_icon_address_nor.png",
     name: "地址管理",
     title: ""
 }, {
-    big_icon: "http://www.lidiwo.com/personal_icon_service_center.png",
+    big_icon: "http://hehanzhao.com/image/personal_icon_service_center.png",
     name: "服务中心",
     title: "在线客服"
 }, {
-    big_icon: "http://www.lidiwo.com/personal_icon_feedback.png",
+    big_icon: "http://hehanzhao.com/image/personal_icon_feedback.png",
     name: "用户反馈",
     title: ""
 }, {
@@ -11765,19 +11765,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('image', {
     staticClass: ["bg_image"],
     attrs: {
-      "src": "http://www.lidiwo.com/personal_bg_top.png"
+      "src": "http://hehanzhao.com/image/personal_bg_top.png"
     }
   }), _c('div', {
     staticClass: ["user_center_header_one"]
   }, [_c('image', {
     staticClass: ["personal_image", "personal_set"],
     attrs: {
-      "src": "http://www.lidiwo.com/personal_icon_set_nor.png"
+      "src": "http://hehanzhao.com/image/personal_icon_set_nor.png"
     }
   }), _c('image', {
     staticClass: ["personal_image", "personal_message"],
     attrs: {
-      "src": "http://www.lidiwo.com/personal_icon_message_nor.png"
+      "src": "http://hehanzhao.com/image/personal_icon_message_nor.png"
     }
   })]), _c('div', {
     staticClass: ["user_center_header_two"]
@@ -11786,14 +11786,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('image', {
     staticClass: ["personal_logged"],
     attrs: {
-      "src": "http://www.lidiwo.com/user_not_logged.png"
+      "src": "http://hehanzhao.com/image/user_not_logged.png"
     }
   }), _c('text', {
     staticClass: ["personal_info"]
   }, [_vm._v("未登录")])]), _c('image', {
     staticClass: ["personal_icon_right"],
     attrs: {
-      "src": "http://www.lidiwo.com/icon_right_more_white.png"
+      "src": "http://hehanzhao.com/image/icon_right_more_white.png"
     }
   })])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -11808,7 +11808,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("全部订单")]), _c('image', {
     staticClass: ["order_all_image"],
     attrs: {
-      "src": "http://www.lidiwo.com/icon_right_more.png"
+      "src": "http://hehanzhao.com/image/icon_right_more.png"
     }
   })])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
