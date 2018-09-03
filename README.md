@@ -1,5 +1,5 @@
 
-#weex 仿小米有品app
+# weex 仿小米有品app
 
 ![](https://github.com/lidiwo/weex_youpin/blob/master/image.png)
 
