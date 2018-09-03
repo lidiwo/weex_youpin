@@ -9007,6 +9007,32 @@ module.exports = {
     "marginLeft": "30",
     "fontSize": "22",
     "color": "#999999"
+  },
+  "goods_price": {
+    "paddingLeft": "30",
+    "flexDirection": "row",
+    "marginTop": "10",
+    "alignItems": "flex-end"
+  },
+  "rmb_symbol": {
+    "marginBottom": "3",
+    "fontSize": "18",
+    "color": "#A92112"
+  },
+  "price_text": {
+    "fontSize": "25",
+    "color": "#A92112"
+  },
+  "crowd_funding_progress": {
+    "marginTop": "10",
+    "height": "5",
+    "marginLeft": "30",
+    "marginRight": "30",
+    "backgroundImage": "linear-gradient(to right, #FFBB08, #F16B13)",
+    "borderBottomLeftRadius": "5",
+    "borderTopLeftRadius": "5",
+    "borderBottomRightRadius": "5",
+    "borderTopRightRadius": "5"
   }
 }
 
@@ -9020,6 +9046,42 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _util = __webpack_require__(0);
+
+var _util2 = _interopRequireDefault(_util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -9088,11 +9150,27 @@ exports.default = {
     },
     methods: {
         getRowCount: function getRowCount(constant, list) {
-            return Math.floor(list.length / constant);
+            return Math.ceil(list.length / constant);
         },
         getColumnCount: function getColumnCount(constant, list, lines) {
             var remainder = list.length % constant;
             return lines == this.getRowCount(constant, list) ? remainder == 0 ? constant : remainder : constant;
+        },
+        finishTime: function finishTime(time) {
+            return time === 0 ? '即将结束' : '剩余' + time + '天';
+        },
+        crowdFundingProgress: function crowdFundingProgress(position) {
+            return Math.floor(this.crowdingData[position].saled_count / this.crowdingData[position].target_count * 100);
+        },
+        crowdFundingProgressWidth: function crowdFundingProgressWidth(width, position) {
+            return this.crowdFundingProgress(position) >= 100 ? width + 'px' : Math.ceil(this.crowdFundingProgress(position) / 100 * width) + 'px';
+        },
+
+        goodsName: function goodsName(name1, name2) {
+            return name1 === null || name1 === undefined || name1 === '' ? name2 : name1;
+        },
+        goodsPrice: function goodsPrice(money) {
+            return _util2.default.formatMoney(money);
         }
     },
     created: function created() {
@@ -9154,7 +9232,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       flexDirection: "column",
       backgroundColor: "white"
     }
-  }, [_vm._m(0), _c('div', {
+  }, [_c('div', {
+    staticStyle: {
+      width: "750px",
+      height: "80px",
+      alignItems: "center",
+      justifyContent: "center",
+      borderBottomWidth: "2px",
+      borderBottomColor: "#EDEDED"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#666666",
+      fontSize: "30px"
+    }
+  }, [_vm._v("正在众筹" + _vm._s(_vm.crowdingData.length))])]), _c('div', {
     staticStyle: {
       backgroundColor: "#EDEDED"
     }
@@ -9162,7 +9254,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('div', {
       staticStyle: {
         width: "750px",
-        height: "462px",
+        height: "440px",
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: "2px"
@@ -9171,11 +9263,75 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       return _c('div', {
         staticStyle: {
           width: "374px",
-          height: "462px",
+          height: "440px",
           flexDirection: "column",
-          backgroundColor: "#0088fb"
+          backgroundColor: "white"
         }
-      })
+      }, [_c('div', {
+        staticStyle: {
+          width: "374px",
+          height: "280px",
+          justifyContent: "center",
+          alignItems: "center"
+        }
+      }, [_c('image', {
+        staticClass: ["finish_goods_main_image"],
+        staticStyle: {
+          width: "280px",
+          height: "280px",
+          resize: "revert"
+        },
+        attrs: {
+          "src": _vm.crowdingData[(index1 - 1) * 2 + index2 - 1].pic_url
+        }
+      })]), _c('div', {
+        staticStyle: {
+          flexDirection: "column",
+          paddingRight: "30px",
+          paddingLeft: "30px"
+        }
+      }, [_c('text', {
+        staticStyle: {
+          color: "#4D453E",
+          fontSize: "25px",
+          lines: "1",
+          textOverflow: "ellipsis"
+        }
+      }, [_vm._v(_vm._s(_vm.goodsName(_vm.crowdingData[(index1 - 1) * 2 + index2 - 1].attr_ext.custom_name, _vm.crowdingData[(index1 - 1) * 2 + index2 - 1].name)))])]), _c('div', {
+        staticClass: ["goods_price"]
+      }, [_c('text', {
+        staticClass: ["rmb_symbol"]
+      }, [_vm._v("¥")]), _c('text', {
+        staticClass: ["price_text"]
+      }, [_vm._v(_vm._s(_vm.goodsPrice(_vm.crowdingData[(index1 - 1) * 2 + index2 - 1].price_min)))]), _c('text', {
+        staticClass: ["rmb_symbol"],
+        style: {
+          visibility: _vm.crowdingData[(index1 - 1) * 2 + (index2 - 1)].attr_ext.price_tag === 1 ? 'visible' : 'hidden'
+        }
+      }, [_vm._v("起")])]), _c('div', {
+        staticStyle: {
+          flexDirection: "row",
+          justifyContent: "space-between",
+          paddingLeft: "30px",
+          paddingRight: "30px",
+          marginTop: "5px"
+        }
+      }, [_c('text', {
+        staticStyle: {
+          fontSize: "20px",
+          color: "#999999"
+        }
+      }, [_vm._v(_vm._s(_vm.crowdingData[(index1 - 1) * 2 + (index2 - 1)].saled_count) + "人支持 | " + _vm._s(_vm.finishTime(_vm.crowdingData[(index1 - 1) * 2 + (index2 - 1)].left)))]), _c('text', {
+        staticStyle: {
+          color: "#A92112",
+          fontSize: "20px"
+        }
+      }, [_vm._v(_vm._s(_vm.crowdFundingProgress((index1 - 1) * 2 + (index2 - 1))) + "%")])]), _c('div', {
+        staticClass: ["crowd_funding_progress"],
+        style: {
+          width: _vm.crowdFundingProgressWidth(314, (index1 - 1) * 2 + (index2 - 1))
+        }
+      })])
     }))
   }))])]), _c('cell', {
     appendAsTree: true,
@@ -9188,7 +9344,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       backgroundColor: "white",
       marginTop: "15px"
     }
-  }, [_vm._m(1), _c('div', {
+  }, [_vm._m(0), _c('div', {
     staticStyle: {
       backgroundColor: "#EDEDED"
     }
@@ -9217,9 +9373,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           alignItems: "center"
         }
       }, [_c('image', {
+        staticClass: ["finish_goods_main_image"],
         staticStyle: {
           width: "280px",
-          height: "280px"
+          height: "280px",
+          resize: "revert"
         },
         attrs: {
           "src": _vm.crowdFinishData[(index1 - 1) * 2 + index2 - 1].pic_url
@@ -9237,30 +9395,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           lines: "1",
           textOverflow: "ellipsis"
         }
-      }, [_vm._v(_vm._s(_vm.crowdFinishData[(index1 - 1) * 2 + index2 - 1].attr_ext.custom_name))])])])
+      }, [_vm._v(_vm._s(_vm.goodsName(_vm.crowdFinishData[(index1 - 1) * 2 + index2 - 1].attr_ext.custom_name, _vm.crowdFinishData[(index1 - 1) * 2 + index2 - 1].name)))])]), _c('div', {
+        staticClass: ["goods_price"]
+      }, [_c('text', {
+        staticClass: ["rmb_symbol"]
+      }, [_vm._v("¥")]), _c('text', {
+        staticClass: ["price_text"]
+      }, [_vm._v(_vm._s(_vm.goodsPrice(_vm.crowdFinishData[(index1 - 1) * 2 + index2 - 1].price_min)))]), _c('text', {
+        staticClass: ["rmb_symbol"],
+        style: {
+          visibility: _vm.crowdFinishData[(index1 - 1) * 2 + (index2 - 1)].attr_ext.price_tag === 1 ? 'visible' : 'hidden'
+        }
+      }, [_vm._v("起")])]), _c('div', {
+        staticStyle: {
+          flexDirection: "row",
+          justifyContent: "space-between",
+          paddingLeft: "30px",
+          paddingRight: "30px",
+          marginTop: "8px"
+        }
+      }, [_c('text', {
+        staticStyle: {
+          fontSize: "20px",
+          color: "#999999"
+        }
+      }, [_vm._v(_vm._s(_vm.crowdFinishData[(index1 - 1) * 2 + index2 - 1].saled_count) + "人支持")]), _c('text', {
+        staticStyle: {
+          fontSize: "20px",
+          color: "#999999"
+        }
+      }, [_vm._v("已成功")])])])
     }))
-  }))])]), _vm._m(2), _vm._m(3)])])
+  }))])]), _vm._m(1), _vm._m(2)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticStyle: {
       width: "750px",
       height: "80px",
       alignItems: "center",
-      justifyContent: "center"
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#666666",
-      fontSize: "30px"
-    }
-  }, [_vm._v("正在众筹")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      width: "750px",
-      height: "80px",
-      alignItems: "center",
-      justifyContent: "center"
+      justifyContent: "center",
+      borderBottomWidth: "2px",
+      borderBottomColor: "#EDEDED"
     }
   }, [_c('text', {
     staticStyle: {
