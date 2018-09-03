@@ -36,3 +36,5 @@ $ npm run build
 ```
 $ npm run dev & npm run serve
 ```
+
+使用 Weex Playground app 扫描网页中的二维码体验
