@@ -9,9 +9,14 @@
 
 ![](https://github.com/lidiwo/weex_youpin/blob/master/qrCode.png)
 
+### Android 打包版本源码(可以扫描二维码，下载android apk体验 )
+ https://github.com/lidiwo/android_weex_youpin
+
 ### 说明
 
 本人也是第一次学习weex开发，随便找了一个项目练手，如有不合理之处请指出。另外此代码只是针对android 和ios 端，并没有进行机型适配，代码仅供新手学习参考
+
+首页中，推荐 小米众筹 品牌三个页面是weex开发，其余页面是小米自带的H5页面
 
 # 运行
 
