@@ -1,27 +1,38 @@
-# Introduction
 
-This boilerplate is targeted towards large, serious projects and assumes you are somewhat familiar with Webpack and `weex-loader`. 
+#weex 仿小米有品app
 
-## Quickstart
+![](https://github.com/zwwill/yanxuan-weex-demo/raw/master/banner.png)
 
-To use this template, scaffold a project with [weexpack v1.1.1+](https://github.com/weexteam/weex-pack).
+# 体验
 
-``` bash
-$ npm install -g weex-toolkit
-$ weex create my-project # default will create the webpack template
-$ cd my-project && npm start
+下载 Weex Playground 扫码体验 [Weex Playground下载地址](http://weex.apache.org/cn/playground.html)
+
+![](https://github.com/zwwill/yanxuan-weex-demo/raw/master/erHome.png)
+
+###说明
+
+本人也是第一次学习weex开发，随便找了一个项目练手，如有不合理之处请指出。另外此代码只是针对android 和ios 端，并没有进行机型适配，代码仅供新手学习参考
+
+# 运行
+
+## 安装weex开发环境（参考官网）
+
+## 下载代码，进入根目录，安装依赖包
+
+```
+$ npm install
 ```
 
-## How to use less/sass/pug
+## 运行web
 
-Take `sass` for example:
+web工程打包
 
 ```
-$ npm i node-sass sass-loader --save
+$ npm run build
 ```
 
-Then, you just need to change the `style` tag as: `<style lang="sass"><style>`.
+构建web工程 & 启动服务
 
-## How to create your own template
-
-See [How-to-create-your-own-template](https://github.com/weex-templates/How-to-create-your-own-template).
+```
+$ npm run dev & npm run serve
+```

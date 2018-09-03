@@ -4,7 +4,7 @@
             <cell >
                 <div style="flex-direction: column;background-color: white">
                     <div style="width: 750px;height: 80px;align-items: center;justify-content: center;border-bottom-width: 2px;border-bottom-color: #EDEDED">
-                        <text style="color: #666666;font-size: 30px">正在众筹{{crowdingData.length}}</text>
+                        <text style="color: #666666;font-size: 30px">正在众筹</text>
                     </div>
 
                     <div style="background-color: #EDEDED">

@@ -3478,19 +3478,16 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["wrapper"],
-    class: _vm.contentStyle
-  }, [_vm._m(0), _vm._m(1), _vm._m(2)])
+  return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('image', {
+  return _c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('div', [_c('image', {
     staticClass: ["title_logo"],
     attrs: {
       "src": "http://www.lidiwo.com/logo.png"
     }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  })]), _c('div', {
     staticClass: ["title_search"]
   }, [_c('image', {
     staticClass: ["title_search_icon"],
@@ -3504,14 +3501,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": "http://www.lidiwo.com/icon_scan.png"
     }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('image', {
+  })]), _c('div', [_c('image', {
     staticClass: ["title_notice"],
     attrs: {
       "src": "http://www.lidiwo.com/main_title_notice.png"
     }
-  })])
+  })])])
 }]}
 module.exports.render._withStripped = true
 
@@ -9232,21 +9227,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       flexDirection: "column",
       backgroundColor: "white"
     }
-  }, [_c('div', {
-    staticStyle: {
-      width: "750px",
-      height: "80px",
-      alignItems: "center",
-      justifyContent: "center",
-      borderBottomWidth: "2px",
-      borderBottomColor: "#EDEDED"
-    }
-  }, [_c('text', {
-    staticStyle: {
-      color: "#666666",
-      fontSize: "30px"
-    }
-  }, [_vm._v("正在众筹" + _vm._s(_vm.crowdingData.length))])]), _c('div', {
+  }, [_vm._m(0), _c('div', {
     staticStyle: {
       backgroundColor: "#EDEDED"
     }
@@ -9344,7 +9325,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       backgroundColor: "white",
       marginTop: "15px"
     }
-  }, [_vm._m(0), _c('div', {
+  }, [_vm._m(1), _c('div', {
     staticStyle: {
       backgroundColor: "#EDEDED"
     }
@@ -9426,8 +9407,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }, [_vm._v("已成功")])])])
     }))
-  }))])]), _vm._m(1), _vm._m(2)])])
+  }))])]), _vm._m(2), _vm._m(3)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      width: "750px",
+      height: "80px",
+      alignItems: "center",
+      justifyContent: "center",
+      borderBottomWidth: "2px",
+      borderBottomColor: "#EDEDED"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#666666",
+      fontSize: "30px"
+    }
+  }, [_vm._v("正在众筹")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticStyle: {
       width: "750px",

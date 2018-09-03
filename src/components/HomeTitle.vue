@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :class="contentStyle">
+    <div class="wrapper" >
         <div>
             <image class="title_logo" src="http://www.lidiwo.com/logo.png"></image>
         </div>
