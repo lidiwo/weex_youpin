@@ -1,13 +1,13 @@
 
 #weex 仿小米有品app
 
-![](https://github.com/zwwill/yanxuan-weex-demo/raw/master/banner.png)
+![](https://github.com/lidiwo/weex_youpin/blob/master/image.png)
 
 # 体验
 
 下载 Weex Playground 扫码体验 [Weex Playground下载地址](http://weex.apache.org/cn/playground.html)
 
-![](https://github.com/zwwill/yanxuan-weex-demo/raw/master/erHome.png)
+![](https://github.com/lidiwo/weex_youpin/blob/master/qrCode.png)
 
 ###说明
 
