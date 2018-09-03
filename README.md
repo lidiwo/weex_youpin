@@ -9,7 +9,7 @@
 
 ![](https://github.com/lidiwo/weex_youpin/blob/master/qrCode.png)
 
-###说明
+### 说明
 
 本人也是第一次学习weex开发，随便找了一个项目练手，如有不合理之处请指出。另外此代码只是针对android 和ios 端，并没有进行机型适配，代码仅供新手学习参考
 
